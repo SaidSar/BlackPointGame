@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6lqmy357ej8o"]
+[gd_scene load_steps=9 format=3 uid="uid://c6lqmy357ej8o"]
 
 [ext_resource type="Texture2D" uid="uid://bcj7o4xe5nkvq" path="res://assets/otros/fondo2dprueba.jpg" id="1_ter2f"]
+[ext_resource type="FontFile" uid="uid://ck8r3pivnwx8j" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Bold.ttf" id="2_vhgtv"]
+[ext_resource type="FontFile" uid="uid://06n02bnjutwl" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Medium.ttf" id="3_8cfpu"]
+
+[sub_resource type="Theme" id="Theme_w6fns"]
+default_font = ExtResource("2_vhgtv")
+default_font_size = 22
+
+[sub_resource type="Theme" id="Theme_pkvd8"]
+default_font = ExtResource("3_8cfpu")
+
+[sub_resource type="Theme" id="Theme_3r3h5"]
+default_font = ExtResource("3_8cfpu")
+
+[sub_resource type="Theme" id="Theme_bm2sk"]
+default_font = ExtResource("3_8cfpu")
+
+[sub_resource type="Theme" id="Theme_tnv86"]
+default_font = ExtResource("3_8cfpu")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -46,15 +64,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -174.0
+offset_top = -124.0
 offset_right = 200.0
-offset_bottom = 226.0
+offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="titulo" type="Label" parent="MenuContainer/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme = SubResource("Theme_w6fns")
 text = "BLACK POT"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -64,19 +83,24 @@ layout_mode = 2
 
 [node name="BottonsContainer" type="VBoxContainer" parent="MenuContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 12
 
 [node name="botonNuevaPartida" type="Button" parent="MenuContainer/VBoxContainer/BottonsContainer"]
 layout_mode = 2
+theme = SubResource("Theme_pkvd8")
 text = "Nueva Partida"
 
 [node name="botonContinuar" type="Button" parent="MenuContainer/VBoxContainer/BottonsContainer"]
 layout_mode = 2
+theme = SubResource("Theme_3r3h5")
 text = "Continuar"
 
 [node name="botonOpciones" type="Button" parent="MenuContainer/VBoxContainer/BottonsContainer"]
 layout_mode = 2
+theme = SubResource("Theme_bm2sk")
 text = "Opciones"
 
 [node name="botonSalir" type="Button" parent="MenuContainer/VBoxContainer/BottonsContainer"]
 layout_mode = 2
+theme = SubResource("Theme_tnv86")
 text = "Salir"
