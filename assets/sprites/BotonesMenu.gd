@@ -18,3 +18,7 @@ func configurar_glow_boton(boton: Button):
 		var tween = create_tween()
 		tween.tween_property(boton, "modulate", color_original, 0.3)
 	)
+
+
+func _on_boton_salir_pressed() -> void:
+	get_tree().quit()
