@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6lqmy357ej8o"]
+[gd_scene load_steps=10 format=3 uid="uid://c6lqmy357ej8o"]
 
 [ext_resource type="Texture2D" uid="uid://bcj7o4xe5nkvq" path="res://assets/otros/fondo2dprueba.jpg" id="1_ter2f"]
 [ext_resource type="FontFile" uid="uid://ck8r3pivnwx8j" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Bold.ttf" id="2_vhgtv"]
 [ext_resource type="FontFile" uid="uid://06n02bnjutwl" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Medium.ttf" id="3_8cfpu"]
 [ext_resource type="Script" uid="uid://cfy8bmrr4p5cg" path="res://assets/sprites/BotonesMenu.gd" id="3_w6fns"]
-[ext_resource type="AudioStream" uid="uid://mymx8qwtk327" path="res://assets/musica/MusicaMenu-TheFatRat.ogg" id="5_w6fns"]
 
 [sub_resource type="Theme" id="Theme_w6fns"]
 default_font = ExtResource("2_vhgtv")
@@ -108,12 +107,5 @@ layout_mode = 2
 theme = SubResource("Theme_tnv86")
 text = "Salir"
 
-[node name="MusicaMenu" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_w6fns")
-volume_db = 10.0
-autoplay = true
-parameters/looping = true
-
 [connection signal="mouse_entered" from="MenuContainer/VBoxContainer/BottonsContainer" to="MenuContainer/VBoxContainer/BottonsContainer" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MenuContainer/VBoxContainer/BottonsContainer" to="MenuContainer/VBoxContainer/BottonsContainer" method="_on_mouse_exited"]
-[connection signal="pressed" from="MenuContainer/VBoxContainer/BottonsContainer/botonSalir" to="MenuContainer/VBoxContainer/BottonsContainer" method="_on_boton_salir_pressed"]
