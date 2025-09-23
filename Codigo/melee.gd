@@ -13,8 +13,8 @@ var en_aire: bool
 
 #cosas para la flecha
 var cargando_flecha: bool = false
-var tiempo_carga: float = 0.0
-const CARGA_MAX = 2.0  # 2 segundos máximo de carga
+var tiempo_carga: float = 0.2
+const CARGA_MAX = 1.5  # 2 segundos máximo de carga
 const FUERZA_MAX = 1200.0  # fuerza máxima de la flecha
 const FUERZA_MIN = 400.0   # fuerza mínima de la flecha
 
@@ -89,12 +89,13 @@ func disparar_flecha_2():
 	var flecha = flecha_escena_2.instantiate()
 	get_parent().add_child(flecha)
 	flecha.global_position = global_position
-	var factor_carga = tiempo_carga / CARGA_MAX
+	var factor_carga = tiempo_carga / (CARGA_MAX + 100 )
 	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
-	var direccion = Vector2(1, 0)
+	var angulo = deg_to_rad(35)
+	var direccion = Vector2(cos(angulo), -sin(angulo))
 	if sprite.flip_h:
 		direccion.x = -1
-	flecha.velocity = direccion * fuerza
+	flecha.velocity =  direccion.normalized()  * fuerza
 
 func voltear_sprite(dir):
 	if dir == 1:

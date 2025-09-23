@@ -31,7 +31,7 @@ light_mask = 3
 position = Vector2(5.96046e-08, 0.00680256)
 shape = SubResource("RectangleShape2D_vb5qb")
 
-[node name="Melee" parent="." instance=ExtResource("1_vb5qb")]
+[node name="Arquero" parent="." instance=ExtResource("1_vb5qb")]
 position = Vector2(421, 441)
 
 [node name="Enemigoprueba" parent="." instance=ExtResource("2_gsmxe")]
