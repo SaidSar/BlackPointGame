@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkjkx72k1d0b2"]
+
+[ext_resource type="Script" uid="uid://clrl7yxxn6dw1" path="res://Codigo/flecha.gd" id="1_0ndbe"]
+[ext_resource type="Texture2D" uid="uid://eeq1twdho8t0" path="res://assets/Jugador/Flecha.png" id="1_2ckxj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ndbe"]
+size = Vector2(27, 7)
+
+[node name="Flecha" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_0ndbe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ckxj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_0ndbe")

@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctndgf2c3v0vc"]
+
+[ext_resource type="PackedScene" uid="uid://dod85j6oku7jb" path="res://escenas/melee.tscn" id="1_vb5qb"]
+[ext_resource type="Script" uid="uid://dtmrhr4q3uvi0" path="res://Codigo/pruebas.gd" id="1_yynwe"]
+[ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/enemigoprueba.tscn" id="2_gsmxe"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_hkg04"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yynwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb5qb"]
+size = Vector2(0.998704, 1.02041)
+
+[node name="Nivel" type="Node2D"]
+script = ExtResource("1_yynwe")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+light_mask = 3
+visibility_layer = 2
+position = Vector2(476, 500)
+scale = Vector2(578.75, 73.5)
+mesh = SubResource("QuadMesh_hkg04")
+texture = SubResource("CanvasTexture_yynwe")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
+light_mask = 3
+position = Vector2(5.96046e-08, 0.00680256)
+shape = SubResource("RectangleShape2D_vb5qb")
+
+[node name="Melee" parent="." instance=ExtResource("1_vb5qb")]
+position = Vector2(421, 441)
+
+[node name="Enemigoprueba" parent="." instance=ExtResource("2_gsmxe")]
+position = Vector2(593, 321)
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+position = Vector2(800, 338)
+rotation = -1.57079
+scale = Vector2(578.75, 73.5)
+mesh = SubResource("QuadMesh_hkg04")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D2/StaticBody2D"]
+position = Vector2(5.96046e-08, 0.00680256)
+shape = SubResource("RectangleShape2D_vb5qb")

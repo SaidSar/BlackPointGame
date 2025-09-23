@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://lqjnpg6swxj1"]
+
+[ext_resource type="Script" uid="uid://dppbeyuap8sph" path="res://Codigo/enemigoprueba.gd" id="1_jjf2n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnqdw"]
+radius = 10.0499
+
+[sub_resource type="SphereMesh" id="SphereMesh_it53k"]
+
+[node name="Enemigoprueba" type="CharacterBody2D"]
+script = ExtResource("1_jjf2n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dnqdw")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(-3.57628e-07, 2.563e-06)
+scale = Vector2(18.0204, 18)
+mesh = SubResource("SphereMesh_it53k")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
