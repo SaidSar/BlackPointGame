@@ -1,28 +1,30 @@
 extends CharacterBody2D
 const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
-var Tipo_ataque: String 
+var tipo_ataque: String 
 var ataque_actual: bool
 var en_aire: bool
+var doble_salto: bool
+
 @onready var zona_daño = $"AreadeDaño"
 @onready var sprite = $Sprite
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
-@onready var flecha_escena = preload("res://escenas//flecha.tscn")
-@onready var flecha_escena_2 = preload("res://escenas//flecha_2.tscn")
+@onready var flecha_escena = preload("res://escenas//jesus//flecha.tscn")
+@onready var flecha_escena_2 = preload("res://escenas//jesus//flecha_2.tscn")
 
-#cosas para la flecha
+#cosas para la flechas
 var cargando_flecha: bool = false
 var tiempo_carga: float = 0.2
-const CARGA_MAX = 1.5  # 2 segundos máximo de carga
-const FUERZA_MAX = 1200.0  # fuerza máxima de la flecha
-const FUERZA_MIN = 400.0   # fuerza mínima de la flecha
+const CARGA_MAX = 1.5 
+const FUERZA_MAX = 1200.0  
+const FUERZA_MIN = 400.0   
 
 func _ready():
 	ataque_actual = false
 
 func Controlador_animaciones_ataques(ataque):
-	if Tipo_ataque != "":
+	if tipo_ataque != "":
 		sprite.play(str(ataque))
 		ataque_actual = true
 
@@ -32,44 +34,50 @@ func _physics_process(delta):
 		en_aire = true
 	else: 
 		en_aire = false
-	if Input.is_action_just_pressed("Espacio") and !en_aire:
-		velocity.y = JUMP_VELOCITY
+		doble_salto = true
+	if Input.is_action_just_pressed("Espacio"):
+		if en_aire:
+			if doble_salto:
+				velocity.y = JUMP_VELOCITY
+				doble_salto = false
+		else:
+			velocity.y = JUMP_VELOCITY
+		
 	var direction = Input.get_axis("A", "D")
 	if direction and !ataque_actual :
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if ataque_actual == false:
-		if (Input.is_action_just_pressed("click_izquierdo") or Input.is_action_just_pressed("click_derecho") or Input.is_action_just_pressed("shift")) and !en_aire:
-			if Input.is_action_just_pressed("click_izquierdo") and tiempo_ataque_1.is_stopped():
-					cargando_flecha = true
-					tiempo_carga = min(tiempo_carga + delta, CARGA_MAX)
-					Tipo_ataque = "Ataque_1"
-					tiempo_ataque_1.start()
-			elif Input.is_action_pressed("click_derecho") and tiempo_ataque_2.is_stopped():
-					cargando_flecha = true
-					tiempo_carga = min(tiempo_carga + delta, CARGA_MAX)
-					Tipo_ataque = "Ataque_2"
-					tiempo_ataque_2.start()
-			elif Input.is_action_just_pressed("shift"):
-				Tipo_ataque = "Ataque_3"
-			else:
-				Tipo_ataque = ""
-			Controlador_animaciones_ataques(Tipo_ataque)
-	
+	if ataque_actual == false and !en_aire:
+		if Input.is_action_just_pressed("click_izquierdo") and tiempo_ataque_1.is_stopped():
+			cargando_flecha = true
+			tiempo_carga = min(tiempo_carga + delta, CARGA_MAX)
+			tipo_ataque = "Ataque_1"
+			tiempo_ataque_1.start()
+			ataque_actual = true
+		elif Input.is_action_pressed("click_derecho") and tiempo_ataque_2.is_stopped():
+			cargando_flecha = true
+			tiempo_carga = min(tiempo_carga + delta, CARGA_MAX)
+			tipo_ataque = "Ataque_2"
+			tiempo_ataque_2.start()
+			ataque_actual = true
+		elif Input.is_action_just_pressed("shift"):
+			tipo_ataque = "Ataque_3"
+			ataque_actual = true
+		else:
+			tipo_ataque = ""
+		Controlador_animaciones_ataques(tipo_ataque)
 	move_and_slide()
 	Controlador_animaciones(direction)
 
 func controlador_ataques():
-	var collision_daño = zona_daño.get_node("CollisionShape2D")
-	var tiempo: float
-	if Tipo_ataque == "Ataque_1":
+	if tipo_ataque == "Ataque_1":
 		disparar_flecha()
-	if Tipo_ataque == "Ataque_2":
+	if tipo_ataque == "Ataque_2":
 		disparar_flecha_2()
 	else:
 		return
-	Tipo_ataque == ""
+	tipo_ataque = ""
 	pass
 
 func disparar_flecha():
@@ -91,7 +99,7 @@ func disparar_flecha_2():
 	flecha.global_position = global_position
 	var factor_carga = tiempo_carga / (CARGA_MAX + 100 )
 	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
-	var angulo = deg_to_rad(35)
+	var angulo = deg_to_rad(30)
 	var direccion = Vector2(cos(angulo), -sin(angulo))
 	if sprite.flip_h:
 		direccion.x = -1
@@ -100,10 +108,8 @@ func disparar_flecha_2():
 func voltear_sprite(dir):
 	if dir == 1:
 		sprite.flip_h = false
-		zona_daño.scale.x = 1
 	if dir == -1:
 		sprite.flip_h = true
-		zona_daño.scale.x = -1
 
 func Controlador_animaciones(dir):
 	if !ataque_actual:
