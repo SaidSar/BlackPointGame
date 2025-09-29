@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://vkeqyb4v625k"]
+
+[ext_resource type="Script" uid="uid://ck6tkt4b78f4w" path="res://Codigo/Jesus/Mago.gd" id="1_owev7"]
+[ext_resource type="Texture2D" uid="uid://cowvmw5fbtxdd" path="res://assets/Jugador/prueba_sprite.png" id="2_v0eoy"]
+[ext_resource type="Texture2D" uid="uid://bo1u7mjuej2cp" path="res://assets/Jugador/caida.png" id="5_kvk47"]
+[ext_resource type="Texture2D" uid="uid://b11xrp6pu2muh" path="res://assets/Jugador/alto.png" id="7_hv54m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4fbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kvk47")
+}],
+"loop": true,
+"name": &"Callendo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v0eoy")
+}],
+"loop": true,
+"name": &"Corriendo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hv54m")
+}],
+"loop": true,
+"name": &"Parado",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jeuf"]
+size = Vector2(37, 14)
+
+[node name="Mago" type="CharacterBody2D"]
+script = ExtResource("1_owev7")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2.0000002, 0.99999964)
+scale = Vector2(0.77272725, 0.6666666)
+sprite_frames = SubResource("SpriteFrames_c4fbr")
+animation = &"Corriendo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_5jeuf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="Ataque_1" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="Ataque_2" type="Timer" parent="."]
+wait_time = 7.0
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
+[connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]
