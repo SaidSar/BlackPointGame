@@ -64,7 +64,7 @@ func Controlador_colisiones_ataques():
 	if tipo_ataque == "Ataque_1":
 		espera = 0.5
 	if tipo_ataque == "Ataque_2":
-		espera = 0.4
+		espera = 0.35
 	if tipo_ataque == "Ataque_3":
 		espera = 0.3
 	colision_zona.disabled = false

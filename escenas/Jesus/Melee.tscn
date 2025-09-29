@@ -7,23 +7,23 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2uis3"]
 atlas = ExtResource("3_dh1jx")
-region = Rect2(0, 0, 253, 341)
+region = Rect2(14, 8, 245, 364)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_80wov"]
 atlas = ExtResource("3_dh1jx")
-region = Rect2(253, 0, 253, 341)
+region = Rect2(319, 8, 278, 341)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gl3bb"]
 atlas = ExtResource("3_dh1jx")
-region = Rect2(0, 341, 253, 341)
+region = Rect2(616, 8, 376, 325)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r8bhn"]
 atlas = ExtResource("3_dh1jx")
-region = Rect2(253, 341, 253, 341)
+region = Rect2(15, 375, 436, 299)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0ter"]
 atlas = ExtResource("3_dh1jx")
-region = Rect2(759, 341, 253, 341)
+region = Rect2(471, 362, 437, 299)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvo3b"]
 atlas = ExtResource("5_2uis3")
@@ -70,13 +70,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_80wov")
 }, {
-"duration": 1.0,
+"duration": 1.11,
 "texture": SubResource("AtlasTexture_gl3bb")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_r8bhn")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_m0ter")
 }],
 "loop": false,
@@ -148,19 +148,19 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d815g"]
 radius = 9.0
-height = 26.0
+height = 28.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvo3b"]
-size = Vector2(16, 23)
+size = Vector2(22, 25)
 
 [node name="Melee" type="CharacterBody2D"]
 script = ExtResource("1_3iqlu")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(1.9999982, 0.5)
-scale = Vector2(0.077669896, 0.1)
+position = Vector2(4.1723254e-07, -1.5000015)
+scale = Vector2(0.07476635, 0.091216214)
 sprite_frames = SubResource("SpriteFrames_crk7r")
-animation = &"Callendo"
+animation = &"Corriendo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 7
@@ -181,7 +181,7 @@ wait_time = 7.0
 [node name="Area_daño" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_daño"]
-position = Vector2(14, 0.5)
+position = Vector2(10, -2)
 shape = SubResource("RectangleShape2D_yvo3b")
 disabled = true
 

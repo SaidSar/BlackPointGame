@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl1tid2q0ktay"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_psa1t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24mko"]
+size = Vector2(34, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82irw"]
+size = Vector2(24, 7)
+
+[node name="Melee_especial" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_psa1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_24mko")
+
+[node name="ZonaDaño" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDaño"]
+position = Vector2(2, -1.5)
+shape = SubResource("RectangleShape2D_82irw")
