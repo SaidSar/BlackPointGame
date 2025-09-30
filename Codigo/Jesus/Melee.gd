@@ -35,6 +35,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if ataque_actual == false and !en_aire:
 		if Input.is_action_just_pressed("click_izquierdo") and tiempo_ataque_1.is_stopped():
+			daño = 3
 			tipo_ataque = "Ataque_1"
 			tiempo_ataque_1.start()
 			ataque_actual = true
@@ -53,7 +54,6 @@ func _physics_process(delta):
 
 func controlador_ataques():
 	if tipo_ataque == "Ataque_1":
-		daño = 3
 		return
 	if tipo_ataque == "Ataque_2":
 		ataque_especial()

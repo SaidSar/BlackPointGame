@@ -21,6 +21,7 @@ scale = Vector2(18.0204, 18)
 mesh = SubResource("SphereMesh_it53k")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

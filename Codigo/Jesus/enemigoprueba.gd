@@ -1,10 +1,13 @@
 extends CharacterBody2D
-const speed = 30.0
+var velocidad: int
 var dir: Vector2
 var perseguido: bool
+var vida: int
 
 func _ready():
 	perseguido = false
+	velocidad = 20
+	vida = 12
 
 func _process(delta):
 	if not is_on_floor():
@@ -12,15 +15,14 @@ func _process(delta):
 	move(delta)
 
 func move(delta):
-	if !perseguido:
-		velocity += dir * speed * delta
+	if perseguido:
+		velocity += dir * velocidad * delta
 	move_and_slide()
 
 func _on_timer_timeout():
-	$Timer.wait_time = choose([1.0, 1.5, 2.0])
-	if !perseguido:
-		dir = choose([Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN])
-		
+	$Timer.wait_time = choose([ 2.5, 2.0, 3.0,])
+	if perseguido:
+		dir = choose([Vector2.RIGHT, Vector2.LEFT])
 	pass
 	
 
@@ -29,4 +31,8 @@ func choose(array):
 	return array.front()
 
 func recibir_daño(daño):
-	print("daño recibido:", daño)
+	perseguido = true
+	vida -= daño
+	if vida <= 0:
+		queue_free()
+	print("daño recibido: ", daño)
