@@ -1,15 +1,13 @@
 extends CharacterBody2D
-@onready var zona_daño = $"ZonaDaño"
-@export var tiempo_de_vida = 9.0 
+@onready var area_daño = $"area_daño"
+@export var tiempo_de_vida = 7.0 
 const GRAVEDAD = 500.0
 var tiempo_actual = 0.0
-var puede_atacar = true
 var daño = 5
 
 func _physics_process(delta):
 	if is_on_floor():
 		velocity = Vector2.ZERO
-		puede_atacar = false
 	else:
 		velocity.y += GRAVEDAD * delta
 		move_and_slide()
@@ -18,10 +16,16 @@ func _physics_process(delta):
 	
 	tiempo_actual += delta
 	if tiempo_actual >= tiempo_de_vida:
-		queue_free()
+		daño_area()
 
 func _on_zona_daño_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemigos") and puede_atacar: 
+	if body.is_in_group("enemigos"): 
 		if body.has_method("recibir_daño"):
 			body.recibir_daño(daño) 
+
+func daño_area():
+			var colision_zona = area_daño.get_node("CollisionShape2D")
+			colision_zona.disabled = false
+			await get_tree().create_timer(0.3).timeout
+			colision_zona.disabled = true
 			queue_free()

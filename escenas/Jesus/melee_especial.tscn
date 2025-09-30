@@ -1,19 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl1tid2q0ktay"]
+[gd_scene load_steps=5 format=3 uid="uid://cl1tid2q0ktay"]
+
+[ext_resource type="Script" uid="uid://dw1s34okrvv2k" path="res://escenas/Jesus/melee_especial.gd" id="1_24mko"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_psa1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24mko"]
-size = Vector2(34, 20)
+size = Vector2(17, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82irw"]
 size = Vector2(24, 7)
 
-[node name="Melee_especial" type="Node2D"]
+[node name="Melee_especial" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_24mko")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_psa1t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_24mko")
 
 [node name="ZonaDaño" type="Area2D" parent="."]
@@ -24,3 +30,5 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDaño"]
 position = Vector2(2, -1.5)
 shape = SubResource("RectangleShape2D_82irw")
+
+[connection signal="body_entered" from="ZonaDaño" to="." method="_on_zona_daño_body_entered"]

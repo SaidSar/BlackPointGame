@@ -22,13 +22,13 @@ texture = ExtResource("1_8iabs")
 position = Vector2(2.5, -1.5)
 shape = SubResource("RectangleShape2D_hne7v")
 
-[node name="ZonaDaño" type="Area2D" parent="."]
+[node name="area_daño" type="Area2D" parent="."]
 visible = false
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDaño"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_daño"]
 position = Vector2(2, -1.5)
 shape = SubResource("RectangleShape2D_e2t8m")
 
-[connection signal="body_entered" from="ZonaDaño" to="." method="_on_zona_daño_body_entered"]
+[connection signal="body_entered" from="area_daño" to="." method="_on_zona_daño_body_entered"]

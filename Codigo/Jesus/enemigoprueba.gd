@@ -7,6 +7,8 @@ func _ready():
 	perseguido = false
 
 func _process(delta):
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	move(delta)
 
 func move(delta):
@@ -25,3 +27,6 @@ func _on_timer_timeout():
 func choose(array):
 	array.shuffle()
 	return array.front()
+
+func recibir_daño(daño):
+	print("daño recibido:", daño)

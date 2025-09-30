@@ -1,14 +1,15 @@
 extends CharacterBody2D
 const SPEED = 150.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -250.0
 var tipo_ataque: String 
 var ataque_actual: bool
 var en_aire: bool
-
+var daño: int
 @onready var sprite:AnimatedSprite2D = $Sprite
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
 @onready var area_daño = $"Area_daño"
+@onready var especial_escena = preload("res://escenas//jesus//melee_especial.tscn")
 
 func _ready():
 	ataque_actual = false
@@ -52,24 +53,26 @@ func _physics_process(delta):
 
 func controlador_ataques():
 	if tipo_ataque == "Ataque_1":
+		daño = 3
 		return
 	if tipo_ataque == "Ataque_2":
+		ataque_especial()
 		return
 	else:
 		tipo_ataque = "Ataque_1"
+
 
 func Controlador_colisiones_ataques():
 	var colision_zona = area_daño.get_node("CollisionShape2D")
 	var espera:float
 	if tipo_ataque == "Ataque_1":
 		espera = 0.5
-	if tipo_ataque == "Ataque_2":
-		espera = 0.35
 	if tipo_ataque == "Ataque_3":
 		espera = 0.3
 	colision_zona.disabled = false
 	await get_tree().create_timer(espera).timeout
 	colision_zona.disabled = true
+
 
 func voltear_sprite(dir):
 	if dir == 1:
@@ -90,6 +93,20 @@ func Controlador_animaciones(dir):
 		else: 
 			sprite.play("Callendo")
 
+
+func ataque_especial():
+	if especial_escena == null:
+		return
+	var especial = especial_escena.instantiate()
+	get_parent().add_child(especial)
+	especial.global_position = global_position
+	var factor_carga = 0.2 / 1.5 
+	var fuerza = lerp(400.0, 1200.0, factor_carga)
+	var direccion = Vector2(1, 0)
+	if sprite.flip_h:
+		direccion.x = -1
+	especial.velocity = direccion.normalized()  * fuerza
+
 func _on_sprite_animation_finished() -> void:
 	ataque_actual = false
 	controlador_ataques()
@@ -101,3 +118,9 @@ func _on_ataque_1_timeout() -> void:
 
 func _on_ataque_2_timeout() -> void:
 	tiempo_ataque_2.stop()
+
+
+func _on_area_daño_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemigos"): 
+		if body.has_method("recibir_daño"):
+			body.recibir_daño(daño) 

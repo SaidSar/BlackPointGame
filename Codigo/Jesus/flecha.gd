@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @onready var zona_daño = $"ZonaDaño"
-@export var tiempo_de_vida = 9.0 
+@export var tiempo_de_vida = 7.0 
 const GRAVEDAD = 50.0
 var tiempo_actual = 0.0
 var puede_atacar = true
