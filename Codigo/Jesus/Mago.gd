@@ -5,7 +5,9 @@ var tipo_ataque: String
 var ataque_actual: bool
 var en_aire: bool
 var daño = 7
+
 @onready var area_daño = $"Area_daño"
+@onready var area = $"Area"
 @onready var sprite = $Sprite
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
@@ -50,22 +52,22 @@ func _physics_process(delta):
 	Controlador_animaciones(direction)
 
 func controlador_ataques():
-	var colision_zona = area_daño.get_node("CollisionShape2D")
 	var espera:float
 	if tipo_ataque == "Ataque_1":
+		var colision_zona = area_daño.get_node("CollisionShape2D")
 		espera = 0.2
 		await get_tree().create_timer(.2).timeout
 		colision_zona.disabled = false
 		await get_tree().create_timer(espera).timeout
 		colision_zona.disabled = true
 	if tipo_ataque == "Ataque_3":
-		espera = 0.2
-		await get_tree().create_timer(.2).timeout
+		var colision_zona = area.get_node("CollisionShape2D")
+		espera = 0.45
 		colision_zona.disabled = false
 		await get_tree().create_timer(espera).timeout
 		colision_zona.disabled = true
 	else: 
-		espera = 0.0
+		return
 
 
 func voltear_sprite(dir):
@@ -86,8 +88,6 @@ func Controlador_animaciones(dir):
 				voltear_sprite(dir)
 		else: 
 			sprite.play("Callendo")
-
-
 
 func _on_ataque_1_timeout():
 	tiempo_ataque_1.stop()

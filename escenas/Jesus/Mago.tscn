@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://vkeqyb4v625k"]
+[gd_scene load_steps=11 format=3 uid="uid://vkeqyb4v625k"]
 
 [ext_resource type="Script" uid="uid://ck6tkt4b78f4w" path="res://Codigo/Jesus/Mago.gd" id="1_owev7"]
 [ext_resource type="Texture2D" uid="uid://o1bq3mutukqa" path="res://assets/Jugador/a1.png" id="2_tp6jx"]
 [ext_resource type="Texture2D" uid="uid://cowvmw5fbtxdd" path="res://assets/Jugador/prueba_sprite.png" id="2_v0eoy"]
+[ext_resource type="Texture2D" uid="uid://c43s8ok3siun3" path="res://assets/Jugador/a3.png" id="3_mk2sr"]
 [ext_resource type="Texture2D" uid="uid://bo1u7mjuej2cp" path="res://assets/Jugador/caida.png" id="5_kvk47"]
 [ext_resource type="Texture2D" uid="uid://b11xrp6pu2muh" path="res://assets/Jugador/alto.png" id="7_hv54m"]
 
@@ -20,6 +21,20 @@ animations = [{
 }],
 "loop": false,
 "name": &"Ataque_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mk2sr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mk2sr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mk2sr")
+}],
+"loop": false,
+"name": &"Ataque_3",
 "speed": 5.0
 }, {
 "frames": [{
@@ -53,6 +68,10 @@ size = Vector2(25, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hltf"]
 size = Vector2(69.75, 61)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tp6jx"]
+radius = 21.0
+height = 54.0
+
 [node name="Mago" type="CharacterBody2D"]
 script = ExtResource("1_owev7")
 
@@ -61,7 +80,7 @@ texture_filter = 1
 position = Vector2(-1.999999, 1.0000002)
 scale = Vector2(0.59090906, 0.6666667)
 sprite_frames = SubResource("SpriteFrames_c4fbr")
-animation = &"Ataque_1"
+animation = &"Ataque_3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 1)
@@ -85,8 +104,16 @@ position = Vector2(34, 0)
 shape = SubResource("RectangleShape2D_0hltf")
 disabled = true
 
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(-2, 2)
+shape = SubResource("CapsuleShape2D_tp6jx")
+disabled = true
+
 [connection signal="animation_changed" from="Sprite" to="." method="_on_sprite_animation_changed"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
 [connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]
 [connection signal="body_entered" from="Area_daño" to="." method="_on_area_daño_body_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_area_daño_body_entered"]
