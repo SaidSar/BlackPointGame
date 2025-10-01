@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dod85j6oku7jb"]
+[gd_scene load_steps=11 format=3 uid="uid://dod85j6oku7jb"]
 
 [ext_resource type="Script" uid="uid://dx321iqd2clle" path="res://Codigo/Jesus/Arquero.gd" id="1_gljk4"]
 [ext_resource type="Texture2D" uid="uid://cowvmw5fbtxdd" path="res://assets/Jugador/prueba_sprite.png" id="2_8wdtj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c43s8ok3siun3" path="res://assets/Jugador/a3.png" id="4_oyv6s"]
 [ext_resource type="Texture2D" uid="uid://bo1u7mjuej2cp" path="res://assets/Jugador/caida.png" id="5_28xse"]
 [ext_resource type="Texture2D" uid="uid://b11xrp6pu2muh" path="res://assets/Jugador/alto.png" id="7_qtu12"]
+[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Jesus/Barra_vida.tscn" id="8_g3x70"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wlp1l"]
 animations = [{
@@ -110,6 +111,7 @@ animation = &"Parado"
 shape = SubResource("CapsuleShape2D_gljk4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
@@ -119,6 +121,15 @@ wait_time = 2.5
 
 [node name="Ataque_2" type="Timer" parent="."]
 wait_time = 7.0
+
+[node name="BarraVida" parent="." instance=ExtResource("8_g3x70")]
+anchors_preset = 0
+anchor_bottom = 0.0
+offset_left = -181.0
+offset_top = -98.0
+offset_right = -51.0
+offset_bottom = -93.0
+size_flags_horizontal = 0
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]

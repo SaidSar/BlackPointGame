@@ -5,6 +5,9 @@ var tipo_ataque: String
 var ataque_actual: bool
 var en_aire: bool
 var daño: int
+var vida = 50
+
+@onready var barra_vida = $"Camera2D/BarraVida"
 @onready var sprite:AnimatedSprite2D = $Sprite
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
@@ -13,6 +16,8 @@ var daño: int
 
 func _ready():
 	ataque_actual = false
+	barra_vida.iniciar_vida(vida)
+	barra_vida._set_vida(vida)
 
 func Controlador_animaciones_ataques():
 	if tipo_ataque != "":
@@ -61,7 +66,6 @@ func controlador_ataques():
 	else:
 		tipo_ataque = "Ataque_1"
 
-
 func Controlador_colisiones_ataques():
 	var colision_zona = area_daño.get_node("CollisionShape2D")
 	var espera:float
@@ -72,7 +76,6 @@ func Controlador_colisiones_ataques():
 	colision_zona.disabled = false
 	await get_tree().create_timer(espera).timeout
 	colision_zona.disabled = true
-
 
 func voltear_sprite(dir):
 	if dir == 1:

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var area_daño = $"area_daño"
-@export var tiempo_de_vida = 7.0 
-const GRAVEDAD = 500.0
+@export var tiempo_de_vida = 5.0 
+var GRAVEDAD = 450.0
 var tiempo_actual = 0.0
 var daño = 5
 
@@ -25,7 +25,15 @@ func _on_zona_daño_body_entered(body: Node2D) -> void:
 
 func daño_area():
 			var colision_zona = area_daño.get_node("CollisionShape2D")
+			await get_tree().create_timer(0.01).timeout
 			colision_zona.disabled = false
-			await get_tree().create_timer(0.3).timeout
+			await get_tree().create_timer(0.2).timeout
 			colision_zona.disabled = true
 			queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemigos"): 
+		GRAVEDAD = 0.0
+		velocity = Vector2.ZERO
+		daño_area()

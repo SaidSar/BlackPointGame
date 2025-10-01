@@ -3,11 +3,14 @@ var velocidad: int
 var dir: Vector2
 var perseguido: bool
 var vida: int
+@onready var barra_vida = $BarraVida
 
 func _ready():
 	perseguido = false
 	velocidad = 20
-	vida = 12
+	vida = 15
+	barra_vida.iniciar_vida(vida)
+	barra_vida._set_vida(vida)
 
 func _process(delta):
 	if not is_on_floor():
@@ -35,4 +38,5 @@ func recibir_daño(daño):
 	vida -= daño
 	if vida <= 0:
 		queue_free()
+	barra_vida._set_vida(vida)
 	print("daño recibido: ", daño)

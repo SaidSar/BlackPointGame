@@ -1,10 +1,10 @@
 extends CharacterBody2D
 @onready var zona_daño = $"ZonaDaño"
 @export var tiempo_de_vida = 7.0 
-const GRAVEDAD = 50.0
+var GRAVEDAD = 50.0
 var tiempo_actual = 0.0
 var puede_atacar = true
-var daño = 5
+var daño = 2
 
 func _physics_process(delta):
 	if is_on_floor():
@@ -22,6 +22,8 @@ func _physics_process(delta):
 
 
 func _on_zona_daño_body_entered(body: Node2D) -> void:
+	velocity = Vector2.ZERO
+	GRAVEDAD = 0
 	if body.is_in_group("enemigos") and puede_atacar: 
 		if body.has_method("recibir_daño"):
 			body.recibir_daño(daño) 

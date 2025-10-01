@@ -1,11 +1,11 @@
 extends CharacterBody2D
 const SPEED = 150.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -275.0
 var tipo_ataque: String 
 var ataque_actual: bool
 var en_aire: bool
-
-@onready var zona_daño = $"AreadeDaño"
+var daño = 7
+@onready var area_daño = $"Area_daño"
 @onready var sprite = $Sprite
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
@@ -50,20 +50,31 @@ func _physics_process(delta):
 	Controlador_animaciones(direction)
 
 func controlador_ataques():
+	var colision_zona = area_daño.get_node("CollisionShape2D")
+	var espera:float
 	if tipo_ataque == "Ataque_1":
-		return
-	if tipo_ataque == "Ataque_2":
-		return
-	else:
-		return
-	tipo_ataque = ""
-	pass
+		espera = 0.2
+		await get_tree().create_timer(.2).timeout
+		colision_zona.disabled = false
+		await get_tree().create_timer(espera).timeout
+		colision_zona.disabled = true
+	if tipo_ataque == "Ataque_3":
+		espera = 0.2
+		await get_tree().create_timer(.2).timeout
+		colision_zona.disabled = false
+		await get_tree().create_timer(espera).timeout
+		colision_zona.disabled = true
+	else: 
+		espera = 0.0
+
 
 func voltear_sprite(dir):
 	if dir == 1:
 		sprite.flip_h = false
+		area_daño.scale.x = 1
 	if dir == -1:
 		sprite.flip_h = true
+		area_daño.scale.x = -1
 
 func Controlador_animaciones(dir):
 	if !ataque_actual:
@@ -76,12 +87,24 @@ func Controlador_animaciones(dir):
 		else: 
 			sprite.play("Callendo")
 
-func _on_sprite_animation_finished():
-	ataque_actual = false
-	controlador_ataques()
+
 
 func _on_ataque_1_timeout():
 	tiempo_ataque_1.stop()
 
 func _on_ataque_2_timeout():
 	tiempo_ataque_2.stop()
+
+
+func _on_area_daño_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemigos"): 
+		if body.has_method("recibir_daño"):
+			body.recibir_daño(daño) 
+
+
+func _on_sprite_animation_changed() -> void:
+	controlador_ataques()
+
+
+func _on_sprite_animation_finished() -> void:
+	ataque_actual = false

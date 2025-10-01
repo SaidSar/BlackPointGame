@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bd4th2rdgbtv5"]
+[gd_scene load_steps=23 format=3 uid="uid://bd4th2rdgbtv5"]
 
 [ext_resource type="Script" uid="uid://bpm4qqovts70n" path="res://Codigo/Jesus/Melee.gd" id="1_3iqlu"]
 [ext_resource type="Texture2D" uid="uid://bavifq5ptlyey" path="res://assets/Jugador/Caballero atacando.jpeg" id="3_dh1jx"]
 [ext_resource type="Texture2D" uid="uid://c4lk5ld4aws1m" path="res://assets/Jugador/a2.png" id="3_quajh"]
 [ext_resource type="Texture2D" uid="uid://unudis5lffp6" path="res://assets/Jugador/Caballero caminando.jpeg" id="5_2uis3"]
+[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Jesus/Barra_vida.tscn" id="5_hvoh6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2uis3"]
 atlas = ExtResource("3_dh1jx")
@@ -154,9 +155,11 @@ height = 28.0
 size = Vector2(22, 25)
 
 [node name="Melee" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_3iqlu")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(4.1723254e-07, -1.5000015)
 scale = Vector2(0.07476635, 0.091216214)
 sprite_frames = SubResource("SpriteFrames_crk7r")
@@ -172,6 +175,15 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
+[node name="BarraVida" parent="Camera2D" instance=ExtResource("5_hvoh6")]
+anchors_preset = 0
+anchor_bottom = 0.0
+offset_left = -181.0
+offset_top = -98.0
+offset_right = -51.0
+offset_bottom = -93.0
+size_flags_horizontal = 0
+
 [node name="Ataque_1" type="Timer" parent="."]
 wait_time = 2.0
 
@@ -179,6 +191,7 @@ wait_time = 2.0
 wait_time = 9.0
 
 [node name="Area_daño" type="Area2D" parent="."]
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_daño"]
 position = Vector2(10, -2)

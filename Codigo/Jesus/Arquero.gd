@@ -99,7 +99,7 @@ func disparar_flecha_2():
 	flecha.global_position = global_position
 	var factor_carga = tiempo_carga / (CARGA_MAX + 100 )
 	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
-	var angulo = deg_to_rad(30)
+	var angulo = deg_to_rad(20)
 	var direccion = Vector2(cos(angulo), -sin(angulo))
 	if sprite.flip_h:
 		direccion.x = -1
