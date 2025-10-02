@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://lqjnpg6swxj1"]
+[gd_scene load_steps=6 format=3 uid="uid://lqjnpg6swxj1"]
 
 [ext_resource type="Script" uid="uid://dppbeyuap8sph" path="res://Codigo/Jesus/enemigoprueba.gd" id="1_jjf2n"]
 [ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Jesus/Barra_vida.tscn" id="2_dqh4y"]
@@ -7,6 +7,9 @@
 size = Vector2(20, 33)
 
 [sub_resource type="QuadMesh" id="QuadMesh_iawsb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqh4y"]
+size = Vector2(238, 100)
 
 [node name="Enemigoprueba" type="CharacterBody2D" groups=["enemigos"]]
 collision_layer = 5
@@ -23,8 +26,7 @@ scale = Vector2(18.0204, 30.000002)
 mesh = SubResource("QuadMesh_iawsb")
 
 [node name="Timer" type="Timer" parent="." groups=["enemigos"]]
-wait_time = 2.0
-autostart = true
+wait_time = 0.1
 
 [node name="BarraVida" parent="." instance=ExtResource("2_dqh4y")]
 offset_left = -16.0
@@ -32,4 +34,15 @@ offset_top = -28.0
 offset_right = 17.0
 offset_bottom = -26.0
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -29)
+shape = SubResource("RectangleShape2D_dqh4y")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

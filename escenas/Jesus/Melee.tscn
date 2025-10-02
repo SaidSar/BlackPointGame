@@ -154,7 +154,7 @@ height = 28.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvo3b"]
 size = Vector2(22, 25)
 
-[node name="Melee" type="CharacterBody2D"]
+[node name="Melee" type="CharacterBody2D" groups=["Jugadores"]]
 texture_filter = 1
 script = ExtResource("1_3iqlu")
 

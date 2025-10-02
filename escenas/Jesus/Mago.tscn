@@ -72,7 +72,7 @@ size = Vector2(69.75, 61)
 radius = 21.0
 height = 54.0
 
-[node name="Mago" type="CharacterBody2D"]
+[node name="Mago" type="CharacterBody2D" groups=["Jugadores"]]
 script = ExtResource("1_owev7")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

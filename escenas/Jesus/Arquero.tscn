@@ -98,7 +98,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gljk4"]
 
-[node name="Arquero" type="CharacterBody2D"]
+[node name="Arquero" type="CharacterBody2D" groups=["Jugadores"]]
 script = ExtResource("1_gljk4")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -120,7 +120,7 @@ position_smoothing_speed = 8.0
 wait_time = 2.5
 
 [node name="Ataque_2" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 2.5
 
 [node name="BarraVida" parent="." instance=ExtResource("8_g3x70")]
 anchors_preset = 0
