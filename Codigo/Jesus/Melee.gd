@@ -5,7 +5,7 @@ var tipo_ataque: String
 var ataque_actual: bool
 var en_aire: bool
 var daño: int
-var vida = 50
+var vida = 20
 
 @onready var barra_vida = $"Camera2D/BarraVida"
 @onready var sprite:AnimatedSprite2D = $Sprite
@@ -128,9 +128,9 @@ func _on_area_daño_body_entered(body: Node2D) -> void:
 		if body.has_method("recibir_daño"):
 			body.recibir_daño(daño) 
 
-func recibir_daño(daño):
-	vida -= daño
+func recibir_daño(daño_recibido):
+	vida -= daño_recibido
 	if vida <= 0:
 		queue_free()
 	barra_vida._set_vida(vida)
-	print("daño recibido: ", daño)
+	print("daño recibido jugador: ", daño_recibido)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhic0koixyobq"]
+
+[ext_resource type="Texture2D" uid="uid://eeq1twdho8t0" path="res://assets/Jugador/Flecha.png" id="1_6pqut"]
+[ext_resource type="Script" uid="uid://h10kjqxj51f8" path="res://escenas/Jesus/flecha_enemigo.gd" id="1_ujrsn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujrsn"]
+size = Vector2(19, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de1bs"]
+size = Vector2(21, 5)
+
+[node name="Flecha_enemigo" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ujrsn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_6pqut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ujrsn")
+
+[node name="ZonaDaño" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDaño"]
+shape = SubResource("RectangleShape2D_de1bs")
+
+[connection signal="body_entered" from="ZonaDaño" to="." method="_on_zona_daño_body_entered"]

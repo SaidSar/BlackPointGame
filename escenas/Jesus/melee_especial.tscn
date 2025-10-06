@@ -15,7 +15,7 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_24mko")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_psa1t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -24,7 +24,7 @@ shape = SubResource("RectangleShape2D_24mko")
 
 [node name="ZonaDaño" type="Area2D" parent="."]
 visible = false
-collision_layer = 4
+collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDaño"]

@@ -23,8 +23,6 @@ mesh = SubResource("QuadMesh_hkg04")
 texture = SubResource("CanvasTexture_yynwe")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
 light_mask = 3
@@ -42,8 +40,6 @@ scale = Vector2(578.75, 73.5)
 mesh = SubResource("QuadMesh_hkg04")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D2/StaticBody2D"]
 position = Vector2(5.96046e-08, 0.00680256)

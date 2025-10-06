@@ -2,9 +2,11 @@ extends CharacterBody2D
 @onready var zona_daño = $"ZonaDaño"
 @export var tiempo_de_vida = 0.35
 const velocidad = 3.5
-var tiempo_actual = 0.0
-
-var daño = 5
+var tiempo_actual: float
+var daño: int
+func _ready():
+	daño = 5
+	tiempo_actual = 0.0
 
 func _physics_process(delta):
 	velocity.x += velocidad * delta  

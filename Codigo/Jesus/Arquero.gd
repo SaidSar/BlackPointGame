@@ -88,10 +88,10 @@ func disparar_flecha():
 	flecha.global_position = global_position
 	var factor_carga = tiempo_carga / CARGA_MAX
 	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
-	var direccion = Vector2(1, 0)
+	var direccion_flecha = Vector2(1, 0)
 	if sprite.flip_h:
-		direccion.x = -1
-	flecha.velocity = direccion * fuerza
+		direccion_flecha.x = -1
+	flecha.velocity = direccion_flecha * fuerza
 
 func disparar_flecha_2():
 	var flecha = flecha_escena_2.instantiate()
@@ -100,10 +100,10 @@ func disparar_flecha_2():
 	var factor_carga = tiempo_carga / (CARGA_MAX + 100 )
 	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
 	var angulo = deg_to_rad(20)
-	var direccion = Vector2(cos(angulo), -sin(angulo))
+	var direccion_flecha = Vector2(cos(angulo), -sin(angulo))
 	if sprite.flip_h:
-		direccion.x = -1
-	flecha.velocity =  direccion.normalized()  * fuerza
+		direccion_flecha.x = -1
+	flecha.velocity =  direccion_flecha.normalized()  * fuerza
 
 func voltear_sprite(dir):
 	if dir == 1:
