@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://vkeqyb4v625k"]
 
 [ext_resource type="Script" uid="uid://ck6tkt4b78f4w" path="res://Codigo/Jugadores/Mago.gd" id="1_owev7"]
-[ext_resource type="Texture2D" uid="uid://o1bq3mutukqa" path="res://assets/Jugador/a1.png" id="2_tp6jx"]
-[ext_resource type="Texture2D" uid="uid://cowvmw5fbtxdd" path="res://assets/Jugador/prueba_sprite.png" id="2_v0eoy"]
-[ext_resource type="Texture2D" uid="uid://c43s8ok3siun3" path="res://assets/Jugador/a3.png" id="3_mk2sr"]
-[ext_resource type="Texture2D" uid="uid://bo1u7mjuej2cp" path="res://assets/Jugador/caida.png" id="5_kvk47"]
-[ext_resource type="Texture2D" uid="uid://b11xrp6pu2muh" path="res://assets/Jugador/alto.png" id="7_hv54m"]
+[ext_resource type="Texture2D" uid="uid://o1bq3mutukqa" path="res://assets/Jugadores/a1.png" id="2_tp6jx"]
+[ext_resource type="Texture2D" uid="uid://cowvmw5fbtxdd" path="res://assets/Jugadores/prueba_sprite.png" id="2_v0eoy"]
+[ext_resource type="Texture2D" uid="uid://c43s8ok3siun3" path="res://assets/Jugadores/a3.png" id="3_mk2sr"]
+[ext_resource type="Texture2D" uid="uid://bo1u7mjuej2cp" path="res://assets/Jugadores/caida.png" id="5_kvk47"]
+[ext_resource type="Texture2D" uid="uid://b11xrp6pu2muh" path="res://assets/Jugadores/alto.png" id="7_hv54m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c4fbr"]
 animations = [{

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://unudis5lffp6"
-path="res://.godot/imported/Caballero caminando.jpeg-a14d48e45bd095bb62696ba69ffc62df.ctex"
+uid="uid://c4lk5ld4aws1m"
+path="res://.godot/imported/a2.png-7e12f7a7aafc5a517d9a65d516da317c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jugador/Caballero caminando.jpeg"
-dest_files=["res://.godot/imported/Caballero caminando.jpeg-a14d48e45bd095bb62696ba69ffc62df.ctex"]
+source_file="res://assets/Jugadores/a2.png"
+dest_files=["res://.godot/imported/a2.png-7e12f7a7aafc5a517d9a65d516da317c.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://bd4th2rdgbtv5"]
 
 [ext_resource type="Script" uid="uid://bpm4qqovts70n" path="res://Codigo/Jugadores/Melee.gd" id="1_nqg7t"]
-[ext_resource type="Texture2D" uid="uid://bavifq5ptlyey" path="res://assets/Jugador/Caballero atacando.jpeg" id="2_138wo"]
-[ext_resource type="Texture2D" uid="uid://c4lk5ld4aws1m" path="res://assets/Jugador/a2.png" id="3_ebxey"]
-[ext_resource type="Texture2D" uid="uid://unudis5lffp6" path="res://assets/Jugador/Caballero caminando.jpeg" id="4_ltxxq"]
+[ext_resource type="Texture2D" uid="uid://bavifq5ptlyey" path="res://assets/Jugadores/Caballero atacando.jpeg" id="2_138wo"]
+[ext_resource type="Texture2D" uid="uid://c4lk5ld4aws1m" path="res://assets/Jugadores/a2.png" id="3_ebxey"]
+[ext_resource type="Texture2D" uid="uid://unudis5lffp6" path="res://assets/Jugadores/Caballero caminando.jpeg" id="4_ltxxq"]
 [ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="5_g653p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2uis3"]
@@ -152,7 +152,7 @@ radius = 9.0
 height = 28.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvo3b"]
-size = Vector2(32, 25)
+size = Vector2(31, 25)
 
 [node name="Melee" type="CharacterBody2D" groups=["Jugadores"]]
 texture_filter = 1
@@ -162,10 +162,10 @@ script = ExtResource("1_nqg7t")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-10, -15)
-scale = Vector2(0.08837208, 0.0945946)
+position = Vector2(-9, -15)
+scale = Vector2(0.084112145, 0.09459459)
 sprite_frames = SubResource("SpriteFrames_crk7r")
-animation = &"Ataque_1"
+animation = &"Parado"
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -200,7 +200,7 @@ collision_layer = 8
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_daño"]
-position = Vector2(15, -2)
+position = Vector2(14.5, -2)
 shape = SubResource("RectangleShape2D_yvo3b")
 disabled = true
 

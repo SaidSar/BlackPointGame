@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvjptv35twn3j"]
+[gd_scene load_steps=6 format=4 uid="uid://cvjptv35twn3j"]
 
 [ext_resource type="Texture2D" uid="uid://dhwuikea13xnd" path="res://escenas/Sayola/PixelPlatformerSet1v.1.1/main_lev_build.png" id="1_cvooa"]
 [ext_resource type="Texture2D" uid="uid://dv0taboqqf8rn" path="res://escenas/Sayola/RF_Catacombs_v1.0/mainlevbuild.png" id="2_q8oge"]
@@ -2829,4 +2829,6 @@ sources/1 = SubResource("TileSetAtlasSource_q37ig")
 [node name="Nivel3" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD7/wEAAAAOABQAAAD8/wEAAAAPABQAAAD9/wEAAAAQABQAAAD+/wEAAAARABQAAAD//wEAAAASABQAAAAAAAEAAAATABQAAAABAAEAAAAUABQAAAACAAEAAAAVABQAAAADAAEAAAAWABQAAAAEAAEAAAAXABQAAAAFAAEAAAAYABQAAAAGAAEAAAAZABQAAAAHAAEAAAAaABQAAAAIAAEAAAAbABQAAAAJAAEAAAAOABQAAAAKAAEAAAAPABQAAAALAAEAAAAQABQAAAAMAAEAAAARABQAAAANAAEAAAASABQAAAAOAAEAAAATABQAAAAPAAEAAAAUABQAAAARAAEAAAAWABQAAAASAAEAAAAXABQAAAATAAEAAAAYABQAAAAUAAEAAAAZABQAAAAVAAEAAAAaABQAAAAWAAEAAAAbABQAAAAQAAEAAAAVABQAAAA=")
 tile_set = SubResource("TileSet_aybx3")

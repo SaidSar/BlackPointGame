@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cetg57e3xjhgt"]
 
-[ext_resource type="Texture2D" uid="uid://eeq1twdho8t0" path="res://assets/Jugador/Flecha.png" id="1_8iabs"]
+[ext_resource type="Texture2D" uid="uid://eeq1twdho8t0" path="res://assets/Jugadores/Flecha.png" id="1_8iabs"]
 [ext_resource type="Script" uid="uid://cd3ec2fcslcke" path="res://Codigo/Jugadores/flecha_2.gd" id="1_hne7v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hne7v"]
