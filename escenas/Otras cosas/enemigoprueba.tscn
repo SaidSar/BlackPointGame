@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://lqjnpg6swxj1"]
 
-[ext_resource type="Script" uid="uid://dppbeyuap8sph" path="res://Codigo/Jesus/enemigoprueba.gd" id="1_jjf2n"]
-[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Jesus/Barra_vida.tscn" id="2_dqh4y"]
+[ext_resource type="Script" uid="uid://dppbeyuap8sph" path="res://Codigo/Otras cosas/enemigoprueba.gd" id="1_jjf2n"]
+[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="2_dqh4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eobj8"]
 size = Vector2(20, 33)

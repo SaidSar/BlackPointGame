@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl1tid2q0ktay"]
 
-[ext_resource type="Script" uid="uid://dw1s34okrvv2k" path="res://Codigo/Jesus/melee_especial.gd" id="1_24mko"]
+[ext_resource type="Script" uid="uid://dw1s34okrvv2k" path="res://Codigo/Jugadores/melee_especial.gd" id="1_24mko"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_psa1t"]
 

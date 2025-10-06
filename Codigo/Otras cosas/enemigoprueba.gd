@@ -12,7 +12,7 @@ var atacando: bool
 @onready var ataque_timer = $Ataque
 @onready var raycast_derecha = $Derecha
 @onready var raycast_izquierda = $Izquierda
-@onready var flecha_escena = preload("res://escenas//jesus//flecha_enemigo.tscn")
+@onready var flecha_escena = preload("res://escenas//Proyectiles//flecha_enemigo.tscn")
 
 var tiempo_carga: float = 0.4
 const CARGA_MAX = 1.5 

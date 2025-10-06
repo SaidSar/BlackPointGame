@@ -10,8 +10,8 @@ var doble_salto: bool
 @onready var sprite = $Sprite
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
-@onready var flecha_escena = preload("res://escenas//jesus//flecha.tscn")
-@onready var flecha_escena_2 = preload("res://escenas//jesus//flecha_2.tscn")
+@onready var flecha_escena = preload("res://escenas//Proyectiles//flecha.tscn")
+@onready var flecha_escena_2 = preload("res://escenas//Proyectiles//flecha_2.tscn")
 
 #cosas para la flechas
 var cargando_flecha: bool = false

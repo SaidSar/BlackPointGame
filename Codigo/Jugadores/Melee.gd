@@ -12,7 +12,7 @@ var vida = 20
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
 @onready var area_daño = $"Area_daño"
-@onready var especial_escena = preload("res://escenas//jesus//melee_especial.tscn")
+@onready var especial_escena = preload("res://escenas//Proyectiles//melee_especial.tscn")
 
 func _ready():
 	ataque_actual = false

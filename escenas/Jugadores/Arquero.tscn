@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://dod85j6oku7jb"]
 
-[ext_resource type="Script" uid="uid://dx321iqd2clle" path="res://Codigo/Jesus/Arquero.gd" id="1_gljk4"]
+[ext_resource type="Script" uid="uid://dx321iqd2clle" path="res://Codigo/Jugadores/Arquero.gd" id="1_gljk4"]
 [ext_resource type="Texture2D" uid="uid://cowvmw5fbtxdd" path="res://assets/Jugador/prueba_sprite.png" id="2_8wdtj"]
 [ext_resource type="Texture2D" uid="uid://o1bq3mutukqa" path="res://assets/Jugador/a1.png" id="2_60ykw"]
 [ext_resource type="Texture2D" uid="uid://c4lk5ld4aws1m" path="res://assets/Jugador/a2.png" id="3_nddjy"]
 [ext_resource type="Texture2D" uid="uid://c43s8ok3siun3" path="res://assets/Jugador/a3.png" id="4_oyv6s"]
 [ext_resource type="Texture2D" uid="uid://bo1u7mjuej2cp" path="res://assets/Jugador/caida.png" id="5_28xse"]
 [ext_resource type="Texture2D" uid="uid://b11xrp6pu2muh" path="res://assets/Jugador/alto.png" id="7_qtu12"]
-[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Jesus/Barra_vida.tscn" id="8_g3x70"]
+[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="8_g3x70"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wlp1l"]
 animations = [{

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctndgf2c3v0vc"]
 
-[ext_resource type="Script" uid="uid://dtmrhr4q3uvi0" path="res://Codigo/Jesus/pruebas.gd" id="1_yynwe"]
-[ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Jesus/enemigoprueba.tscn" id="2_gsmxe"]
-[ext_resource type="PackedScene" uid="uid://bd4th2rdgbtv5" path="res://escenas/Jesus/Melee.tscn" id="3_urer6"]
+[ext_resource type="Script" uid="uid://dtmrhr4q3uvi0" path="res://Codigo/Otras cosas/pruebas.gd" id="1_yynwe"]
+[ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Otras cosas/enemigoprueba.tscn" id="2_gsmxe"]
+[ext_resource type="PackedScene" uid="uid://bd4th2rdgbtv5" path="res://escenas/Jugadores/Melee.tscn" id="3_urer6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hkg04"]
 
