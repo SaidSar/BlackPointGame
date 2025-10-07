@@ -89,4 +89,4 @@ func atacar(direccion: Vector2):
 func _on_ataque_timeout() -> void:
 	atacando = false
 	ataque_timer.stop()
-	ataque_timer.wait_time = choose([ 4.0, 3.8, 3.4, 3.6])
+	ataque_timer.wait_time = choose([ 5.0, 4.8, 4.4, 3.8, 4.0, 5.2, 4.2])

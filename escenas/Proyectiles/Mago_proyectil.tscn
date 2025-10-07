@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuv2hmyx47k64"]
+
+[ext_resource type="Script" uid="uid://dw1s34okrvv2k" path="res://Codigo/Jugadores/melee_especial.gd" id="1_yun02"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_psa1t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24mko"]
+size = Vector2(17, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82irw"]
+size = Vector2(17, 23)
+
+[node name="Melee_especial" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_yun02")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_psa1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_24mko")
+
+[node name="ZonaDaño" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDaño"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_82irw")
+
+[connection signal="body_entered" from="ZonaDaño" to="." method="_on_zona_daño_body_entered"]

@@ -5,15 +5,21 @@ var tipo_ataque: String
 var ataque_actual: bool
 var en_aire: bool
 var daño = 7
+var vida:int
 
 @onready var area_daño = $"Area_daño"
 @onready var area = $"Area"
 @onready var sprite = $Sprite
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
+@onready var barra_vida = $"BarraVida"
+@onready var especial_escena = preload("res://escenas//Proyectiles//Mago_proyectil.tscn")
 
 func _ready():
 	ataque_actual = false
+	vida = 25
+	barra_vida.iniciar_vida(vida)
+	barra_vida._set_vida(vida)
 
 func Controlador_animaciones_ataques(ataque):
 	if tipo_ataque != "":
@@ -60,6 +66,9 @@ func controlador_ataques():
 		colision_zona.disabled = false
 		await get_tree().create_timer(espera).timeout
 		colision_zona.disabled = true
+	if tipo_ataque == "Ataque_2":
+		await get_tree().create_timer(.2).timeout
+		ataque_especial()
 	if tipo_ataque == "Ataque_3":
 		var colision_zona = area.get_node("CollisionShape2D")
 		espera = 0.45
@@ -68,6 +77,7 @@ func controlador_ataques():
 		colision_zona.disabled = true
 	else: 
 		return
+
 
 
 func voltear_sprite(dir):
@@ -89,6 +99,19 @@ func Controlador_animaciones(dir):
 		else: 
 			sprite.play("Callendo")
 
+func ataque_especial():
+	if especial_escena == null:
+		return
+	var especial = especial_escena.instantiate()
+	get_parent().add_child(especial)
+	especial.global_position = global_position
+	var factor_carga = 0.2 / 1.5 
+	var fuerza = lerp(400.0, 1200.0, factor_carga)
+	var direccion = Vector2(1, 0)
+	if sprite.flip_h:
+		direccion.x = -1
+	especial.velocity = direccion.normalized()  * fuerza
+
 func _on_ataque_1_timeout():
 	tiempo_ataque_1.stop()
 
@@ -108,3 +131,11 @@ func _on_sprite_animation_changed() -> void:
 
 func _on_sprite_animation_finished() -> void:
 	ataque_actual = false
+
+
+func recibir_daño(daño_recibido):
+	vida -= daño_recibido
+	if vida <= 0:
+		queue_free()
+	barra_vida._set_vida(vida)
+	print("daño recibido jugador: ", daño_recibido)
