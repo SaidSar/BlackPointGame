@@ -5,7 +5,7 @@ var tipo_ataque: String
 var ataque_actual: bool
 var en_aire: bool
 var daño: int
-var vida = 20
+var vida: int
 
 @onready var barra_vida = $"Camera2D/BarraVida"
 @onready var sprite:AnimatedSprite2D = $Sprite
@@ -15,6 +15,7 @@ var vida = 20
 @onready var especial_escena = preload("res://escenas//Proyectiles//melee_especial.tscn")
 
 func _ready():
+	vida = 100
 	ataque_actual = false
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)

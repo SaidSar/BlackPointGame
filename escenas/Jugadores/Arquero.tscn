@@ -105,7 +105,7 @@ script = ExtResource("1_gljk4")
 position = Vector2(1.19209005e-07, 0)
 scale = Vector2(0.454545, 0.416667)
 sprite_frames = SubResource("SpriteFrames_wlp1l")
-animation = &"Parado"
+animation = &"Ataque_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gljk4")

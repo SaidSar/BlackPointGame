@@ -4,22 +4,31 @@ const JUMP_VELOCITY = -275.0
 var tipo_ataque: String 
 var ataque_actual: bool
 var en_aire: bool
-var daño = 7
+var daño = 5
 var vida:int
+var reseteo_escudo : float
+var escudo_tiempo: float
 
 @onready var area_daño = $"Area_daño"
 @onready var area = $"Area"
 @onready var sprite = $Sprite
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
+@onready var tiempo_ataque_3 = $Ataque_3
 @onready var barra_vida = $"BarraVida"
 @onready var especial_escena = preload("res://escenas//Proyectiles//Mago_proyectil.tscn")
+@onready var colision_ataque_1 
+@onready var colision_ataque_3
 
 func _ready():
 	ataque_actual = false
-	vida = 25
+	vida = 50
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
+	colision_ataque_3 = area.get_node("CollisionShape2D")
+	colision_ataque_1 = area_daño.get_node("CollisionShape2D")
+	reseteo_escudo = 10.0
+	escudo_tiempo = 30.0
 
 func Controlador_animaciones_ataques(ataque):
 	if tipo_ataque != "":
@@ -33,6 +42,7 @@ func _physics_process(delta):
 	else: 
 		en_aire = false
 	if Input.is_action_just_pressed("Espacio") and !en_aire:
+		#print(tiempo_ataque_3.time_left)
 		velocity.y = JUMP_VELOCITY
 	var direction = Input.get_axis("A", "D")
 	if direction and !ataque_actual :
@@ -48,8 +58,9 @@ func _physics_process(delta):
 			tipo_ataque = "Ataque_2"
 			tiempo_ataque_2.start()
 			ataque_actual = true
-		elif Input.is_action_just_pressed("shift"):
+		elif Input.is_action_just_pressed("shift") and tiempo_ataque_3.is_stopped():
 			tipo_ataque = "Ataque_3"
+			tiempo_ataque_3.wait_time = escudo_tiempo
 			ataque_actual = true
 		else:
 			tipo_ataque = ""
@@ -60,21 +71,21 @@ func _physics_process(delta):
 func controlador_ataques():
 	var espera:float
 	if tipo_ataque == "Ataque_1":
-		var colision_zona = area_daño.get_node("CollisionShape2D")
 		espera = 0.2
 		await get_tree().create_timer(.2).timeout
-		colision_zona.disabled = false
+		colision_ataque_1.disabled = false
 		await get_tree().create_timer(espera).timeout
-		colision_zona.disabled = true
+		colision_ataque_1.disabled = true
 	if tipo_ataque == "Ataque_2":
 		await get_tree().create_timer(.2).timeout
 		ataque_especial()
 	if tipo_ataque == "Ataque_3":
-		var colision_zona = area.get_node("CollisionShape2D")
-		espera = 0.45
-		colision_zona.disabled = false
+		espera = 0.60
+		colision_ataque_3.disabled = false
 		await get_tree().create_timer(espera).timeout
-		colision_zona.disabled = true
+		colision_ataque_3.disabled = true
+		tiempo_ataque_3.start()
+		ataque_actual = false
 	else: 
 		return
 
@@ -112,11 +123,6 @@ func ataque_especial():
 		direccion.x = -1
 	especial.velocity = direccion.normalized()  * fuerza
 
-func _on_ataque_1_timeout():
-	tiempo_ataque_1.stop()
-
-func _on_ataque_2_timeout():
-	tiempo_ataque_2.stop()
 
 
 func _on_area_daño_body_entered(body: Node2D) -> void:
@@ -134,8 +140,24 @@ func _on_sprite_animation_finished() -> void:
 
 
 func recibir_daño(daño_recibido):
-	vida -= daño_recibido
-	if vida <= 0:
-		queue_free()
-	barra_vida._set_vida(vida)
-	print("daño recibido jugador: ", daño_recibido)
+	if colision_ataque_3.disabled == false:
+		colision_ataque_3.disabled = true
+		sprite.play("Parado")
+		tipo_ataque = ""
+		tiempo_ataque_3.wait_time = reseteo_escudo
+		
+	else:
+		vida -= daño_recibido
+		if vida <= 0:
+			queue_free()
+		barra_vida._set_vida(vida)
+		print("daño recibido jugador: ", daño_recibido)
+
+func _on_ataque_1_timeout():
+	tiempo_ataque_1.stop()
+
+func _on_ataque_2_timeout():
+	tiempo_ataque_2.stop()
+
+func _on_ataque_3_timeout() -> void:
+	tiempo_ataque_3.stop()

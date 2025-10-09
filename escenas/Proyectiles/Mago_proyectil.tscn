@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuv2hmyx47k64"]
 
-[ext_resource type="Script" uid="uid://dw1s34okrvv2k" path="res://Codigo/Jugadores/melee_especial.gd" id="1_yun02"]
+[ext_resource type="Script" uid="uid://b1cwu2eygnaom" path="res://Codigo/Jugadores/Mago_proyectil.gd" id="1_yun02"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_psa1t"]
 
@@ -10,7 +10,7 @@ size = Vector2(17, 25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82irw"]
 size = Vector2(17, 23)
 
-[node name="Melee_especial" type="CharacterBody2D"]
+[node name="Mago_proyectil" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_yun02")
