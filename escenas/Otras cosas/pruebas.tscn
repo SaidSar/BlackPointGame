@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtmrhr4q3uvi0" path="res://Codigo/Otras cosas/pruebas.gd" id="1_yynwe"]
 [ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Otras cosas/enemigoprueba.tscn" id="2_gsmxe"]
-[ext_resource type="PackedScene" uid="uid://vkeqyb4v625k" path="res://escenas/Jugadores/Mago.tscn" id="3_38qw3"]
+[ext_resource type="PackedScene" uid="uid://bd4th2rdgbtv5" path="res://escenas/Jugadores/Melee.tscn" id="3_38qw3"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hkg04"]
 
@@ -45,5 +45,5 @@ mesh = SubResource("QuadMesh_hkg04")
 position = Vector2(5.96046e-08, 0.00680256)
 shape = SubResource("RectangleShape2D_vb5qb")
 
-[node name="Mago" parent="." instance=ExtResource("3_38qw3")]
-position = Vector2(159, 223)
+[node name="Melee" parent="." instance=ExtResource("3_38qw3")]
+position = Vector2(190, 255)

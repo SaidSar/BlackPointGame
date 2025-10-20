@@ -5,6 +5,8 @@ var perseguido: bool
 var vida: int
 var daño = 2
 var atacando: bool
+
+@onready var colision_ataque
 @onready var sprite = $Sprite
 @onready var barra_vida = $BarraVida
 @onready var timer_1 = $Timer
@@ -12,7 +14,7 @@ var atacando: bool
 @onready var ataque_timer = $Ataque
 @onready var raycast_derecha = $Derecha
 @onready var raycast_izquierda = $Izquierda
-@onready var flecha_escena = preload("res://escenas//Proyectiles//flecha_enemigo.tscn")
+@onready var area = $"Area"
 
 var tiempo_carga: float = 0.4
 const CARGA_MAX = 1.5 
@@ -26,11 +28,13 @@ func _ready():
 	vida = 15
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
+	colision_ataque = area.get_node("CollisionShape2D")
 
 func _process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	velocity.x = dir.x * velocidad
+	voltear_sprite(dir)
 	if !perseguido:
 		if raycast_derecha.is_colliding() and !atacando:
 			var objetivo = raycast_derecha.get_collider()
@@ -42,16 +46,25 @@ func _process(delta):
 				atacar(Vector2.LEFT)
 	move_and_slide()
 
-#func Controlador_animaciones(dir):
-	#if !atacando:
-		#if is_on_floor():
-			#if !velocity:
-				#sprite.play("Parado")
-			#if velocity:
-				#sprite.play("Corriendo")
-				#voltear_sprite(dir)
-		#else: 
-			#sprite.play("Callendo")
+func Controlador_animaciones(dir):
+	if !atacando:
+		if is_on_floor():
+			if !velocity:
+				sprite.play("Parado")
+			if velocity:
+				sprite.play("Corriendo")
+				voltear_sprite(dir)
+		else: 
+			sprite.play("Callendo")
+
+func voltear_sprite(dir):
+	if dir == 1:
+		sprite.flip_h = false
+		area.scale.x = 1
+	if dir == -1:
+		sprite.flip_h = true
+		area.scale.x = -1
+
 
 func _on_timer_timeout():
 	if timer_2.is_stopped():
@@ -84,17 +97,12 @@ func _on_timer_2_timeout() -> void:
 
 func atacar(direccion: Vector2):
 	atacando = true
-	if flecha_escena == null:
-		return
-	var flecha = flecha_escena.instantiate()
-	get_parent().add_child(flecha)
-	flecha.global_position = global_position
-	var factor_carga = tiempo_carga / CARGA_MAX
-	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
-	var direccion_flecha = Vector2(1.5, 0)
-	if direccion == Vector2.LEFT:
-		direccion_flecha.x = -1
-	flecha.velocity = direccion_flecha * fuerza
+	Controlador_animaciones(dir)
+	var espera = 0.2
+	await get_tree().create_timer(.2).timeout
+	area.disabled = false
+	await get_tree().create_timer(espera).timeout
+	area.disabled = true
 	ataque_timer.start()
 
 func _on_ataque_timeout() -> void:
