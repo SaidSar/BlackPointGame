@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const SPEED = 150.0
+const SPEED = 85.0
 const JUMP_VELOCITY = -250.0
 var tipo_ataque: String 
 var ataque_actual: bool

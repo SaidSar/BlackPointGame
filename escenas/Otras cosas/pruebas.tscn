@@ -46,4 +46,3 @@ position = Vector2(5.96046e-08, 0.00680256)
 shape = SubResource("RectangleShape2D_vb5qb")
 
 [node name="Melee" parent="." instance=ExtResource("3_38qw3")]
-position = Vector2(190, 255)

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const SPEED = 150.0
+const SPEED = 100.0
 const JUMP_VELOCITY = -275.0
 var tipo_ataque: String 
 var ataque_actual: bool
@@ -19,8 +19,11 @@ var escudo_tiempo: float
 @onready var especial_escena = preload("res://escenas//Proyectiles//Mago_proyectil.tscn")
 @onready var colision_ataque_1 
 @onready var colision_ataque_3
+@onready var sprite_ataque_1
 
 func _ready():
+	sprite_ataque_1 = area_daño.get_node("Sprite2D")
+	sprite_ataque_1.visible = false
 	ataque_actual = false
 	vida = 50
 	barra_vida.iniciar_vida(vida)
@@ -73,8 +76,10 @@ func controlador_ataques():
 	if tipo_ataque == "Ataque_1":
 		espera = 0.2
 		await get_tree().create_timer(.2).timeout
+		sprite_ataque_1.visible = true
 		colision_ataque_1.disabled = false
 		await get_tree().create_timer(espera).timeout
+		sprite_ataque_1.visible = false
 		colision_ataque_1.disabled = true
 	if tipo_ataque == "Ataque_2":
 		await get_tree().create_timer(.2).timeout
