@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6iuo6e7wq8o0"
-path="res://.godot/imported/Sharing my pixel art (1).png-9f52f36327732e6d26411cd8254f1ed9.ctex"
+uid="uid://bmn1iahq624p7"
+path="res://.godot/imported/Sprites_Mago.png-5e4c86b1781f3d90b2f42468cd945e92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jugadores/Sharing my pixel art (1).png"
-dest_files=["res://.godot/imported/Sharing my pixel art (1).png-9f52f36327732e6d26411cd8254f1ed9.ctex"]
+source_file="res://assets/Jugadores/Sprites_Mago.png"
+dest_files=["res://.godot/imported/Sprites_Mago.png-5e4c86b1781f3d90b2f42468cd945e92.ctex"]
 
 [params]
 

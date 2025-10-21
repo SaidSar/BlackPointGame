@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://vkeqyb4v625k"]
 
 [ext_resource type="Script" uid="uid://ck6tkt4b78f4w" path="res://Codigo/Jugadores/Mago.gd" id="1_owev7"]
-[ext_resource type="Texture2D" uid="uid://bmn1iahq624p7" path="res://assets/Jugadores/Sharing my pixel art (3).png" id="2_n1usg"]
-[ext_resource type="Texture2D" uid="uid://6iuo6e7wq8o0" path="res://assets/Jugadores/Sharing my pixel art (1).png" id="3_ngllv"]
+[ext_resource type="Texture2D" uid="uid://bmn1iahq624p7" path="res://assets/Jugadores/Sprites_Mago.png" id="2_n1usg"]
+[ext_resource type="Texture2D" uid="uid://6iuo6e7wq8o0" path="res://assets/Jugadores/Mago_Puño.png" id="3_ngllv"]
 [ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="7_6f03p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2l1pc"]
@@ -129,7 +129,7 @@ script = ExtResource("1_owev7")
 texture_filter = 1
 scale = Vector2(0.125, 0.1474359)
 sprite_frames = SubResource("SpriteFrames_c4fbr")
-animation = &"Parado"
+animation = &"Ataque_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5jeuf")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkmal31djjpjb"
-path="res://.godot/imported/Sharing my pixel art (4).png-68fbd107ac8a7d4af3f7ef91b8b29a63.ctex"
+uid="uid://c117b5mwim582"
+path="res://.godot/imported/Sprites_Caballero_Caminando.png-87c433c6dbebdb1e0bce476878977050.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jugadores/Sharing my pixel art (4).png"
-dest_files=["res://.godot/imported/Sharing my pixel art (4).png-68fbd107ac8a7d4af3f7ef91b8b29a63.ctex"]
+source_file="res://assets/Jugadores/Sprites_Caballero_Caminando.png"
+dest_files=["res://.godot/imported/Sprites_Caballero_Caminando.png-87c433c6dbebdb1e0bce476878977050.ctex"]
 
 [params]
 

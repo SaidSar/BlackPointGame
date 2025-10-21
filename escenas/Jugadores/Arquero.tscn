@@ -1,71 +1,88 @@
-[gd_scene load_steps=11 format=3 uid="uid://dod85j6oku7jb"]
+[gd_scene load_steps=16 format=3 uid="uid://dod85j6oku7jb"]
 
 [ext_resource type="Script" uid="uid://dx321iqd2clle" path="res://Codigo/Jugadores/Arquero.gd" id="1_gljk4"]
-[ext_resource type="Texture2D" uid="uid://cowvmw5fbtxdd" path="res://assets/Jugadores/prueba_sprite.png" id="2_8wdtj"]
-[ext_resource type="Texture2D" uid="uid://o1bq3mutukqa" path="res://assets/Jugadores/a1.png" id="2_60ykw"]
-[ext_resource type="Texture2D" uid="uid://c4lk5ld4aws1m" path="res://assets/Jugadores/a2.png" id="3_nddjy"]
-[ext_resource type="Texture2D" uid="uid://c43s8ok3siun3" path="res://assets/Jugadores/a3.png" id="4_oyv6s"]
-[ext_resource type="Texture2D" uid="uid://bo1u7mjuej2cp" path="res://assets/Jugadores/caida.png" id="5_28xse"]
-[ext_resource type="Texture2D" uid="uid://b11xrp6pu2muh" path="res://assets/Jugadores/alto.png" id="7_qtu12"]
+[ext_resource type="Texture2D" uid="uid://bg7ei546lmy3w" path="res://assets/Jugadores/Sprites_Arquero.png" id="2_eq65h"]
 [ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="8_g3x70"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnjpn"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(640, 375, 217, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7bcj"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(336, 680, 234, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slc7s"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(71, 687, 241, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b2va"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(392, 24, 193, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrk8l"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(31, 24, 177, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8aa4"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(393, 24, 193, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1h6a"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(586, 24, 193, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no14o"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(23, 351, 193, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p05ic"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(216, 351, 193, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7786a"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(23, 351, 193, 313)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wlp1l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_60ykw")
+"texture": SubResource("AtlasTexture_tnjpn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_60ykw")
+"texture": SubResource("AtlasTexture_q7bcj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_60ykw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_60ykw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_60ykw")
+"texture": SubResource("AtlasTexture_slc7s")
 }],
 "loop": false,
 "name": &"Ataque_1",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_nddjy")
+"texture": SubResource("AtlasTexture_tnjpn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_nddjy")
+"texture": SubResource("AtlasTexture_q7bcj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_nddjy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_nddjy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_nddjy")
+"texture": SubResource("AtlasTexture_slc7s")
 }],
 "loop": false,
 "name": &"Ataque_2",
-"speed": 15.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_oyv6s")
+"texture": SubResource("AtlasTexture_tnjpn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_oyv6s")
+"texture": SubResource("AtlasTexture_q7bcj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_oyv6s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_oyv6s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_oyv6s")
+"texture": SubResource("AtlasTexture_slc7s")
 }],
 "loop": false,
 "name": &"Ataque_3",
@@ -73,7 +90,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_28xse")
+"texture": SubResource("AtlasTexture_4b2va")
 }],
 "loop": true,
 "name": &"Callendo",
@@ -81,15 +98,30 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_8wdtj")
+"texture": SubResource("AtlasTexture_xrk8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8aa4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1h6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no14o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p05ic")
 }],
 "loop": true,
 "name": &"Corriendo",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_qtu12")
+"texture": SubResource("AtlasTexture_xrk8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7786a")
 }],
 "loop": true,
 "name": &"Parado",
@@ -97,15 +129,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gljk4"]
+radius = 9.0
 
 [node name="Arquero" type="CharacterBody2D" groups=["Jugadores"]]
 script = ExtResource("1_gljk4")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(1.19209005e-07, 0)
-scale = Vector2(0.454545, 0.416667)
+position = Vector2(-1.5000001, -1.5000012)
+scale = Vector2(0.084745765, 0.09265176)
 sprite_frames = SubResource("SpriteFrames_wlp1l")
-animation = &"Ataque_2"
+animation = &"Parado"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gljk4")

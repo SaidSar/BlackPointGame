@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://unudis5lffp6"
-path="res://.godot/imported/Caballero caminando.jpeg-68e317f84c9fc7b87aed2db686783b37.ctex"
+uid="uid://bg7ei546lmy3w"
+path="res://.godot/imported/Sprites_Arquero.png-7d122b3ced4cbcf1b745d12bb948cd1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jugadores/Caballero caminando.jpeg"
-dest_files=["res://.godot/imported/Caballero caminando.jpeg-68e317f84c9fc7b87aed2db686783b37.ctex"]
+source_file="res://assets/Jugadores/Sprites_Arquero.png"
+dest_files=["res://.godot/imported/Sprites_Arquero.png-7d122b3ced4cbcf1b745d12bb948cd1e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bavifq5ptlyey"
-path="res://.godot/imported/Caballero atacando.jpeg-3b81f1a702a1c5e191d8df3a1ab7d2c1.ctex"
+uid="uid://6iuo6e7wq8o0"
+path="res://.godot/imported/Mago_Puño.png-dad5dc14e8157ecb60ed6fe7f3313164.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jugadores/Caballero atacando.jpeg"
-dest_files=["res://.godot/imported/Caballero atacando.jpeg-3b81f1a702a1c5e191d8df3a1ab7d2c1.ctex"]
+source_file="res://assets/Jugadores/Mago_Puño.png"
+dest_files=["res://.godot/imported/Mago_Puño.png-dad5dc14e8157ecb60ed6fe7f3313164.ctex"]
 
 [params]
 
