@@ -15,11 +15,13 @@ var escudo_tiempo: float
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
 @onready var tiempo_ataque_3 = $Ataque_3
-@onready var barra_vida = $"BarraVida"
+@onready var barra_vida = $"Camera2D/CanvasLayer/BarraVida"
 @onready var especial_escena = preload("res://escenas//Proyectiles//Mago_proyectil.tscn")
 @onready var colision_ataque_1 
 @onready var colision_ataque_3
 @onready var sprite_ataque_1
+
+
 
 func _ready():
 	sprite_ataque_1 = area_daño.get_node("Sprite2D")

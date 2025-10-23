@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkmal31djjpjb"
-path="res://.godot/imported/Sprites_Caballero_Atacando.png-d673b0522d7018fdedc7f81842c5a02b.ctex"
+uid="uid://be0gm55t63rln"
+path="res://.godot/imported/icono1  progreso.png-6fe384023622d1709c38dc82ac7539cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jugadores/Sprites_Caballero_Atacando.png"
-dest_files=["res://.godot/imported/Sprites_Caballero_Atacando.png-d673b0522d7018fdedc7f81842c5a02b.ctex"]
+source_file="res://assets/Jugadores/icono1  progreso.png"
+dest_files=["res://.godot/imported/icono1  progreso.png-6fe384023622d1709c38dc82ac7539cb.ctex"]
 
 [params]
 
