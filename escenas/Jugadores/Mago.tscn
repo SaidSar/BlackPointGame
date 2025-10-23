@@ -153,10 +153,7 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-layer = 0
-
-[node name="BarraVida" parent="Camera2D/CanvasLayer" instance=ExtResource("7_6f03p")]
+[node name="BarraVida" parent="Camera2D" instance=ExtResource("7_6f03p")]
 anchors_preset = 0
 anchor_bottom = 0.0
 offset_left = -181.0
@@ -165,21 +162,21 @@ offset_right = -51.0
 offset_bottom = -93.0
 size_flags_horizontal = 0
 
-[node name="Ataque_1_Icono" type="Button" parent="Camera2D/CanvasLayer"]
+[node name="Ataque_1_Icono" type="Button" parent="Camera2D"]
 clip_children = 2
 texture_filter = 4
 custom_minimum_size = Vector2(32, 32)
 offset_left = -179.0
 offset_top = 58.0
 offset_right = -147.0
-offset_bottom = 89.0
+offset_bottom = 90.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_rkoie")
 action_mode = 0
 button_mask = 0
 icon = ExtResource("5_2l1pc")
 expand_icon = true
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Camera2D/CanvasLayer/Ataque_1_Icono"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Camera2D/Ataque_1_Icono"]
 layout_mode = 0
 offset_right = 31.0
 offset_bottom = 32.0
@@ -194,6 +191,9 @@ wait_time = 2.5
 
 [node name="Ataque_2" type="Timer" parent="."]
 wait_time = 7.0
+
+[node name="Ataque_3" type="Timer" parent="."]
+wait_time = 30.0
 
 [node name="Area_daño" type="Area2D" parent="."]
 collision_layer = 8
@@ -217,13 +217,10 @@ collision_mask = 13
 shape = SubResource("CapsuleShape2D_tp6jx")
 disabled = true
 
-[node name="Ataque_3" type="Timer" parent="."]
-wait_time = 30.0
-
 [connection signal="animation_changed" from="Sprite" to="." method="_on_sprite_animation_changed"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
 [connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]
+[connection signal="timeout" from="Ataque_3" to="." method="_on_ataque_3_timeout"]
 [connection signal="body_entered" from="Area_daño" to="." method="_on_area_daño_body_entered"]
 [connection signal="body_entered" from="Area" to="." method="_on_area_daño_body_entered"]
-[connection signal="timeout" from="Ataque_3" to="." method="_on_ataque_3_timeout"]

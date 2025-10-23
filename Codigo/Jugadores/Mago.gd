@@ -15,13 +15,13 @@ var escudo_tiempo: float
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
 @onready var tiempo_ataque_3 = $Ataque_3
-@onready var barra_vida = $"Camera2D/CanvasLayer/BarraVida"
+@onready var barra_vida = $"Camera2D/BarraVida"
 @onready var especial_escena = preload("res://escenas//Proyectiles//Mago_proyectil.tscn")
 @onready var colision_ataque_1 
 @onready var colision_ataque_3
 @onready var sprite_ataque_1
 
-
+@onready var Icono_1 = $"Camera2D/Ataque_1_Icono/TextureProgressBar"
 
 func _ready():
 	sprite_ataque_1 = area_daño.get_node("Sprite2D")
@@ -34,6 +34,11 @@ func _ready():
 	colision_ataque_1 = area_daño.get_node("CollisionShape2D")
 	reseteo_escudo = 10.0
 	escudo_tiempo = 30.0
+	
+	Icono_1.min_value = 0
+	Icono_1.max_value = tiempo_ataque_1.wait_time
+	Icono_1.value = 0
+	tiempo_ataque_1.connect("timeout", Callable(self, "_on_tiempo_ataque_1_timeout"))
 
 func Controlador_animaciones_ataques(ataque):
 	if tipo_ataque != "":
@@ -41,6 +46,11 @@ func Controlador_animaciones_ataques(ataque):
 		ataque_actual = true
 
 func _physics_process(delta):
+	if tiempo_ataque_1.time_left > 0:
+		Icono_1.value = tiempo_ataque_1.time_left
+	else:
+		Icono_1.value = 0
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		en_aire = true
