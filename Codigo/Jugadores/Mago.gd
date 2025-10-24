@@ -21,7 +21,8 @@ var escudo_tiempo: float
 @onready var colision_ataque_3
 @onready var sprite_ataque_1
 
-@onready var Icono_1 = $"Camera2D/Ataque_1_Icono/TextureProgressBar"
+@onready var Icono_1 = $"Camera2D/Ataque_1_Icono/Barra"
+@onready var Icono_2 = $"Camera2D/Ataque_2_Icono/Barra"
 
 func _ready():
 	sprite_ataque_1 = area_daño.get_node("Sprite2D")
@@ -39,6 +40,13 @@ func _ready():
 	Icono_1.max_value = tiempo_ataque_1.wait_time
 	Icono_1.value = 0
 	tiempo_ataque_1.connect("timeout", Callable(self, "_on_tiempo_ataque_1_timeout"))
+	Icono_1.step = .05
+	
+	Icono_2.min_value = 0
+	Icono_2.max_value = tiempo_ataque_2.wait_time
+	Icono_2.value = 0
+	tiempo_ataque_2.connect("timeout", Callable(self, "_on_tiempo_ataque_2_timeout"))
+	Icono_2.step = .05
 
 func Controlador_animaciones_ataques(ataque):
 	if tipo_ataque != "":
@@ -50,6 +58,10 @@ func _physics_process(delta):
 		Icono_1.value = tiempo_ataque_1.time_left
 	else:
 		Icono_1.value = 0
+	if tiempo_ataque_2.time_left > 0:
+		Icono_2.value = tiempo_ataque_2.time_left
+	else:
+		Icono_2.value = 0
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -91,18 +103,21 @@ func controlador_ataques():
 		sprite_ataque_1.visible = true
 		colision_ataque_1.disabled = false
 		await get_tree().create_timer(espera).timeout
-		sprite_ataque_1.visible = false
 		colision_ataque_1.disabled = true
+		sprite_ataque_1.visible = false
+		
 	if tipo_ataque == "Ataque_2":
 		await get_tree().create_timer(.2).timeout
 		ataque_especial()
+		
 	if tipo_ataque == "Ataque_3":
-		espera = 0.60
+		espera = 0.6
 		colision_ataque_3.disabled = false
 		await get_tree().create_timer(espera).timeout
 		colision_ataque_3.disabled = true
 		tiempo_ataque_3.start()
 		ataque_actual = false
+		
 	else: 
 		return
 
