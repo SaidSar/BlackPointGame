@@ -1,5 +1,4 @@
 extends ProgressBar
-
 @onready var timer = $Timer
 @onready var barra_daño = $"Barra_daño"
 var vida = 0 : set = _set_vida
@@ -19,7 +18,6 @@ func iniciar_vida(vida):
 	max_value = vida
 	barra_daño.max_value = vida
 	barra_daño.value = vida
-
 
 func _on_timer_timeout() -> void:
 	barra_daño.value = vida

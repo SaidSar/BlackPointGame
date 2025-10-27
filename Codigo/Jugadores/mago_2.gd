@@ -1,58 +1,54 @@
 extends CharacterBody2D
-const SPEED = 100.0
-const JUMP_VELOCITY = -275.0
 var tipo_ataque: String 
 var ataque_actual: bool
 var en_aire: bool
-var daño = 5
-var vida:int
-var reseteo_escudo : float
-var escudo_tiempo: float
 
-@onready var area_daño = $"Area_daño"
-@onready var area = $"Area"
-@onready var sprite = $Sprite
-@onready var tiempo_ataque_1 = $Ataque_1
-@onready var tiempo_ataque_2 = $Ataque_2
-@onready var tiempo_ataque_3 = $Ataque_3
-@onready var barra_vida = $"Camera2D/CanvasLayer/BarraVida" #Camera2D/CanvasLayer/
+const SPEED = 100.0
+const JUMP_VELOCITY = -275.0
+var daño = 5
+var vida = 50.0
+var escudo_tiempo = 30.0
+var reseteo_escudo = 10.0
+
+
+@onready var area_daño = $"Area_de_daño"
+@onready var area = $"Area_deteccion"
+@onready var sprite = $Sprites
+@onready var camara = $Camara
+@onready var tiempo_ataque_1 = $Ataque_tiempo_1
+@onready var tiempo_ataque_2 = $Ataque_tiempo_2
+@onready var tiempo_ataque_3 = $Ataque_tiempo_3
 @onready var especial_escena = preload("res://escenas//Proyectiles//Mago_proyectil.tscn")
 @onready var colision_ataque_1 
 @onready var colision_ataque_3
 @onready var sprite_ataque_1
 
-@onready var camara = $Camera2D
-@onready var Icono_1 = $"Camera2D/CanvasLayer/Ataque_1_Icono/Barra"
-@onready var Icono_2 = $"Camera2D/CanvasLayer/Ataque_2_Icono/Barra" 
-@onready var marker = $Marker2D
+@onready var canvas = get_parent().get_node("CanvasLayer")
+@onready var barra_vida = canvas.get_node("BarraVida")
+@onready var icono_1 = canvas.get_node("Ataque_1_Icono/Barra")
+@onready var icono_2 = canvas.get_node("Ataque_2_Icono/Barra")
+
 
 func _ready():
 	sprite_ataque_1 = area_daño.get_node("Sprite2D")
 	sprite_ataque_1.visible = false
 	ataque_actual = false
-	vida = 50
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
 	colision_ataque_3 = area.get_node("CollisionShape2D")
 	colision_ataque_1 = area_daño.get_node("CollisionShape2D")
-	reseteo_escudo = 10.0
-	escudo_tiempo = 30.0
-	
-	Icono_1.min_value = 0
-	Icono_1.max_value = tiempo_ataque_1.wait_time
-	Icono_1.value = 0
-	tiempo_ataque_1.connect("timeout", Callable(self, "_on_tiempo_ataque_1_timeout"))
-	Icono_1.step = .05
-	
-	Icono_2.min_value = 0
-	Icono_2.max_value = tiempo_ataque_2.wait_time
-	Icono_2.value = 0
-	tiempo_ataque_2.connect("timeout", Callable(self, "_on_tiempo_ataque_2_timeout"))
-	Icono_2.step = .05
-	var screen_pos = camara.get_screen_transform() * marker.global_position
-	position = screen_pos
-	
 
+	
+	icono_1.min_value = 0
+	icono_1.max_value = tiempo_ataque_1.wait_time
+	icono_1.value = 0
+	tiempo_ataque_1.connect("timeout", Callable(self, "_on_tiempo_ataque_1_timeout"))
+	icono_1.step = .05
+	icono_2.min_value = 0
+	icono_2.max_value = tiempo_ataque_2.wait_time
+	icono_2.value = 0
+	tiempo_ataque_2.connect("timeout", Callable(self, "_on_tiempo_ataque_2_timeout"))
+	icono_2.step = .05
 
 
 func Controlador_animaciones_ataques(ataque):
@@ -62,13 +58,13 @@ func Controlador_animaciones_ataques(ataque):
 
 func _physics_process(delta):
 	if tiempo_ataque_1.time_left > 0:
-		Icono_1.value = tiempo_ataque_1.time_left
+		icono_1.value = tiempo_ataque_1.time_left
 	else:
-		Icono_1.value = 0
+		icono_1.value = 0
 	if tiempo_ataque_2.time_left > 0:
-		Icono_2.value = tiempo_ataque_2.time_left
+		icono_2.value = tiempo_ataque_2.time_left
 	else:
-		Icono_2.value = 0
+		icono_2.value = 0
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -76,7 +72,6 @@ func _physics_process(delta):
 	else: 
 		en_aire = false
 	if Input.is_action_just_pressed("Espacio") and !en_aire:
-		#print(tiempo_ataque_3.time_left)
 		velocity.y = JUMP_VELOCITY
 	var direction = Input.get_axis("A", "D")
 	if direction and !ataque_actual :
