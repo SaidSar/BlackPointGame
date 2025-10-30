@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctndgf2c3v0vc"]
+[gd_scene load_steps=8 format=3 uid="uid://ctndgf2c3v0vc"]
 
 [ext_resource type="Script" uid="uid://dtmrhr4q3uvi0" path="res://Codigo/Otras cosas/pruebas.gd" id="1_yynwe"]
 [ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Otras cosas/enemigoprueba.tscn" id="2_gsmxe"]
-[ext_resource type="PackedScene" uid="uid://dod85j6oku7jb" path="res://escenas/Jugadores/Arquero.tscn" id="3_38qw3"]
+[ext_resource type="PackedScene" uid="uid://vkeqyb4v625k" path="res://escenas/Jugadores/Mago.tscn" id="2_h1lpe"]
+[ext_resource type="PackedScene" uid="uid://bpej1iq7lrrw" path="res://escenas/Otras cosas/UiMago.tscn" id="4_kndug"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hkg04"]
 
@@ -17,7 +18,7 @@ script = ExtResource("1_yynwe")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 light_mask = 3
 visibility_layer = 2
-position = Vector2(126, 313.99997)
+position = Vector2(-97.31253, 65.624725)
 scale = Vector2(837.37494, 73.5)
 mesh = SubResource("QuadMesh_hkg04")
 texture = SubResource("CanvasTexture_yynwe")
@@ -31,10 +32,10 @@ scale = Vector2(0.99999994, 1)
 shape = SubResource("RectangleShape2D_vb5qb")
 
 [node name="Enemigoprueba" parent="." instance=ExtResource("2_gsmxe")]
-position = Vector2(416, 264.37524)
+position = Vector2(192.68747, 16)
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(580, 158.37526)
+position = Vector2(301.68747, -11.624741)
 rotation = -1.57079
 scale = Vector2(578.75, 73.5)
 mesh = SubResource("QuadMesh_hkg04")
@@ -45,5 +46,7 @@ mesh = SubResource("QuadMesh_hkg04")
 position = Vector2(5.96046e-08, 0.00680256)
 shape = SubResource("RectangleShape2D_vb5qb")
 
-[node name="Arquero" parent="." instance=ExtResource("3_38qw3")]
-position = Vector2(132, 229)
+[node name="Mago" parent="." instance=ExtResource("2_h1lpe")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_kndug")]
+layer = 1

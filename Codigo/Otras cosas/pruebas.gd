@@ -1,9 +1,6 @@
 extends Node2D
-
-
-func _ready():
-
-	pass # Replace with function body.
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+@onready var h = $CanvasLayer
+func _ready() -> void:
+	await get_tree().process_frame
+	h.visible = true
+	$Mago.set_hud(h)

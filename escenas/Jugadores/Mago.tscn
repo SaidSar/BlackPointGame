@@ -1,12 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://vkeqyb4v625k"]
+[gd_scene load_steps=19 format=3 uid="uid://vkeqyb4v625k"]
 
 [ext_resource type="Script" uid="uid://ck6tkt4b78f4w" path="res://Codigo/Jugadores/Mago.gd" id="1_owev7"]
 [ext_resource type="Texture2D" uid="uid://bmn1iahq624p7" path="res://assets/Jugadores/Sprites_Mago.png" id="2_n1usg"]
 [ext_resource type="Texture2D" uid="uid://6iuo6e7wq8o0" path="res://assets/Jugadores/Mago_Puño.png" id="3_ngllv"]
-[ext_resource type="Texture2D" uid="uid://t6tdwlcyaq1i" path="res://assets/Jugadores/Icono2.png" id="4_6f03p"]
-[ext_resource type="Texture2D" uid="uid://cu3pgqdltau1d" path="res://assets/Jugadores/icono1.png" id="5_2l1pc"]
-[ext_resource type="Texture2D" uid="uid://be0gm55t63rln" path="res://assets/Jugadores/icono1  progreso.png" id="6_6f03p"]
-[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="7_6f03p"]
+[ext_resource type="PackedScene" uid="uid://bpej1iq7lrrw" path="res://escenas/Otras cosas/UiMago.tscn" id="4_ngllv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ch47k"]
 atlas = ExtResource("2_n1usg")
@@ -123,18 +120,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jeuf"]
 size = Vector2(20, 46)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkoie"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hltf"]
 size = Vector2(65.875, 49)
 
@@ -160,67 +145,6 @@ shape = SubResource("RectangleShape2D_5jeuf")
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-
-[node name="Ataque_1_Icono" type="Button" parent="Camera2D/CanvasLayer"]
-clip_children = 2
-texture_filter = 4
-custom_minimum_size = Vector2(32, 32)
-offset_left = -179.0
-offset_top = 58.0
-offset_right = -147.0
-offset_bottom = 90.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_rkoie")
-action_mode = 0
-button_mask = 0
-icon = ExtResource("5_2l1pc")
-expand_icon = true
-
-[node name="Barra" type="TextureProgressBar" parent="Camera2D/CanvasLayer/Ataque_1_Icono"]
-layout_mode = 0
-offset_right = 31.0
-offset_bottom = 32.0
-step = 0.05
-value = 40.0
-fill_mode = 4
-nine_patch_stretch = true
-texture_progress = ExtResource("6_6f03p")
-tint_progress = Color(0.8819366, 0.8819366, 0.88193655, 1)
-
-[node name="Ataque_2_Icono" type="Button" parent="Camera2D/CanvasLayer"]
-clip_children = 2
-texture_filter = 4
-custom_minimum_size = Vector2(32, 32)
-offset_left = -139.0
-offset_top = 58.0
-offset_right = -107.0
-offset_bottom = 90.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_rkoie")
-action_mode = 0
-button_mask = 0
-icon = ExtResource("4_6f03p")
-expand_icon = true
-
-[node name="Barra" type="TextureProgressBar" parent="Camera2D/CanvasLayer/Ataque_2_Icono"]
-layout_mode = 0
-offset_right = 31.0
-offset_bottom = 32.0
-step = 0.05
-value = 40.0
-fill_mode = 4
-nine_patch_stretch = true
-texture_progress = ExtResource("6_6f03p")
-tint_progress = Color(0.8819366, 0.8819366, 0.88193655, 1)
-
-[node name="BarraVida" parent="Camera2D/CanvasLayer" instance=ExtResource("7_6f03p")]
-anchors_preset = 0
-anchor_bottom = 0.0
-offset_left = -181.0
-offset_top = -98.0
-offset_right = -51.0
-offset_bottom = -93.0
-size_flags_horizontal = 0
 
 [node name="Ataque_1" type="Timer" parent="."]
 wait_time = 2.5
@@ -253,8 +177,7 @@ collision_mask = 13
 shape = SubResource("CapsuleShape2D_tp6jx")
 disabled = true
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-182, -99)
+[node name="CanvasLayer" parent="." instance=ExtResource("4_ngllv")]
 
 [connection signal="animation_changed" from="Sprite" to="." method="_on_sprite_animation_changed"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

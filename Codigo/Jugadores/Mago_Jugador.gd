@@ -2,14 +2,12 @@ extends CharacterBody2D
 var tipo_ataque: String 
 var ataque_actual: bool
 var en_aire: bool
-
 const SPEED = 100.0
 const JUMP_VELOCITY = -275.0
 var daño = 5
 var vida = 50.0
 var escudo_tiempo = 30.0
 var reseteo_escudo = 10.0
-
 
 @onready var area_daño = $"Area_de_daño"
 @onready var area = $"Area_deteccion"
@@ -22,23 +20,27 @@ var reseteo_escudo = 10.0
 @onready var colision_ataque_1 
 @onready var colision_ataque_3
 @onready var sprite_ataque_1
-
-@onready var canvas = get_parent().get_node("CanvasLayer")
-@onready var barra_vida = canvas.get_node("BarraVida")
-@onready var icono_1 = canvas.get_node("Ataque_1_Icono/Barra")
-@onready var icono_2 = canvas.get_node("Ataque_2_Icono/Barra")
-
+@onready var barra_vida 
+@onready var icono_1
+@onready var icono_2 
+@onready var hud = preload("res://escenas/Otras cosas/UiMago.tscn")
 
 func _ready():
 	sprite_ataque_1 = area_daño.get_node("Sprite2D")
 	sprite_ataque_1.visible = false
 	ataque_actual = false
-	barra_vida.iniciar_vida(vida)
-	barra_vida._set_vida(vida)
 	colision_ataque_3 = area.get_node("CollisionShape2D")
 	colision_ataque_1 = area_daño.get_node("CollisionShape2D")
+	set_hud()
 
-	
+
+func set_hud():
+	hud = $CanvasLayer
+	barra_vida = hud.get_node("BarraVida")
+	icono_1 = hud.get_node("Ataque_1_Icono/Barra")
+	icono_2 = hud.get_node("Ataque_2_Icono/Barra")
+	barra_vida.iniciar_vida(vida)
+	barra_vida._set_vida(vida)
 	icono_1.min_value = 0
 	icono_1.max_value = tiempo_ataque_1.wait_time
 	icono_1.value = 0
@@ -49,7 +51,7 @@ func _ready():
 	icono_2.value = 0
 	tiempo_ataque_2.connect("timeout", Callable(self, "_on_tiempo_ataque_2_timeout"))
 	icono_2.step = .05
-
+	hud.visible = true
 
 func Controlador_animaciones_ataques(ataque):
 	if tipo_ataque != "":
@@ -57,21 +59,12 @@ func Controlador_animaciones_ataques(ataque):
 		ataque_actual = true
 
 func _physics_process(delta):
-	if tiempo_ataque_1.time_left > 0:
-		icono_1.value = tiempo_ataque_1.time_left
-	else:
-		icono_1.value = 0
-	if tiempo_ataque_2.time_left > 0:
-		icono_2.value = tiempo_ataque_2.time_left
-	else:
-		icono_2.value = 0
-
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		en_aire = true
 	else: 
 		en_aire = false
-	if Input.is_action_just_pressed("Espacio") and !en_aire:
+	if Input.is_action_just_pressed("Espacio") and !en_aire and !ataque_actual:
 		velocity.y = JUMP_VELOCITY
 	var direction = Input.get_axis("A", "D")
 	if direction and !ataque_actual :
@@ -96,6 +89,13 @@ func _physics_process(delta):
 		Controlador_animaciones_ataques(tipo_ataque)
 	move_and_slide()
 	Controlador_animaciones(direction)
+	Controlador_iconos()
+
+func Controlador_iconos():
+	if tiempo_ataque_1.time_left > 0:
+		icono_1.value = tiempo_ataque_1.time_left
+	if tiempo_ataque_2.time_left > 0:
+		icono_2.value = tiempo_ataque_2.time_left
 
 func controlador_ataques():
 	var espera:float
@@ -187,11 +187,13 @@ func recibir_daño(daño_recibido):
 		barra_vida._set_vida(vida)
 		print("daño recibido jugador: ", daño_recibido)
 
-func _on_ataque_1_timeout():
+func _on_ataque_tiempo_1_timeout() -> void:
 	tiempo_ataque_1.stop()
 
-func _on_ataque_2_timeout():
+
+func _on_ataque_tiempo_2_timeout() -> void:
 	tiempo_ataque_2.stop()
 
-func _on_ataque_3_timeout() -> void:
+
+func _on_ataque_tiempo_3_timeout() -> void:
 	tiempo_ataque_3.stop()
