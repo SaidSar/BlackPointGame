@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwlkbhdoa50ei"]
+
+[ext_resource type="Script" uid="uid://q3a0se2mdor5" path="res://Codigo/Enemigos/bomba_enemigo.gd" id="1_sfb7v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vipfy"]
+size = Vector2(19, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sfb7v"]
+radius = 48.002605
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxrce"]
+size = Vector2(20, 3)
+
+[node name="Bomba_enemigo" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_sfb7v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -1.5)
+shape = SubResource("RectangleShape2D_vipfy")
+
+[node name="area_daño" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_daño"]
+position = Vector2(2, -1.5)
+shape = SubResource("CircleShape2D_sfb7v")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, -1.5)
+shape = SubResource("RectangleShape2D_yxrce")
+
+[connection signal="body_entered" from="area_daño" to="." method="_on_zona_daño_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

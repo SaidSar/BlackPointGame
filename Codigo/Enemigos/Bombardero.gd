@@ -5,6 +5,7 @@ var perseguido: bool
 var vida: int
 var daño = 2
 var atacando: bool
+var animacion_atacando: bool
 @onready var sprite = $Sprite
 @onready var barra_vida = $BarraVida
 @onready var timer_1 = $Timer
@@ -12,7 +13,7 @@ var atacando: bool
 @onready var ataque_timer = $Ataque
 @onready var raycast_derecha = $Derecha
 @onready var raycast_izquierda = $Izquierda
-@onready var flecha_escena = preload("res://escenas//Enemigos//flecha_enemigo.tscn")
+@onready var bomba = preload("res://escenas/Enemigos/bomba_enemigo.tscn")
 
 var tiempo_carga: float = 0.4
 const CARGA_MAX = 1.5 
@@ -41,17 +42,24 @@ func _process(delta):
 			if objetivo and objetivo.is_in_group("Jugadores"):
 				atacar(Vector2.LEFT)
 	move_and_slide()
+	Controlador_animaciones(dir)
 
-#func Controlador_animaciones(dir):
-	#if !atacando:
-		#if is_on_floor():
-			#if !velocity:
-				#sprite.play("Parado")
-			#if velocity:
-				#sprite.play("Corriendo")
-				#voltear_sprite(dir)
-		#else: 
-			#sprite.play("Callendo")
+func Controlador_animaciones(dir):
+	if !animacion_atacando:
+		if is_on_floor():
+			if !velocity:
+				sprite.play("Parado")
+			if velocity:
+				sprite.play("Corriendo")
+				voltear_sprite(dir)
+		else: 
+			sprite.play("Callendo")
+func voltear_sprite(dir):
+	if dir.x == 1:
+		sprite.flip_h = false
+	if dir.x == -1:
+		sprite.flip_h = true
+
 
 func _on_timer_timeout():
 	if timer_2.is_stopped():
@@ -84,20 +92,26 @@ func _on_timer_2_timeout() -> void:
 
 func atacar(direccion: Vector2):
 	atacando = true
-	if flecha_escena == null:
-		return
-	var flecha = flecha_escena.instantiate()
-	get_parent().add_child(flecha)
-	flecha.global_position = global_position
-	var factor_carga = tiempo_carga / CARGA_MAX
-	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
-	var direccion_flecha = Vector2(1.5, 0)
-	if direccion == Vector2.LEFT:
-		direccion_flecha.x = -1
-	flecha.velocity = direccion_flecha * fuerza
 	ataque_timer.start()
+	animacion_atacando = true
+	if bomba == null:
+		return
+	sprite.play("Atacando")
+	await get_tree().create_timer(.1).timeout
+	var bom = bomba.instantiate()
+	get_parent().add_child(bom)
+	bom.global_position = global_position
+	var factor_carga = tiempo_carga / (CARGA_MAX + 100 )
+	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
+	var angulo = deg_to_rad(20)
+	var direccion_bom = Vector2(cos(angulo), -sin(angulo))
+	if sprite.flip_h:
+		direccion_bom.x = -1
+	bom.velocity =  direccion_bom.normalized()  * fuerza
+	await get_tree().create_timer(.4).timeout
+	animacion_atacando = false
 
 func _on_ataque_timeout() -> void:
 	atacando = false
 	ataque_timer.stop()
-	ataque_timer.wait_time = choose([ 5.0, 4.8, 4.4, 3.8, 4.0, 5.2, 4.2])
+	ataque_timer.wait_time = choose([ 5.0, 4.8, 4.4, 5.8, 5.4, 5.2, 4.6])

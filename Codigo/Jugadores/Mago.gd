@@ -104,7 +104,7 @@ func controlador_ataques():
 	var espera:float
 	if tipo_ataque == "Ataque_1":
 		espera = 0.2
-		await get_tree().create_timer(.2).timeout
+		await get_tree().create_timer(.15).timeout
 		sprite_ataque_1.visible = true
 		colision_ataque_1.disabled = false
 		await get_tree().create_timer(espera).timeout

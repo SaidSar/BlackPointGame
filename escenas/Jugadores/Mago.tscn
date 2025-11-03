@@ -51,18 +51,18 @@ animations = [{
 "duration": 0.95,
 "texture": SubResource("AtlasTexture_ch47k")
 }, {
-"duration": 1.0,
+"duration": 1.1,
 "texture": SubResource("AtlasTexture_2l1pc")
 }, {
-"duration": 1.0,
+"duration": 1.1,
 "texture": SubResource("AtlasTexture_6f03p")
 }, {
-"duration": 1.2,
+"duration": 1.25,
 "texture": SubResource("AtlasTexture_rkoie")
 }],
 "loop": false,
 "name": &"Ataque_1",
-"speed": 11.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -70,7 +70,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Ataque_2",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -134,7 +134,7 @@ script = ExtResource("1_owev7")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.125, 0.1474359)
+scale = Vector2(0.125, 0.147)
 sprite_frames = SubResource("SpriteFrames_c4fbr")
 animation = &"Parado"
 
