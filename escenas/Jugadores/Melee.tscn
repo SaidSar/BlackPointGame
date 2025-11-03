@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bd4th2rdgbtv5"]
+[gd_scene load_steps=26 format=3 uid="uid://bd4th2rdgbtv5"]
 
 [ext_resource type="Script" uid="uid://bpm4qqovts70n" path="res://Codigo/Jugadores/Melee.gd" id="1_nqg7t"]
 [ext_resource type="Texture2D" uid="uid://b2b7mdgn7vre7" path="res://assets/Jugadores/Sprite_Caballero_Atacando_Final.png" id="2_ebxey"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c43s8ok3siun3" path="res://assets/Jugadores/a3.png" id="4_138wo"]
 [ext_resource type="Texture2D" uid="uid://c117b5mwim582" path="res://assets/Jugadores/Sprites_Caballero_Caminando.png" id="5_ebxey"]
 [ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="5_g653p"]
+[ext_resource type="PackedScene" uid="uid://cvw3v4bqgfldx" path="res://escenas/Otras cosas/ui_melee.tscn" id="7_ebxey"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ltxxq"]
 atlas = ExtResource("2_ebxey")
@@ -186,7 +187,7 @@ texture_filter = 1
 position = Vector2(-10, -2.4999998)
 scale = Vector2(0.09722222, 0.10472972)
 sprite_frames = SubResource("SpriteFrames_crk7r")
-animation = &"Ataque_1"
+animation = &"Parado"
 centered = false
 offset = Vector2(0, -148)
 
@@ -226,6 +227,8 @@ collision_mask = 5
 position = Vector2(14.5, -2)
 shape = SubResource("RectangleShape2D_yvo3b")
 disabled = true
+
+[node name="UiMelee" parent="." instance=ExtResource("7_ebxey")]
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]

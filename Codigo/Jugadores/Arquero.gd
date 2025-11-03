@@ -5,6 +5,8 @@ var tipo_ataque: String
 var ataque_actual: bool
 var en_aire: bool
 var doble_salto: bool
+var vida_maxima : float
+var vida : float
 
 @onready var zona_daño = $"AreadeDaño"
 @onready var sprite = $Sprite
@@ -12,6 +14,10 @@ var doble_salto: bool
 @onready var tiempo_ataque_2 = $Ataque_2
 @onready var flecha_escena = preload("res://escenas//Proyectiles//flecha.tscn")
 @onready var flecha_escena_2 = preload("res://escenas//Proyectiles//flecha_2.tscn")
+@onready var hud = $UiArquero
+@onready var barra_vida
+@onready var icono_1
+@onready var icono_2
 
 #cosas para la flechas
 var cargando_flecha: bool = false
@@ -22,6 +28,28 @@ const FUERZA_MIN = 400.0
 
 func _ready():
 	ataque_actual = false
+	vida_maxima = 70
+	vida = vida_maxima
+	set_hud()
+
+func set_hud():
+	barra_vida = hud.get_node("BarraVida")
+	icono_1 = hud.get_node("Ataque_1_Icono/Barra")
+	icono_2 = hud.get_node("Ataque_2_Icono/Barra")
+	barra_vida.iniciar_vida(vida)
+	barra_vida._set_vida(vida)
+	icono_1.min_value = 0
+	icono_1.max_value = tiempo_ataque_1.wait_time
+	icono_1.value = 0
+	tiempo_ataque_1.connect("timeout", Callable(self, "_on_tiempo_ataque_1_timeout"))
+	icono_1.step = .05
+	icono_2.min_value = 0
+	icono_2.max_value = tiempo_ataque_2.wait_time
+	icono_2.value = 0
+	tiempo_ataque_2.connect("timeout", Callable(self, "_on_tiempo_ataque_2_timeout"))
+	icono_2.step = .05
+	hud.visible = true
+	
 
 func Controlador_animaciones_ataques(ataque):
 	if tipo_ataque != "":
@@ -132,3 +160,9 @@ func _on_ataque_1_timeout():
 
 func _on_ataque_2_timeout():
 	tiempo_ataque_2.stop()
+
+func recibir_daño(daño_recibido):
+	vida -= daño_recibido
+	if vida <= 0:
+		queue_free()
+	barra_vida._set_vida(vida)

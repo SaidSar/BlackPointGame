@@ -15,16 +15,16 @@ var animacion_atacando: bool
 @onready var raycast_izquierda = $Izquierda
 @onready var bomba = preload("res://escenas/Enemigos/bomba_enemigo.tscn")
 
-var tiempo_carga: float = 0.4
+var tiempo_carga: float = 0.3
 const CARGA_MAX = 1.5 
 const FUERZA_MAX = 1200.0  
-const FUERZA_MIN = 400.0   
+const FUERZA_MIN = 300.0   
 
 func _ready():
 	atacando = false
 	perseguido = false
 	velocidad = 50
-	vida = 15
+	vida = 22
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
 
@@ -101,9 +101,9 @@ func atacar(direccion: Vector2):
 	var bom = bomba.instantiate()
 	get_parent().add_child(bom)
 	bom.global_position = global_position
-	var factor_carga = tiempo_carga / (CARGA_MAX + 100 )
+	var factor_carga = tiempo_carga / (CARGA_MAX + 50 )
 	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
-	var angulo = deg_to_rad(20)
+	var angulo = deg_to_rad(30)
 	var direccion_bom = Vector2(cos(angulo), -sin(angulo))
 	if sprite.flip_h:
 		direccion_bom.x = -1

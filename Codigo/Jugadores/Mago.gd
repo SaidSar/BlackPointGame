@@ -5,7 +5,8 @@ var tipo_ataque: String
 var ataque_actual: bool
 var en_aire: bool
 var daño = 5
-var vida:int
+var vida:float
+var vida_maxima:float
 var reseteo_escudo : float
 var escudo_tiempo: float
 
@@ -30,13 +31,15 @@ func _ready():
 	sprite_ataque_1 = area_daño.get_node("Sprite2D")
 	sprite_ataque_1.visible = false
 	ataque_actual = false
-	vida = 50
+	vida_maxima = 50
+	vida = vida_maxima
 	colision_ataque_3 = area.get_node("CollisionShape2D")
 	colision_ataque_1 = area_daño.get_node("CollisionShape2D")
 	reseteo_escudo = 10.0
 	escudo_tiempo = 30.0
 	h = $CanvasLayer
 	set_hud(h)
+
 func set_hud(h):
 	hud = h
 	barra_vida = hud.get_node("BarraVida")

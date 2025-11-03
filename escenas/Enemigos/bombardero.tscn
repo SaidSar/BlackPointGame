@@ -123,9 +123,9 @@ shape = SubResource("RectangleShape2D_rkw6w")
 wait_time = 0.1
 
 [node name="BarraVida" parent="." instance=ExtResource("1_jwk4o")]
-offset_left = -16.0
-offset_top = -27.0
-offset_right = 17.0
+offset_left = -15.0
+offset_top = -26.0
+offset_right = 15.0
 offset_bottom = -25.0
 
 [node name="Timer2" type="Timer" parent="."]
@@ -133,12 +133,12 @@ wait_time = 2.5
 
 [node name="Izquierda" type="RayCast2D" parent="."]
 position = Vector2(0, 1)
-target_position = Vector2(-157, 0)
+target_position = Vector2(-214, 0)
 collision_mask = 2
 
 [node name="Derecha" type="RayCast2D" parent="."]
 position = Vector2(0, 1)
-target_position = Vector2(156, 0)
+target_position = Vector2(214, 0)
 collision_mask = 2
 
 [node name="Ataque" type="Timer" parent="."]
