@@ -114,7 +114,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Corriendo",
-"speed": 7.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -125,7 +125,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Parado",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gljk4"]
@@ -138,7 +138,7 @@ script = ExtResource("1_gljk4")
 position = Vector2(-1.5000001, -1.5000012)
 scale = Vector2(0.084745765, 0.09265176)
 sprite_frames = SubResource("SpriteFrames_wlp1l")
-animation = &"Parado"
+animation = &"Ataque_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gljk4")

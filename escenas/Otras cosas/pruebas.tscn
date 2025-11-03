@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctndgf2c3v0vc"]
+[gd_scene load_steps=7 format=3 uid="uid://ctndgf2c3v0vc"]
 
-[ext_resource type="Script" uid="uid://dtmrhr4q3uvi0" path="res://Codigo/Otras cosas/pruebas.gd" id="1_yynwe"]
 [ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Otras cosas/enemigoprueba.tscn" id="2_gsmxe"]
 [ext_resource type="PackedScene" uid="uid://vkeqyb4v625k" path="res://escenas/Jugadores/Mago.tscn" id="2_h1lpe"]
-[ext_resource type="PackedScene" uid="uid://bpej1iq7lrrw" path="res://escenas/Otras cosas/UiMago.tscn" id="4_kndug"]
 [ext_resource type="PackedScene" uid="uid://7wj7fk01d4s3" path="res://escenas/Enemigos/bombardero.tscn" id="5_tabga"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hkg04"]
@@ -14,7 +12,6 @@
 size = Vector2(0.9993522, 1.02041)
 
 [node name="Nivel" type="Node2D"]
-script = ExtResource("1_yynwe")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 light_mask = 3
@@ -48,9 +45,6 @@ position = Vector2(5.96046e-08, 0.00680256)
 shape = SubResource("RectangleShape2D_vb5qb")
 
 [node name="Mago" parent="." instance=ExtResource("2_h1lpe")]
-
-[node name="CanvasLayer" parent="." instance=ExtResource("4_kndug")]
-layer = 1
 
 [node name="Bombardero" parent="." instance=ExtResource("5_tabga")]
 position = Vector2(-319, 1)

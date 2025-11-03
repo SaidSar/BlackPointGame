@@ -15,7 +15,7 @@ var escudo_tiempo: float
 @onready var tiempo_ataque_1 = $Ataque_1
 @onready var tiempo_ataque_2 = $Ataque_2
 @onready var tiempo_ataque_3 = $Ataque_3
-@onready var barra_vida = $"Camera2D/CanvasLayer/BarraVida" #Camera2D/CanvasLayer/
+@onready var barra_vida 
 @onready var especial_escena = preload("res://escenas//Proyectiles//Mago_proyectil.tscn")
 @onready var colision_ataque_1 
 @onready var colision_ataque_3
@@ -25,7 +25,7 @@ var escudo_tiempo: float
 @onready var icono_1 
 @onready var icono_2  
 @onready var hud 
-
+@onready var h 
 func _ready():
 	sprite_ataque_1 = area_daño.get_node("Sprite2D")
 	sprite_ataque_1.visible = false
@@ -35,7 +35,8 @@ func _ready():
 	colision_ataque_1 = area_daño.get_node("CollisionShape2D")
 	reseteo_escudo = 10.0
 	escudo_tiempo = 30.0
-
+	h = $CanvasLayer
+	set_hud(h)
 func set_hud(h):
 	hud = h
 	barra_vida = hud.get_node("BarraVida")
