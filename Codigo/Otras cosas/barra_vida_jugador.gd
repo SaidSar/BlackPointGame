@@ -15,12 +15,9 @@ func _set_vida(nueva_vida):
 		barra_daño.value = vida
 
 func iniciar_vida(vida):
-	size.x =  vida * 2
-	barra_daño.size.x = size.x
 	max_value = vida
 	barra_daño.max_value = vida
 	barra_daño.value = vida
-	position.x = -size.x / 2
 
 func _on_timer_timeout() -> void:
 	barra_daño.value = vida

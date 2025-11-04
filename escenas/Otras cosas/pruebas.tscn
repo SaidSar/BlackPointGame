@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctndgf2c3v0vc"]
 
-[ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Otras cosas/enemigoprueba.tscn" id="2_gsmxe"]
+[ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Enemigos/enemigoprueba.tscn" id="2_gsmxe"]
 [ext_resource type="PackedScene" uid="uid://vkeqyb4v625k" path="res://escenas/Jugadores/Mago.tscn" id="2_h1lpe"]
 [ext_resource type="PackedScene" uid="uid://7wj7fk01d4s3" path="res://escenas/Enemigos/bombardero.tscn" id="5_tabga"]
 

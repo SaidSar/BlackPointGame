@@ -28,6 +28,7 @@ func _ready():
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
 
+
 func _process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -36,13 +37,16 @@ func _process(delta):
 		if raycast_derecha.is_colliding() and !atacando:
 			var objetivo = raycast_derecha.get_collider()
 			if objetivo and objetivo.is_in_group("Jugadores"):
+				sprite.flip_h = false
 				atacar(Vector2.RIGHT)
 		if raycast_izquierda.is_colliding() and !atacando:
 			var objetivo = raycast_izquierda.get_collider()
 			if objetivo and objetivo.is_in_group("Jugadores"):
+				sprite.flip_h = true
 				atacar(Vector2.LEFT)
 	move_and_slide()
 	Controlador_animaciones(dir)
+
 
 func Controlador_animaciones(dir):
 	if !animacion_atacando:

@@ -187,7 +187,7 @@ texture_filter = 1
 position = Vector2(-10, -2.4999998)
 scale = Vector2(0.09722222, 0.10472972)
 sprite_frames = SubResource("SpriteFrames_crk7r")
-animation = &"Parado"
+animation = &"Ataque_1"
 centered = false
 offset = Vector2(0, -148)
 

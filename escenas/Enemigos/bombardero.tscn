@@ -122,12 +122,6 @@ shape = SubResource("RectangleShape2D_rkw6w")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 
-[node name="BarraVida" parent="." instance=ExtResource("1_jwk4o")]
-offset_left = -15.0
-offset_top = -26.0
-offset_right = 15.0
-offset_bottom = -25.0
-
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 2.5
 
@@ -143,6 +137,18 @@ collision_mask = 2
 
 [node name="Ataque" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="BarraVida" parent="." instance=ExtResource("1_jwk4o")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -3.0
+offset_top = -23.0
+offset_right = 5.0
+offset_bottom = -22.0
+grow_horizontal = 2
+size_flags_vertical = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

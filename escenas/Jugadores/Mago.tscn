@@ -147,10 +147,10 @@ position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
 [node name="Ataque_1" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 3.5
 
 [node name="Ataque_2" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 6.0
 
 [node name="Ataque_3" type="Timer" parent="."]
 wait_time = 30.0

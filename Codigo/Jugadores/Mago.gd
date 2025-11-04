@@ -25,38 +25,48 @@ var escudo_tiempo: float
 @onready var camara 
 @onready var icono_1 
 @onready var icono_2  
-@onready var hud 
-@onready var h 
+@onready var icono_3
+@onready var hud = $CanvasLayer
+
 func _ready():
-	sprite_ataque_1 = area_daño.get_node("Sprite2D")
-	sprite_ataque_1.visible = false
-	ataque_actual = false
 	vida_maxima = 50
 	vida = vida_maxima
+	ataque_actual = false
+	reseteo_escudo = 15.0a
+	escudo_tiempo = 30.0
+	
+	sprite_ataque_1 = area_daño.get_node("Sprite2D")
+	sprite_ataque_1.visible = false
 	colision_ataque_3 = area.get_node("CollisionShape2D")
 	colision_ataque_1 = area_daño.get_node("CollisionShape2D")
-	reseteo_escudo = 10.0
-	escudo_tiempo = 30.0
-	h = $CanvasLayer
-	set_hud(h)
+	set_hud()
 
-func set_hud(h):
-	hud = h
+func set_hud():
 	barra_vida = hud.get_node("BarraVida")
 	icono_1 = hud.get_node("Ataque_1_Icono/Barra")
 	icono_2 = hud.get_node("Ataque_2_Icono/Barra")
+	icono_3 = hud.get_node("Ataque_3_Icono/Barra")
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
+	
 	icono_1.min_value = 0
 	icono_1.max_value = tiempo_ataque_1.wait_time
 	icono_1.value = 0
 	tiempo_ataque_1.connect("timeout", Callable(self, "_on_tiempo_ataque_1_timeout"))
 	icono_1.step = .05
+	
 	icono_2.min_value = 0
 	icono_2.max_value = tiempo_ataque_2.wait_time
 	icono_2.value = 0
 	tiempo_ataque_2.connect("timeout", Callable(self, "_on_tiempo_ataque_2_timeout"))
 	icono_2.step = .05
+	
+	icono_3.min_value = 0
+	icono_3.max_value = tiempo_ataque_3.wait_time
+	icono_3.value = 0
+	tiempo_ataque_3.connect("timeout", Callable(self, "_on_tiempo_ataque_3_timeout"))
+	icono_3.step = .05
+	
 	hud.visible = true
 
 
@@ -71,6 +81,8 @@ func _physics_process(delta):
 		icono_1.value = tiempo_ataque_1.time_left
 	if tiempo_ataque_2.time_left > 0:
 		icono_2.value = tiempo_ataque_2.time_left
+	if tiempo_ataque_3.time_left > 0:
+		icono_3.value = tiempo_ataque_3.time_left
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -78,7 +90,6 @@ func _physics_process(delta):
 	else: 
 		en_aire = false
 	if Input.is_action_just_pressed("Espacio") and !en_aire:
-		#print(tiempo_ataque_3.time_left)
 		velocity.y = JUMP_VELOCITY
 	var direction = Input.get_axis("A", "D")
 	if direction and !ataque_actual :
