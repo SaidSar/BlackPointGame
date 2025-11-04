@@ -1,21 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvw3v4bqgfldx"]
 
-[ext_resource type="Texture2D" uid="uid://cu3pgqdltau1d" path="res://assets/Jugadores/icono1.png" id="2_8vhqv"]
-[ext_resource type="Texture2D" uid="uid://be0gm55t63rln" path="res://assets/Jugadores/icono1  progreso.png" id="3_w04h2"]
+[ext_resource type="Texture2D" uid="uid://hcuu5yhsik3q" path="res://assets/Ui/Espada_especial_icono.png" id="1_2d6fr"]
+[ext_resource type="Texture2D" uid="uid://jew68dl2g8d" path="res://assets/Ui/Espada_Icono.png" id="2_gocbe"]
+[ext_resource type="Texture2D" uid="uid://be0gm55t63rln" path="res://assets/Ui/icono1  progreso.png" id="3_w04h2"]
 [ext_resource type="PackedScene" uid="uid://ce5vs54o7ghih" path="res://escenas/Otras cosas/barra_vida_jugador.tscn" id="4_2d6fr"]
-[ext_resource type="Texture2D" uid="uid://t6tdwlcyaq1i" path="res://assets/Jugadores/Icono2.png" id="4_un0yq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu8u6"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
-corner_detail = 5
+corner_detail = 6
 
 [node name="UiMelee" type="CanvasLayer"]
 
@@ -27,14 +23,14 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = -79.0
+offset_top = -78.0
 offset_right = 104.0
-offset_bottom = -15.0
+offset_bottom = -14.0
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_uu8u6")
 action_mode = 0
 button_mask = 0
-icon = ExtResource("2_8vhqv")
+icon = ExtResource("1_2d6fr")
 expand_icon = true
 
 [node name="Barra" type="TextureProgressBar" parent="Ataque_1_Icono"]
@@ -56,15 +52,16 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 120.0
-offset_top = -77.99994
-offset_right = 184.0
-offset_bottom = -13.999939
+offset_top = -77.0
+offset_right = 184.27914
+offset_bottom = -14.0
 grow_vertical = 0
 scale = Vector2(1.089, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_uu8u6")
 action_mode = 0
 button_mask = 0
-icon = ExtResource("4_un0yq")
+icon = ExtResource("2_gocbe")
+icon_alignment = 1
 expand_icon = true
 
 [node name="Barra" type="TextureProgressBar" parent="Ataque_2_Icono"]

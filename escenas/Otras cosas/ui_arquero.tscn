@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dfn1t6mgef145"]
 
 [ext_resource type="Texture2D" uid="uid://cu3pgqdltau1d" path="res://assets/Jugadores/icono1.png" id="2_xf68l"]
-[ext_resource type="Texture2D" uid="uid://be0gm55t63rln" path="res://assets/Jugadores/icono1  progreso.png" id="3_vpu0y"]
+[ext_resource type="Texture2D" uid="uid://be0gm55t63rln" path="res://assets/Ui/icono1  progreso.png" id="3_vpu0y"]
 [ext_resource type="Texture2D" uid="uid://t6tdwlcyaq1i" path="res://assets/Jugadores/Icono2.png" id="4_eivtw"]
 [ext_resource type="PackedScene" uid="uid://ce5vs54o7ghih" path="res://escenas/Otras cosas/barra_vida_jugador.tscn" id="4_wmty0"]
 

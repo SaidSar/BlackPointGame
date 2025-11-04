@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpej1iq7lrrw"]
+[gd_scene load_steps=7 format=3 uid="uid://bpej1iq7lrrw"]
 
-[ext_resource type="Texture2D" uid="uid://cu3pgqdltau1d" path="res://assets/Jugadores/icono1.png" id="1_3anhe"]
-[ext_resource type="Texture2D" uid="uid://be0gm55t63rln" path="res://assets/Jugadores/icono1  progreso.png" id="2_4xpbj"]
-[ext_resource type="Texture2D" uid="uid://t6tdwlcyaq1i" path="res://assets/Jugadores/Icono2.png" id="3_uuyu0"]
+[ext_resource type="Texture2D" uid="uid://bc7htuj3w1moi" path="res://assets/Ui/Puño_icono.png" id="1_4xpbj"]
+[ext_resource type="Texture2D" uid="uid://be0gm55t63rln" path="res://assets/Ui/icono1  progreso.png" id="2_4xpbj"]
+[ext_resource type="Texture2D" uid="uid://bmmdgts756xaq" path="res://assets/Ui/Fuego_icono.png" id="3_uuyu0"]
 [ext_resource type="PackedScene" uid="uid://ce5vs54o7ghih" path="res://escenas/Otras cosas/barra_vida_jugador.tscn" id="4_3anhe"]
+[ext_resource type="Texture2D" uid="uid://ch67fvdme083h" path="res://assets/Ui/Escudo_icono.png" id="4_ccmu3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0yw1"]
 content_margin_left = 4.0
@@ -35,7 +36,7 @@ grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_e0yw1")
 action_mode = 0
 button_mask = 0
-icon = ExtResource("1_3anhe")
+icon = ExtResource("1_4xpbj")
 expand_icon = true
 
 [node name="Barra" type="TextureProgressBar" parent="Ataque_1_Icono"]
@@ -95,7 +96,7 @@ scale = Vector2(1.089, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_e0yw1")
 action_mode = 0
 button_mask = 0
-icon = ExtResource("3_uuyu0")
+icon = ExtResource("4_ccmu3")
 expand_icon = true
 
 [node name="Barra" type="TextureProgressBar" parent="Ataque_3_Icono"]

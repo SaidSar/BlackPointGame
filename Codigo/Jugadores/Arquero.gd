@@ -48,8 +48,8 @@ func set_hud():
 	icono_2.value = 0
 	tiempo_ataque_2.connect("timeout", Callable(self, "_on_tiempo_ataque_2_timeout"))
 	icono_2.step = .05
-	hud.visible = true
 	
+	hud.visible = true
 
 func Controlador_animaciones_ataques(ataque):
 	if tipo_ataque != "":
@@ -57,6 +57,10 @@ func Controlador_animaciones_ataques(ataque):
 		ataque_actual = true
 
 func _physics_process(delta):
+	if tiempo_ataque_1.time_left > 0:
+		icono_1.value = tiempo_ataque_1.time_left
+	if tiempo_ataque_2.time_left > 0:
+		icono_2.value = tiempo_ataque_2.time_left
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		en_aire = true

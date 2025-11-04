@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://be0gm55t63rln"
-path="res://.godot/imported/icono1  progreso.png-6fe384023622d1709c38dc82ac7539cb.ctex"
+path="res://.godot/imported/icono1  progreso.png-832f85444f58cf31773b9a7fa2da627a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jugadores/icono1  progreso.png"
-dest_files=["res://.godot/imported/icono1  progreso.png-6fe384023622d1709c38dc82ac7539cb.ctex"]
+source_file="res://assets/Ui/icono1  progreso.png"
+dest_files=["res://.godot/imported/icono1  progreso.png-832f85444f58cf31773b9a7fa2da627a.ctex"]
 
 [params]
 

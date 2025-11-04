@@ -48,6 +48,10 @@ func Controlador_animaciones_ataques():
 		Controlador_colisiones_ataques()
 
 func _physics_process(delta):
+	if tiempo_ataque_1.time_left > 0:
+		icono_1.value = tiempo_ataque_1.time_left
+	if tiempo_ataque_2.time_left > 0:
+		icono_2.value = tiempo_ataque_2.time_left
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		en_aire = true

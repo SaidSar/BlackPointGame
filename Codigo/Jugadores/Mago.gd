@@ -32,7 +32,7 @@ func _ready():
 	vida_maxima = 50
 	vida = vida_maxima
 	ataque_actual = false
-	reseteo_escudo = 15.0a
+	reseteo_escudo = 15.0
 	escudo_tiempo = 30.0
 	
 	sprite_ataque_1 = area_daño.get_node("Sprite2D")
