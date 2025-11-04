@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctndgf2c3v0vc"]
+
+[ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Otras cosas/enemigoprueba.tscn" id="2_gsmxe"]
+[ext_resource type="PackedScene" uid="uid://vkeqyb4v625k" path="res://escenas/Jugadores/Mago.tscn" id="2_h1lpe"]
+[ext_resource type="PackedScene" uid="uid://7wj7fk01d4s3" path="res://escenas/Enemigos/bombardero.tscn" id="5_tabga"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_hkg04"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yynwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb5qb"]
+size = Vector2(0.9993522, 1.02041)
+
+[node name="Nivel" type="Node2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+light_mask = 3
+visibility_layer = 2
+position = Vector2(-97.31253, 65.624725)
+scale = Vector2(837.37494, 73.5)
+mesh = SubResource("QuadMesh_hkg04")
+texture = SubResource("CanvasTexture_yynwe")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
+light_mask = 3
+position = Vector2(-0.00032395124, 0.006802559)
+scale = Vector2(0.99999994, 1)
+shape = SubResource("RectangleShape2D_vb5qb")
+
+[node name="Enemigoprueba" parent="." instance=ExtResource("2_gsmxe")]
+position = Vector2(192.68747, 16)
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+position = Vector2(301.68747, -11.624741)
+rotation = -1.57079
+scale = Vector2(578.75, 73.5)
+mesh = SubResource("QuadMesh_hkg04")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D2/StaticBody2D"]
+position = Vector2(5.96046e-08, 0.00680256)
+shape = SubResource("RectangleShape2D_vb5qb")
+
+[node name="Mago" parent="." instance=ExtResource("2_h1lpe")]
+
+[node name="Bombardero" parent="." instance=ExtResource("5_tabga")]
+position = Vector2(-319, 1)

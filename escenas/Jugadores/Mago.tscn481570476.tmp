@@ -1,0 +1,265 @@
+[gd_scene load_steps=23 format=3 uid="uid://vkeqyb4v625k"]
+
+[ext_resource type="Script" uid="uid://ck6tkt4b78f4w" path="res://Codigo/Jugadores/Mago.gd" id="1_owev7"]
+[ext_resource type="Texture2D" uid="uid://bmn1iahq624p7" path="res://assets/Jugadores/Sprites_Mago.png" id="2_n1usg"]
+[ext_resource type="Texture2D" uid="uid://6iuo6e7wq8o0" path="res://assets/Jugadores/Mago_Puño.png" id="3_ngllv"]
+[ext_resource type="Texture2D" uid="uid://t6tdwlcyaq1i" path="res://assets/Jugadores/Icono2.png" id="4_6f03p"]
+[ext_resource type="Texture2D" uid="uid://cu3pgqdltau1d" path="res://assets/Jugadores/icono1.png" id="5_2l1pc"]
+[ext_resource type="Texture2D" uid="uid://be0gm55t63rln" path="res://assets/Jugadores/icono1  progreso.png" id="6_6f03p"]
+[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="7_6f03p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch47k"]
+atlas = ExtResource("2_n1usg")
+region = Rect2(0, 335, 176, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l1pc"]
+atlas = ExtResource("2_n1usg")
+region = Rect2(0, 336, 184, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f03p"]
+atlas = ExtResource("2_n1usg")
+region = Rect2(0, 336, 192, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkoie"]
+atlas = ExtResource("2_n1usg")
+region = Rect2(0, 336, 200, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o4d8"]
+atlas = ExtResource("2_n1usg")
+region = Rect2(200, 336, 200, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngllv"]
+atlas = ExtResource("2_n1usg")
+region = Rect2(496, 640, 344, 352)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mufm"]
+atlas = ExtResource("2_n1usg")
+region = Rect2(504, 0, 160, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s4a7"]
+atlas = ExtResource("2_n1usg")
+region = Rect2(504, 0, 160, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql1jo"]
+atlas = ExtResource("2_n1usg")
+region = Rect2(336, 0, 160, 312)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2f8u"]
+atlas = ExtResource("2_n1usg")
+region = Rect2(168, 0, 160, 312)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4fbr"]
+animations = [{
+"frames": [{
+"duration": 0.95,
+"texture": SubResource("AtlasTexture_ch47k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l1pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f03p")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_rkoie")
+}],
+"loop": false,
+"name": &"Ataque_1",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4o4d8")
+}],
+"loop": false,
+"name": &"Ataque_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngllv")
+}],
+"loop": false,
+"name": &"Ataque_3",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mufm")
+}],
+"loop": true,
+"name": &"Callendo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s4a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql1jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2f8u")
+}],
+"loop": true,
+"name": &"Corriendo",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s4a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql1jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2f8u")
+}],
+"loop": true,
+"name": &"Parado",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jeuf"]
+size = Vector2(20, 46)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkoie"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hltf"]
+size = Vector2(65.875, 49)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tp6jx"]
+radius = 17.0
+height = 56.0
+
+[node name="Mago" type="CharacterBody2D" groups=["Jugadores"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_owev7")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.125, 0.1474359)
+sprite_frames = SubResource("SpriteFrames_c4fbr")
+animation = &"Parado"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5jeuf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Ataque_1_Icono" type="Button" parent="Camera2D/CanvasLayer"]
+clip_children = 2
+texture_filter = 4
+custom_minimum_size = Vector2(32, 32)
+offset_left = -179.0
+offset_top = 58.0
+offset_right = -147.0
+offset_bottom = 90.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_rkoie")
+action_mode = 0
+button_mask = 0
+icon = ExtResource("5_2l1pc")
+expand_icon = true
+
+[node name="Barra" type="TextureProgressBar" parent="Camera2D/CanvasLayer/Ataque_1_Icono"]
+layout_mode = 0
+offset_right = 31.0
+offset_bottom = 32.0
+step = 0.05
+value = 40.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("6_6f03p")
+tint_progress = Color(0.8819366, 0.8819366, 0.88193655, 1)
+
+[node name="Ataque_2_Icono" type="Button" parent="Camera2D/CanvasLayer"]
+clip_children = 2
+texture_filter = 4
+custom_minimum_size = Vector2(32, 32)
+offset_left = -139.0
+offset_top = 58.0
+offset_right = -107.0
+offset_bottom = 90.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_rkoie")
+action_mode = 0
+button_mask = 0
+icon = ExtResource("4_6f03p")
+expand_icon = true
+
+[node name="Barra" type="TextureProgressBar" parent="Camera2D/CanvasLayer/Ataque_2_Icono"]
+layout_mode = 0
+offset_right = 31.0
+offset_bottom = 32.0
+step = 0.05
+value = 40.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("6_6f03p")
+tint_progress = Color(0.8819366, 0.8819366, 0.88193655, 1)
+
+[node name="BarraVida" parent="Camera2D/CanvasLayer" instance=ExtResource("7_6f03p")]
+anchors_preset = 0
+anchor_bottom = 0.0
+offset_left = -181.0
+offset_top = -98.0
+offset_right = -51.0
+offset_bottom = -93.0
+size_flags_horizontal = 0
+
+[node name="Ataque_1" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="Ataque_2" type="Timer" parent="."]
+wait_time = 7.0
+
+[node name="Ataque_3" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="Area_daño" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_daño"]
+position = Vector2(32.0625, -0.5)
+shape = SubResource("RectangleShape2D_0hltf")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Area_daño"]
+position = Vector2(38.5, -1.0000004)
+scale = Vector2(0.11230469, 0.08984376)
+texture = ExtResource("3_ngllv")
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CapsuleShape2D_tp6jx")
+disabled = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-182, -99)
+
+[connection signal="animation_changed" from="Sprite" to="." method="_on_sprite_animation_changed"]
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
+[connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]
+[connection signal="timeout" from="Ataque_3" to="." method="_on_ataque_3_timeout"]
+[connection signal="body_entered" from="Area_daño" to="." method="_on_area_daño_body_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_area_daño_body_entered"]

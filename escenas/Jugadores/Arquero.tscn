@@ -1,0 +1,166 @@
+[gd_scene load_steps=16 format=3 uid="uid://dod85j6oku7jb"]
+
+[ext_resource type="Script" uid="uid://dx321iqd2clle" path="res://Codigo/Jugadores/Arquero.gd" id="1_gljk4"]
+[ext_resource type="Texture2D" uid="uid://bg7ei546lmy3w" path="res://assets/Jugadores/Sprites_Arquero.png" id="2_eq65h"]
+[ext_resource type="PackedScene" uid="uid://dfn1t6mgef145" path="res://escenas/Otras cosas/ui_arquero.tscn" id="4_tnjpn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnjpn"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(640, 375, 217, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7bcj"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(336, 680, 234, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slc7s"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(71, 687, 241, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b2va"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(392, 24, 193, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrk8l"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(31, 24, 177, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8aa4"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(393, 24, 193, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1h6a"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(586, 24, 193, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no14o"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(23, 351, 193, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p05ic"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(216, 351, 193, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7786a"]
+atlas = ExtResource("2_eq65h")
+region = Rect2(23, 351, 193, 313)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wlp1l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnjpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7bcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slc7s")
+}],
+"loop": false,
+"name": &"Ataque_1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnjpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7bcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slc7s")
+}],
+"loop": false,
+"name": &"Ataque_2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnjpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7bcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slc7s")
+}],
+"loop": false,
+"name": &"Ataque_3",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b2va")
+}],
+"loop": true,
+"name": &"Callendo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrk8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8aa4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1h6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no14o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p05ic")
+}],
+"loop": true,
+"name": &"Corriendo",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrk8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7786a")
+}],
+"loop": true,
+"name": &"Parado",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gljk4"]
+radius = 9.0
+
+[node name="Arquero" type="CharacterBody2D" groups=["Jugadores"]]
+script = ExtResource("1_gljk4")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.5000001, -1.5000012)
+scale = Vector2(0.084745765, 0.09265176)
+sprite_frames = SubResource("SpriteFrames_wlp1l")
+animation = &"Ataque_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_gljk4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="Ataque_1" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="Ataque_2" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
+[node name="UiArquero" parent="." instance=ExtResource("4_tnjpn")]
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
+[connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]

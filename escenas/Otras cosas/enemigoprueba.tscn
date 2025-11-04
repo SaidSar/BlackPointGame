@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://lqjnpg6swxj1"]
+
+[ext_resource type="Script" uid="uid://dppbeyuap8sph" path="res://Codigo/Otras cosas/enemigoprueba.gd" id="1_jjf2n"]
+[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="2_dqh4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eobj8"]
+size = Vector2(20, 33)
+
+[sub_resource type="QuadMesh" id="QuadMesh_iawsb"]
+
+[node name="Enemigoprueba" type="CharacterBody2D" groups=["enemigos"]]
+collision_layer = 4
+script = ExtResource("1_jjf2n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_eobj8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(-3.57628e-07, 1.0000013)
+scale = Vector2(18.0204, 30.000002)
+mesh = SubResource("QuadMesh_iawsb")
+
+[node name="Timer" type="Timer" parent="." groups=["enemigos"]]
+wait_time = 0.1
+
+[node name="BarraVida" parent="." instance=ExtResource("2_dqh4y")]
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 17.0
+offset_bottom = -20.0
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="Izquierda" type="RayCast2D" parent="."]
+position = Vector2(0, 1)
+target_position = Vector2(-157, 0)
+collision_mask = 2
+
+[node name="Derecha" type="RayCast2D" parent="."]
+position = Vector2(0, 1)
+target_position = Vector2(156, 0)
+collision_mask = 2
+
+[node name="Ataque" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Ataque" to="." method="_on_ataque_timeout"]

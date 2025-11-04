@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://iqb7u2n6l32s"]
+
+[ext_resource type="Script" uid="uid://cj3511jglk0of" path="res://Codigo/Otras cosas/barra_vida.gd" id="1_a22au"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v66p8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a22au"]
+bg_color = Color(0.07282261, 0.5684185, 0.14655757, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v66p8"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75cj7"]
+bg_color = Color(0.88166445, 0.34971356, 0.40235117, 1)
+
+[node name="BarraVida" type="ProgressBar"]
+z_index = 1
+anchors_preset = -1
+anchor_bottom = 0.011000001
+offset_right = 322.0
+offset_bottom = 0.87199926
+theme_override_styles/background = SubResource("StyleBoxEmpty_v66p8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a22au")
+max_value = 60.0
+value = 60.0
+show_percentage = false
+script = ExtResource("1_a22au")
+
+[node name="Barra_daño" type="ProgressBar" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/background = SubResource("StyleBoxFlat_v66p8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_75cj7")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
