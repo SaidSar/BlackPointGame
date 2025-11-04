@@ -8,7 +8,7 @@ size = Vector2(20, 33)
 
 [sub_resource type="QuadMesh" id="QuadMesh_iawsb"]
 
-[node name="Enemigoprueba" type="CharacterBody2D" groups=["enemigos"]]
+[node name="enemigo_arquero" type="CharacterBody2D" groups=["enemigos"]]
 collision_layer = 4
 script = ExtResource("1_jjf2n")
 

@@ -5,7 +5,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v66p8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a22au"]
+content_margin_right = 0.0
 bg_color = Color(0.03677751, 0.41623122, 0.17034626, 1)
+border_color = Color(0.03529412, 0.41568628, 0.16862746, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v66p8"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,6 +18,8 @@ expand_margin_bottom = 1.0
 shadow_offset = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75cj7"]
+content_margin_left = 0.0
+content_margin_right = 0.0
 content_margin_bottom = 1.0
 bg_color = Color(0.7614347, 0.15922108, 0.30487922, 1)
 border_width_top = 1

@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuv2hmyx47k64"]
+[gd_scene load_steps=6 format=3 uid="uid://cuv2hmyx47k64"]
 
 [ext_resource type="Script" uid="uid://b1cwu2eygnaom" path="res://Codigo/Jugadores/Mago_proyectil.gd" id="1_yun02"]
+[ext_resource type="Texture2D" uid="uid://cwn6am57oekgx" path="res://assets/Jugadores/Bola_fuego.png" id="2_pk8cq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_psa1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pk8cq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24mko"]
 size = Vector2(17, 25)
@@ -16,6 +26,8 @@ collision_mask = 0
 script = ExtResource("1_yun02")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5.9604645e-08, 0)
+scale = Vector2(0.03808594, 0.04296875)
 sprite_frames = SubResource("SpriteFrames_psa1t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
