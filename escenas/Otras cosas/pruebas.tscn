@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctndgf2c3v0vc"]
+[gd_scene load_steps=8 format=3 uid="uid://ctndgf2c3v0vc"]
 
 [ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Enemigos/enemigo_arquero.tscn" id="2_gsmxe"]
 [ext_resource type="PackedScene" uid="uid://vkeqyb4v625k" path="res://escenas/Jugadores/Mago.tscn" id="2_h1lpe"]
+[ext_resource type="PackedScene" uid="uid://dt2k3ujn27ptr" path="res://escenas/Enemigos/enemigo_melee.tscn" id="4_kndug"]
 [ext_resource type="PackedScene" uid="uid://7wj7fk01d4s3" path="res://escenas/Enemigos/bombardero.tscn" id="5_tabga"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hkg04"]
@@ -17,11 +18,12 @@ size = Vector2(0.9993522, 1.02041)
 light_mask = 3
 visibility_layer = 2
 position = Vector2(-97.31253, 65.624725)
-scale = Vector2(837.37494, 73.5)
+scale = Vector2(1326.8365, 73.5)
 mesh = SubResource("QuadMesh_hkg04")
 texture = SubResource("CanvasTexture_yynwe")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
+scale = Vector2(1, 0.9727891)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
 light_mask = 3
@@ -45,6 +47,9 @@ position = Vector2(5.96046e-08, 0.00680256)
 shape = SubResource("RectangleShape2D_vb5qb")
 
 [node name="Bombardero" parent="." instance=ExtResource("5_tabga")]
-position = Vector2(-319, 1)
+position = Vector2(-727, 6)
 
 [node name="Mago" parent="." instance=ExtResource("2_h1lpe")]
+
+[node name="Enemigo_Melee" parent="." instance=ExtResource("4_kndug")]
+position = Vector2(-346, 9)
