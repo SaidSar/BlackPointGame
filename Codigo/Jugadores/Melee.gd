@@ -7,12 +7,16 @@ var en_aire: bool
 var daño: int
 var vida: float
 var vida_maxima : float
-@onready var hud = $"UiMelee"
-@onready var sprite:AnimatedSprite2D = $Sprite
-@onready var tiempo_ataque_1 = $Ataque_1
-@onready var tiempo_ataque_2 = $Ataque_2
-@onready var area_daño = $"Area_daño"
+
+@export var area_daño: Area2D
+@export var sprite :AnimatedSprite2D
+@export var tiempo_ataque_1 : Timer
+@export var tiempo_ataque_2 : Timer
+@export var hud : CanvasLayer
+
+
 @onready var especial_escena = preload("res://escenas//Proyectiles//melee_especial.tscn")
+
 @onready var barra_vida
 @onready var icono_1
 @onready var icono_2
@@ -70,7 +74,7 @@ func _physics_process(delta):
 			tipo_ataque = "Ataque_1"
 			tiempo_ataque_1.start()
 			ataque_actual = true
-		elif Input.is_action_pressed("click_derecho") and tiempo_ataque_2.is_stopped():
+		elif Input.is_action_just_pressed("click_derecho") and tiempo_ataque_2.is_stopped():
 			tipo_ataque = "Ataque_2"
 			tiempo_ataque_2.start()
 			ataque_actual = true

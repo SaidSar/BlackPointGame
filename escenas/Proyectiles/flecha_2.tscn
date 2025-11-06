@@ -13,8 +13,7 @@ radius = 48.002605
 size = Vector2(20, 3)
 
 [node name="Flecha_2" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 2
+collision_layer = 8
 script = ExtResource("1_hne7v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -26,7 +25,7 @@ position = Vector2(2.5, -1.5)
 shape = SubResource("RectangleShape2D_hne7v")
 
 [node name="area_daño" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_daño"]
@@ -35,6 +34,8 @@ shape = SubResource("CircleShape2D_e2t8m")
 disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3, -1.5)

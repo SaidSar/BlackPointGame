@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://vkeqyb4v625k"]
+[gd_scene load_steps=20 format=3 uid="uid://vkeqyb4v625k"]
 
 [ext_resource type="Script" uid="uid://ck6tkt4b78f4w" path="res://Codigo/Jugadores/Mago.gd" id="1_owev7"]
 [ext_resource type="Texture2D" uid="uid://bmn1iahq624p7" path="res://assets/Jugadores/Sprites_Mago.png" id="2_n1usg"]
 [ext_resource type="Texture2D" uid="uid://6iuo6e7wq8o0" path="res://assets/Jugadores/Mago_Puño.png" id="3_ngllv"]
 [ext_resource type="PackedScene" uid="uid://bpej1iq7lrrw" path="res://escenas/Otras cosas/UiMago.tscn" id="4_ngllv"]
+[ext_resource type="PackedScene" uid="uid://c44u3pjqq4wjg" path="res://escenas/Jugadores/camara.tscn" id="5_n1usg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ch47k"]
 atlas = ExtResource("2_n1usg")
@@ -121,16 +122,26 @@ animations = [{
 size = Vector2(20, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hltf"]
-size = Vector2(65.875, 49)
+size = Vector2(72, 49)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tp6jx"]
 radius = 17.0
 height = 56.0
 
-[node name="Mago" type="CharacterBody2D" groups=["Jugadores"]]
+[node name="Mago" type="CharacterBody2D" node_paths=PackedStringArray("area_daño", "area", "sprite", "tiempo_ataque_1", "tiempo_ataque_2", "tiempo_ataque_3", "colision_ataque_1", "colision_ataque_3", "hud", "sprite_ataque_1") groups=["Jugadores"]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_owev7")
+"area_daño" = NodePath("Area_daño")
+area = NodePath("Area_escudo")
+sprite = NodePath("Sprite")
+tiempo_ataque_1 = NodePath("Ataque_1")
+tiempo_ataque_2 = NodePath("Ataque_2")
+tiempo_ataque_3 = NodePath("Ataque_3")
+colision_ataque_1 = NodePath("Area_daño/CollisionShape2D")
+colision_ataque_3 = NodePath("Area_escudo/CollisionShape2D")
+hud = NodePath("CanvasLayer")
+sprite_ataque_1 = NodePath("Area_daño/Sprite2D")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -141,16 +152,11 @@ animation = &"Parado"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5jeuf")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
-
 [node name="Ataque_1" type="Timer" parent="."]
-wait_time = 3.5
+wait_time = 4.0
 
 [node name="Ataque_2" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 8.0
 
 [node name="Ataque_3" type="Timer" parent="."]
 wait_time = 30.0
@@ -160,7 +166,7 @@ collision_layer = 8
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_daño"]
-position = Vector2(32.0625, -0.5)
+position = Vector2(29, -0.5)
 shape = SubResource("RectangleShape2D_0hltf")
 disabled = true
 
@@ -169,15 +175,17 @@ position = Vector2(38.5, -1.0000004)
 scale = Vector2(0.11230469, 0.08984376)
 texture = ExtResource("3_ngllv")
 
-[node name="Area" type="Area2D" parent="."]
+[node name="Area_escudo" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 13
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_escudo"]
 shape = SubResource("CapsuleShape2D_tp6jx")
 disabled = true
 
 [node name="CanvasLayer" parent="." instance=ExtResource("4_ngllv")]
+
+[node name="Camera2D" parent="." instance=ExtResource("5_n1usg")]
 
 [connection signal="animation_changed" from="Sprite" to="." method="_on_sprite_animation_changed"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
@@ -185,4 +193,3 @@ disabled = true
 [connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]
 [connection signal="timeout" from="Ataque_3" to="." method="_on_ataque_3_timeout"]
 [connection signal="body_entered" from="Area_daño" to="." method="_on_area_daño_body_entered"]
-[connection signal="body_entered" from="Area" to="." method="_on_area_daño_body_entered"]

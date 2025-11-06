@@ -12,7 +12,7 @@ func _set_vida(nueva_vida):
 	if vida < prev_vida:
 		timer.start()
 	else:
-		barra_daño.value = vida -1
+		barra_daño.value = vida 
 
 func iniciar_vida(vida):
 	max_value = vida
@@ -20,4 +20,4 @@ func iniciar_vida(vida):
 	barra_daño.value = vida 
 
 func _on_timer_timeout() -> void:
-	barra_daño.value = vida -1
+	barra_daño.value = vida 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bd4th2rdgbtv5"]
+[gd_scene load_steps=26 format=3 uid="uid://bd4th2rdgbtv5"]
 
 [ext_resource type="Script" uid="uid://bpm4qqovts70n" path="res://Codigo/Jugadores/Melee.gd" id="1_nqg7t"]
 [ext_resource type="Texture2D" uid="uid://b2b7mdgn7vre7" path="res://assets/Jugadores/Sprite_Caballero_Atacando_Final.png" id="2_ebxey"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c43s8ok3siun3" path="res://assets/Jugadores/a3.png" id="4_138wo"]
 [ext_resource type="Texture2D" uid="uid://c117b5mwim582" path="res://assets/Jugadores/Sprites_Caballero_Caminando.png" id="5_ebxey"]
 [ext_resource type="PackedScene" uid="uid://cvw3v4bqgfldx" path="res://escenas/Otras cosas/ui_melee.tscn" id="7_ebxey"]
+[ext_resource type="PackedScene" uid="uid://c44u3pjqq4wjg" path="res://escenas/Jugadores/camara.tscn" id="7_ltxxq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d815g"]
 height = 32.0
@@ -164,7 +165,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_efui1")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_ptivl")
 }, {
 "duration": 1.0,
@@ -175,23 +176,22 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Melee" type="CharacterBody2D" groups=["Jugadores"]]
+[node name="Melee" type="CharacterBody2D" node_paths=PackedStringArray("area_daño", "sprite", "tiempo_ataque_1", "tiempo_ataque_2", "hud") groups=["Jugadores"]]
 texture_filter = 1
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_nqg7t")
+"area_daño" = NodePath("Area_daño")
+sprite = NodePath("Sprite")
+tiempo_ataque_1 = NodePath("Ataque_1")
+tiempo_ataque_2 = NodePath("Ataque_2")
+hud = NodePath("UiMelee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 7
 visibility_layer = 7
 position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_d815g")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -8)
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
 
 [node name="Ataque_1" type="Timer" parent="."]
 wait_time = 2.0
@@ -216,9 +216,11 @@ texture_filter = 1
 position = Vector2(-10, -2.4999998)
 scale = Vector2(0.09722222, 0.10472972)
 sprite_frames = SubResource("SpriteFrames_crk7r")
-animation = &"Ataque_1"
+animation = &"Parado"
 centered = false
 offset = Vector2(0, -148)
+
+[node name="Camera2D" parent="." instance=ExtResource("7_ltxxq")]
 
 [connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
 [connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]

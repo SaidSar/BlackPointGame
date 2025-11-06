@@ -10,23 +10,24 @@ var vida_maxima:float
 var reseteo_escudo : float
 var escudo_tiempo: float
 
-@onready var area_daño = $"Area_daño"
-@onready var area = $"Area"
-@onready var sprite = $Sprite
-@onready var tiempo_ataque_1 = $Ataque_1
-@onready var tiempo_ataque_2 = $Ataque_2
-@onready var tiempo_ataque_3 = $Ataque_3
-@onready var barra_vida 
+@export var area_daño: Area2D
+@export var area: Area2D
+@export var sprite :AnimatedSprite2D
+@export var tiempo_ataque_1 : Timer
+@export var tiempo_ataque_2 : Timer
+@export var tiempo_ataque_3 : Timer
 @onready var especial_escena = preload("res://escenas//Proyectiles//Mago_proyectil.tscn")
-@onready var colision_ataque_1 
-@onready var colision_ataque_3
-@onready var sprite_ataque_1
+@export var colision_ataque_1 : CollisionShape2D
+@export var colision_ataque_3 : CollisionShape2D
+@export var hud : CanvasLayer
+@export var sprite_ataque_1 : Sprite2D
 
-@onready var camara 
+
+@onready var barra_vida 
 @onready var icono_1 
 @onready var icono_2  
 @onready var icono_3
-@onready var hud = $CanvasLayer
+
 
 func _ready():
 	vida_maxima = 50
@@ -34,11 +35,7 @@ func _ready():
 	ataque_actual = false
 	reseteo_escudo = 15.0
 	escudo_tiempo = 30.0
-	
-	sprite_ataque_1 = area_daño.get_node("Sprite2D")
 	sprite_ataque_1.visible = false
-	colision_ataque_3 = area.get_node("CollisionShape2D")
-	colision_ataque_1 = area_daño.get_node("CollisionShape2D")
 	set_hud()
 
 func set_hud():
@@ -48,27 +45,22 @@ func set_hud():
 	icono_3 = hud.get_node("Ataque_3_Icono/Barra")
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
-	
 	icono_1.min_value = 0
 	icono_1.max_value = tiempo_ataque_1.wait_time
 	icono_1.value = 0
 	tiempo_ataque_1.connect("timeout", Callable(self, "_on_tiempo_ataque_1_timeout"))
 	icono_1.step = .05
-	
 	icono_2.min_value = 0
 	icono_2.max_value = tiempo_ataque_2.wait_time
 	icono_2.value = 0
 	tiempo_ataque_2.connect("timeout", Callable(self, "_on_tiempo_ataque_2_timeout"))
 	icono_2.step = .05
-	
 	icono_3.min_value = 0
 	icono_3.max_value = tiempo_ataque_3.wait_time
 	icono_3.value = 0
 	tiempo_ataque_3.connect("timeout", Callable(self, "_on_tiempo_ataque_3_timeout"))
 	icono_3.step = .05
-	
 	hud.visible = true
-
 
 
 func Controlador_animaciones_ataques(ataque):

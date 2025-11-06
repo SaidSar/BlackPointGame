@@ -1,6 +1,6 @@
 extends CharacterBody2D
-const SPEED = 125.0
-const JUMP_VELOCITY = -300.0
+const SPEED = 120.0
+const JUMP_VELOCITY = -270.0
 var tipo_ataque: String 
 var ataque_actual: bool
 var en_aire: bool
@@ -8,13 +8,13 @@ var doble_salto: bool
 var vida_maxima : float
 var vida : float
 
-@onready var zona_daño = $"AreadeDaño"
-@onready var sprite = $Sprite
-@onready var tiempo_ataque_1 = $Ataque_1
-@onready var tiempo_ataque_2 = $Ataque_2
+
+@export var sprite :AnimatedSprite2D
+@export var tiempo_ataque_1 : Timer
+@export var tiempo_ataque_2 : Timer
+@export var hud : CanvasLayer
 @onready var flecha_escena = preload("res://escenas//Proyectiles//flecha.tscn")
 @onready var flecha_escena_2 = preload("res://escenas//Proyectiles//flecha_2.tscn")
-@onready var hud = $UiArquero
 @onready var barra_vida
 @onready var icono_1
 @onready var icono_2
@@ -28,7 +28,7 @@ const FUERZA_MIN = 400.0
 
 func _ready():
 	ataque_actual = false
-	vida_maxima = 70
+	vida_maxima = 60
 	vida = vida_maxima
 	set_hud()
 
