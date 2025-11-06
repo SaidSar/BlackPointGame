@@ -2,10 +2,14 @@ extends CharacterBody2D
 var velocidad: int
 var dir: Vector2
 var perseguido: bool
-var vida: int
+var vida: float
 var daño = 2
 var atacando: bool
 var animacion_atacando: bool
+var vida_maxima : float
+#Tamaño de sprites --------altura 241-----------
+
+var animaciones
 @onready var sprite = $Sprite
 @onready var barra_vida = $BarraVida
 @onready var timer_1 = $Timer
@@ -21,10 +25,12 @@ const FUERZA_MAX = 1200.0
 const FUERZA_MIN = 300.0   
 
 func _ready():
+	animaciones = ["Parado","Corriendo","Callendo","Atacando"]
 	atacando = false
 	perseguido = false
 	velocidad = 50
-	vida = 22
+	vida_maxima = 15
+	vida = vida_maxima
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
 
@@ -52,12 +58,13 @@ func Controlador_animaciones(dir):
 	if !animacion_atacando:
 		if is_on_floor():
 			if !velocity:
-				sprite.play("Parado")
+				sprite.play(animaciones[0])
 			if velocity:
-				sprite.play("Corriendo")
+				sprite.play(animaciones[1])
 				voltear_sprite(dir)
 		else: 
-			sprite.play("Callendo")
+			sprite.play(animaciones[2])
+
 func voltear_sprite(dir):
 	if dir.x == 1:
 		sprite.flip_h = false
@@ -87,9 +94,16 @@ func recibir_daño(daño):
 	timer_1.start()
 	vida -= daño
 	if vida <= 0:
+		barra_vida.visible = false
+		animacion_atacando = true
+		perseguido = false
+		atacando = true
+		sprite.play("Muerte")
+		await get_tree().create_timer(.5).timeout
 		queue_free()
+	if vida <= vida_maxima/2:
+		animaciones = ["Parado_herido","Corriendo_herido","Callendo_herido","Atacando_herido"]
 	barra_vida._set_vida(vida)
-	print("daño recibido: ", daño)
 
 func _on_timer_2_timeout() -> void:
 	timer_2.stop()
@@ -100,7 +114,7 @@ func atacar(direccion: Vector2):
 	animacion_atacando = true
 	if bomba == null:
 		return
-	sprite.play("Atacando")
+	sprite.play(animaciones[3])
 	await get_tree().create_timer(.1).timeout
 	var bom = bomba.instantiate()
 	get_parent().add_child(bom)

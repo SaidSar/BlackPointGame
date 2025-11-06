@@ -10,7 +10,7 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_yynwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb5qb"]
-size = Vector2(0.9993522, 1.02041)
+size = Vector2(0.9993522, 1.0292413)
 
 [node name="Nivel" type="Node2D"]
 
@@ -27,8 +27,8 @@ scale = Vector2(1, 0.9727891)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
 light_mask = 3
-position = Vector2(-0.00032395124, 0.006802559)
-scale = Vector2(0.99999994, 1)
+position = Vector2(-0.00032395124, 0.0023867488)
+scale = Vector2(0.9999999, 1)
 shape = SubResource("RectangleShape2D_vb5qb")
 
 [node name="Enemigoprueba" parent="." instance=ExtResource("2_gsmxe")]
@@ -46,10 +46,23 @@ mesh = SubResource("QuadMesh_hkg04")
 position = Vector2(5.96046e-08, 0.00680256)
 shape = SubResource("RectangleShape2D_vb5qb")
 
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
+position = Vector2(-647.99994, -5.999999)
+rotation = -1.57079
+scale = Vector2(578.75, 73.5)
+mesh = SubResource("QuadMesh_hkg04")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D3/StaticBody2D"]
+position = Vector2(5.96046e-08, 0.00680256)
+shape = SubResource("RectangleShape2D_vb5qb")
+
 [node name="Bombardero" parent="." instance=ExtResource("5_tabga")]
-position = Vector2(-727, 6)
+position = Vector2(-305, 9)
 
 [node name="Mago" parent="." instance=ExtResource("2_h1lpe")]
+position = Vector2(-47, 4)
 
 [node name="Enemigo_Melee" parent="." instance=ExtResource("4_kndug")]
-position = Vector2(-346, 9)
+position = Vector2(-568, 9)

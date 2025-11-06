@@ -1,16 +1,29 @@
-[gd_scene load_steps=16 format=3 uid="uid://7wj7fk01d4s3"]
+[gd_scene load_steps=26 format=3 uid="uid://7wj7fk01d4s3"]
 
 [ext_resource type="Script" uid="uid://c7dph2rgpfeii" path="res://Codigo/Enemigos/Bombardero.gd" id="1_8d1da"]
 [ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="1_jwk4o"]
 [ext_resource type="Texture2D" uid="uid://cyyiewywcvsb7" path="res://assets/Enemigos/Bombardero.png" id="2_rkw6w"]
+[ext_resource type="Texture2D" uid="uid://c1ypjw58fy3xc" path="res://assets/Enemigos/Enemigo_bombardero.png" id="3_huxo0"]
+[ext_resource type="Texture2D" uid="uid://cthmj0w16sug1" path="res://assets/Enemigos/Enemigo_muerte.png" id="4_vmpw2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkw6w"]
+size = Vector2(20, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_huxo0"]
 atlas = ExtResource("2_rkw6w")
 region = Rect2(0, 768, 160, 248)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t7ns"]
+atlas = ExtResource("3_huxo0")
+region = Rect2(94, 528, 190, 241)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmpw2"]
 atlas = ExtResource("2_rkw6w")
 region = Rect2(144, 0, 160, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x2wc"]
+atlas = ExtResource("3_huxo0")
+region = Rect2(402, 255, 190, 241)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilvcr"]
 atlas = ExtResource("2_rkw6w")
@@ -36,13 +49,37 @@ region = Rect2(553, 0, 150, 248)
 atlas = ExtResource("2_rkw6w")
 region = Rect2(703, 0, 150, 248)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2t7ns"]
-atlas = ExtResource("2_rkw6w")
-region = Rect2(176, 496, 160, 248)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w323v"]
+atlas = ExtResource("3_huxo0")
+region = Rect2(0, 255, 190, 241)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3x2wc"]
-atlas = ExtResource("2_rkw6w")
-region = Rect2(0, 0, 155, 248)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cj5x"]
+atlas = ExtResource("3_huxo0")
+region = Rect2(204, 255, 190, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvem8"]
+atlas = ExtResource("3_huxo0")
+region = Rect2(409, 255, 190, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1kro"]
+atlas = ExtResource("3_huxo0")
+region = Rect2(624, 255, 190, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxkdb"]
+atlas = ExtResource("3_huxo0")
+region = Rect2(854, 255, 170, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ug6y"]
+atlas = ExtResource("4_vmpw2")
+region = Rect2(47, 567, 170, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpild"]
+atlas = ExtResource("4_vmpw2")
+region = Rect2(272, 415, 170, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0c1u"]
+atlas = ExtResource("4_vmpw2")
+region = Rect2(43, 263, 170, 241)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p3vup"]
 animations = [{
@@ -56,10 +93,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2t7ns")
+}],
+"loop": false,
+"name": &"Atacando_herido",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vmpw2")
 }],
 "loop": true,
 "name": &"Callendo",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x2wc")
+}],
+"loop": true,
+"name": &"Callendo_herido",
 "speed": 10.0
 }, {
 "frames": [{
@@ -87,37 +140,64 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2t7ns")
+"texture": SubResource("AtlasTexture_w323v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cj5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvem8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1kro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxkdb")
 }],
-"loop": false,
-"name": &"Muerte",
-"speed": 3.0
+"loop": true,
+"name": &"Corriendo_herido",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3x2wc")
+"texture": SubResource("AtlasTexture_0ug6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpild")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0c1u")
+}],
+"loop": false,
+"name": &"Muerte",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_17g2r")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_e7k2a")
 }],
 "loop": true,
 "name": &"Parado",
-"speed": 5.0
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_m1kro")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_jxkdb")
+}],
+"loop": true,
+"name": &"Parado_herido",
+"speed": 1.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkw6w"]
-size = Vector2(20, 37)
 
 [node name="Bombardero" type="CharacterBody2D" groups=["enemigos"]]
 collision_layer = 4
 script = ExtResource("1_8d1da")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.49999943, 0.5)
-scale = Vector2(0.13125, 0.14919354)
-sprite_frames = SubResource("SpriteFrames_p3vup")
-animation = &"Atacando"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0.5)
-shape = SubResource("RectangleShape2D_rkw6w")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
@@ -149,6 +229,16 @@ offset_right = 5.0
 offset_bottom = -22.0
 grow_horizontal = 2
 size_flags_vertical = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_rkw6w")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.49999943, 0.5)
+scale = Vector2(0.13125, 0.14919354)
+sprite_frames = SubResource("SpriteFrames_p3vup")
+animation = &"Parado_herido"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

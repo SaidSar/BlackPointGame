@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cuv2hmyx47k64"]
 
 [ext_resource type="Script" uid="uid://b1cwu2eygnaom" path="res://Codigo/Jugadores/Mago_proyectil.gd" id="1_yun02"]
-[ext_resource type="Texture2D" uid="uid://cwn6am57oekgx" path="res://assets/Jugadores/Bola_fuego.png" id="2_pk8cq"]
+[ext_resource type="Texture2D" uid="uid://cwn6am57oekgx" path="res://assets/Enemigos/Bola_fuego.png" id="2_pk8cq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_psa1t"]
 animations = [{

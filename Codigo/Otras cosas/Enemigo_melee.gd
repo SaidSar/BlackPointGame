@@ -20,16 +20,19 @@ var animacion_atacando = false
 @onready var area = $"Area"
 
 func _ready():
-	tamaño_ray_activo = 180
-	tamaño_ray_desactivado = 40
+	_iniciar_enemigo()
 	atacando = false
 	perseguido = false
+	colision_ataque = area.get_node("CollisionShape2D")
+
+func _iniciar_enemigo():
 	velocidad = 60
 	vida = 15
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
-	colision_ataque = area.get_node("CollisionShape2D")
-
+	tamaño_ray_activo = 180
+	tamaño_ray_desactivado = 40
+	
 func _process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta

@@ -1,27 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwlkbhdoa50ei"]
+[gd_scene load_steps=12 format=3 uid="uid://dwlkbhdoa50ei"]
 
 [ext_resource type="Script" uid="uid://q3a0se2mdor5" path="res://Codigo/Enemigos/bomba_enemigo.gd" id="1_sfb7v"]
-[ext_resource type="Texture2D" uid="uid://eeq1twdho8t0" path="res://assets/Jugadores/Flecha.png" id="2_yxrce"]
+[ext_resource type="Texture2D" uid="uid://b5qgle3phhkmd" path="res://assets/Enemigos/Bomba_fuego.png" id="2_btuxp"]
+[ext_resource type="Texture2D" uid="uid://c1ypjw58fy3xc" path="res://assets/Enemigos/Enemigo_bombardero.png" id="3_btuxp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vipfy"]
-size = Vector2(19, 3)
+size = Vector2(6, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sfb7v"]
-radius = 48.002605
+radius = 50.0025
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxrce"]
-size = Vector2(20, 3)
+size = Vector2(5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl7mj"]
+atlas = ExtResource("2_btuxp")
+region = Rect2(22, 545, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hb7t"]
+atlas = ExtResource("2_btuxp")
+region = Rect2(289, 416, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox2l1"]
+atlas = ExtResource("2_btuxp")
+region = Rect2(33, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btuxp"]
+atlas = ExtResource("3_btuxp")
+region = Rect2(571, 584, 50, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_btuxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl7mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hb7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox2l1")
+}],
+"loop": false,
+"name": &"Explosion",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btuxp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
 
 [node name="Bomba_enemigo" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_sfb7v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("2_yxrce")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, -1.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_vipfy")
 
 [node name="area_daño" type="Area2D" parent="."]
@@ -29,7 +67,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_daño"]
-position = Vector2(2, -1.5)
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_sfb7v")
 disabled = true
 
@@ -38,8 +76,14 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(3, -1.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_yxrce")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.9802322e-08, -8.129032)
+scale = Vector2(0.120000005, 0.10257056)
+sprite_frames = SubResource("SpriteFrames_btuxp")
+animation = &"Explosion"
 
 [connection signal="body_entered" from="area_daño" to="." method="_on_zona_daño_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

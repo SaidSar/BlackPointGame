@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwn6am57oekgx"
-path="res://.godot/imported/Bola_fuego.png-eb0a105c5dc553a98ff3d59d65e329f8.ctex"
+uid="uid://b5qgle3phhkmd"
+path="res://.godot/imported/Bomba_fuego.png-0a48b51d19665950d0fb221d3b61b3d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Jugadores/Bola_fuego.png"
-dest_files=["res://.godot/imported/Bola_fuego.png-eb0a105c5dc553a98ff3d59d65e329f8.ctex"]
+source_file="res://assets/Enemigos/Bomba_fuego.png"
+dest_files=["res://.godot/imported/Bomba_fuego.png-0a48b51d19665950d0fb221d3b61b3d5.ctex"]
 
 [params]
 

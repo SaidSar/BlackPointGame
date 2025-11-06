@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @onready var area_daño = $"area_daño"
-@export var tiempo_de_vida = 5.0 
+@export var tiempo_de_vida = 3.0
 var GRAVEDAD = 450.0
 var tiempo_actual = 0.0
 var daño = 5
@@ -25,12 +25,13 @@ func _on_zona_daño_body_entered(body: Node2D) -> void:
 		body.recibir_daño(daño) 
 
 func daño_area():
-			var colision_zona = area_daño.get_node("CollisionShape2D")
-			await get_tree().create_timer(0.01).timeout
-			colision_zona.disabled = false
-			await get_tree().create_timer(0.2).timeout
-			colision_zona.disabled = true
-			queue_free()
+	$Sprite2D.play("Explosion")
+	var colision_zona = area_daño.get_node("CollisionShape2D")
+	await get_tree().create_timer(0.01).timeout
+	colision_zona.disabled = false
+	await get_tree().create_timer(0.2).timeout
+	colision_zona.disabled = true
+	queue_free()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
