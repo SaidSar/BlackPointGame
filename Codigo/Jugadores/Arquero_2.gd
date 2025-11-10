@@ -2,7 +2,7 @@ extends CharacterBody2D
 @export var sprite :AnimatedSprite2D
 @export var hud : CanvasLayer
 @onready var flecha_escena = preload("res://escenas//Proyectiles//flecha.tscn")
-@onready var flecha_escena_2 = preload("res://escenas//Proyectiles//flecha_2.tscn")
+@onready var flecha_escena_2 = preload("res://escenas//Proyectiles//flecha_explosiva.tscn")
 @export var tiempo_ataque_1 : Timer
 @export var tiempo_ataque_2 : Timer
 @export var carga : ProgressBar
@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var icono_1
 @onready var icono_2
 
-var daño: float = 4
+var daño: float = 5
 var tiempo_carga: float = 0
 const carga_max = 1.25 
 const fuerza_max = 120.0  
@@ -23,17 +23,17 @@ var doble_salto: bool
 var vida_maxima : float
 var vida : float
 const salto = -270.0
-var velocidad : float = 105.0
+var velocidad : float = 100
 var puede_moverse : bool = true:
 	set(value):
 		puede_moverse = value
 		if value == false:
 			velocidad = 0
 		else:
-			velocidad = 105
+			velocidad = 100
 
 func _ready():
-	vida_maxima = 60
+	vida_maxima = 35
 	vida = vida_maxima
 	tiempo_ataque_1.stop()
 	tiempo_ataque_2.stop()
@@ -81,15 +81,14 @@ func _physics_process(delta: float) -> void:
 				doble_salto = false
 		else:
 			velocity.y = salto
-	
 	var direction = Input.get_axis("A", "D") + Input.get_axis("stick_izquierda", "stick_derecha")
-	if direction and !ataque_actual:
+	if direction and !ataque_actual and puede_moverse:
 		velocity.x = direction * velocidad
 	else:
 		velocity.x = move_toward(velocity.x, 0, velocidad)
 	move_and_slide()
-	if puede_moverse:
-		Controlador_animaciones(direction)
+
+	Controlador_animaciones(direction)
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("click_izquierdo") and tiempo_ataque_1.is_stopped() and !ataque_actual:

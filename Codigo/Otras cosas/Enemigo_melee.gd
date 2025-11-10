@@ -29,7 +29,7 @@ func _iniciar_enemigo():
 	vida = 15
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
-	tamaño_ray_activo = 180
+	tamaño_ray_activo = 200
 	tamaño_ray_desactivado = 40
 	
 func _process(delta):

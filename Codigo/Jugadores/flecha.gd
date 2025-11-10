@@ -13,8 +13,9 @@ var vector_apuntando : Vector2 = Vector2.RIGHT
 func _physics_process(delta):
 	if is_on_floor():
 		puede_atacar = false
-	if t < 4.0:
+	if t < 3.0:
 		t += 1.75 * delta
+		daño -= (delta + .01) 
 		if t > 4:
 			queue_free()
 	position = _quadratic_bezier()
@@ -25,11 +26,11 @@ func set_direction(direccion_giro, frame, poder):
 	var length = max(poder * 300, 30)
 	if direccion_giro == false:
 		direccion = Vector2.RIGHT
-		angle = -10
+		angle = -5
 	else:
 		direccion = Vector2.LEFT
 		$Sprite2D.flip_h = true
-		angle = -170
+		angle = -175
 		length = -abs(length)
 	
 	p0 = position

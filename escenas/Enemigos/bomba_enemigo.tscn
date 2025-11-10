@@ -1,45 +1,51 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwlkbhdoa50ei"]
+[gd_scene load_steps=15 format=3 uid="uid://dwlkbhdoa50ei"]
 
 [ext_resource type="Script" uid="uid://q3a0se2mdor5" path="res://Codigo/Enemigos/bomba_enemigo.gd" id="1_sfb7v"]
-[ext_resource type="Texture2D" uid="uid://b5qgle3phhkmd" path="res://assets/Enemigos/Bomba_fuego.png" id="2_btuxp"]
-[ext_resource type="Texture2D" uid="uid://c1ypjw58fy3xc" path="res://assets/Enemigos/Enemigo_bombardero.png" id="3_btuxp"]
+[ext_resource type="Texture2D" uid="uid://dftx4hu7kpidt" path="res://assets/otros/explosion_2/explosion-c1.png" id="2_fr3j6"]
+[ext_resource type="Texture2D" uid="uid://dc2nwvrtgif2f" path="res://assets/otros/explosion_2/explosion-c2.png" id="3_hgmb5"]
+[ext_resource type="Texture2D" uid="uid://dm0nl1kynjbbu" path="res://assets/otros/explosion_2/explosion-c3.png" id="4_axyyp"]
+[ext_resource type="Texture2D" uid="uid://dku6mos1w03ku" path="res://assets/otros/explosion_2/explosion-c4.png" id="5_poabi"]
+[ext_resource type="Texture2D" uid="uid://crcy7xcafub42" path="res://assets/otros/explosion_2/explosion-c6.png" id="7_5x77v"]
+[ext_resource type="Texture2D" uid="uid://dgsycs1y7g33w" path="res://assets/otros/explosion_2/explosion-c7.png" id="8_cd80n"]
+[ext_resource type="Texture2D" uid="uid://ypcfxmaq1mcc" path="res://assets/otros/explosion_2/explosion-c9.png" id="10_l6kxb"]
+[ext_resource type="Texture2D" uid="uid://dskhbecabfxkl" path="res://assets/otros/explosion_2/explosion-c10.png" id="11_misr2"]
+[ext_resource type="Texture2D" uid="uid://bovd64mrp8aqg" path="res://assets/Enemigos/Enemigo_bomba.png" id="12_nboni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vipfy"]
 size = Vector2(6, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sfb7v"]
-radius = 50.0025
+radius = 46.010868
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxrce"]
 size = Vector2(5, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vl7mj"]
-atlas = ExtResource("2_btuxp")
-region = Rect2(22, 545, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hb7t"]
-atlas = ExtResource("2_btuxp")
-region = Rect2(289, 416, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ox2l1"]
-atlas = ExtResource("2_btuxp")
-region = Rect2(33, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_btuxp"]
-atlas = ExtResource("3_btuxp")
-region = Rect2(571, 584, 50, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_btuxp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vl7mj")
+"texture": ExtResource("2_fr3j6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5hb7t")
+"texture": ExtResource("3_hgmb5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ox2l1")
+"texture": ExtResource("4_axyyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_poabi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5x77v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cd80n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l6kxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_misr2")
 }],
 "loop": false,
 "name": &"Explosion",
@@ -47,7 +53,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_btuxp")
+"texture": null
 }],
 "loop": true,
 "name": &"default",
@@ -59,7 +65,6 @@ collision_layer = 0
 script = ExtResource("1_sfb7v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_vipfy")
 
 [node name="area_daño" type="Area2D" parent="."]
@@ -67,7 +72,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_daño"]
-position = Vector2(0, -4)
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_sfb7v")
 disabled = true
 
@@ -76,14 +81,21 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_yxrce")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2.9802322e-08, -8.129032)
-scale = Vector2(0.120000005, 0.10257056)
+position = Vector2(-2.2737368e-13, -18.499998)
+scale = Vector2(0.67187506, 0.5625)
 sprite_frames = SubResource("SpriteFrames_btuxp")
 animation = &"Explosion"
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-0.24999991, -0.2499997)
+scale = Vector2(0.12499999, 0.12096775)
+texture = ExtResource("12_nboni")
 
 [connection signal="body_entered" from="area_daño" to="." method="_on_zona_daño_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -4,7 +4,6 @@ extends CharacterBody2D
 var GRAVEDAD = 450.0
 var tiempo_actual = 0.0
 var daño = 5
-
 func _physics_process(delta):
 	if is_on_floor():
 		velocity = Vector2.ZERO
@@ -25,11 +24,12 @@ func _on_zona_daño_body_entered(body: Node2D) -> void:
 		body.recibir_daño(daño) 
 
 func daño_area():
+	$Sprite2D2.visible = false
 	$Sprite2D.play("Explosion")
 	var colision_zona = area_daño.get_node("CollisionShape2D")
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().create_timer(0.1).timeout
 	colision_zona.disabled = false
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.4).timeout
 	colision_zona.disabled = true
 	queue_free()
 

@@ -1,6 +1,5 @@
 extends CharacterBody2D
 @onready var zona_daño = $"ZonaDaño"
-var GRAVEDAD = 50.0
 var puede_atacar = true
 var daño : float = 1
 var direccion : Vector2 = Vector2.RIGHT
@@ -16,9 +15,12 @@ func _physics_process(delta):
 		puede_atacar = false
 	if t < 3.0:
 		t += 1.75 * delta
+		daño -= (delta + .01)
+		
 		if t > 3:
 			queue_free()
-	position = _quadratic_bezier()
+	if puede_atacar:
+		position = _quadratic_bezier()
 
 func set_direction(direccion_giro, frame, poder):
 	$Sprite2D.frame = frame
@@ -26,11 +28,11 @@ func set_direction(direccion_giro, frame, poder):
 	var length = max(poder * 300, 30)
 	if direccion_giro == false:
 		direccion = Vector2.RIGHT
-		angle = -10
+		angle = -5
 	else:
 		direccion = Vector2.LEFT
 		$Sprite2D.flip_h = true
-		angle = -170
+		angle = -175
 		length = -abs(length)
 	
 	p0 = position
@@ -52,16 +54,17 @@ func _on_zona_daño_body_entered(body: Node2D) -> void:
 
 func daño_area():
 	var area_daño = $"area_daño"
+	$Sprite2D.play("explosion")
 	var colision_zona = area_daño.get_node("CollisionShape2D")
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().create_timer(0.1).timeout
 	colision_zona.disabled = false
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.3).timeout
 	colision_zona.disabled = true
 	queue_free()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemigos"): 
-		GRAVEDAD = 0.0
+		puede_atacar = false
 		velocity = Vector2.ZERO
 		daño_area()
