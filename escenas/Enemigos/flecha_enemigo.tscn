@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://h10kjqxj51f8" path="res://Codigo/Otras cosas/flecha_enemigo.gd" id="1_ujrsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujrsn"]
-size = Vector2(19, 3)
+size = Vector2(19, 3.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de1bs"]
-size = Vector2(21, 5)
+size = Vector2(21.5, 5)
 
 [node name="Flecha_enemigo" type="CharacterBody2D"]
 collision_layer = 0
@@ -16,9 +16,11 @@ script = ExtResource("1_ujrsn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-2, 1)
 texture = ExtResource("1_6pqut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.25)
 shape = SubResource("RectangleShape2D_ujrsn")
 
 [node name="ZonaDaño" type="Area2D" parent="."]
@@ -26,6 +28,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDaño"]
+position = Vector2(1.25, -0.5)
 shape = SubResource("RectangleShape2D_de1bs")
 
 [connection signal="body_entered" from="ZonaDaño" to="." method="_on_zona_daño_body_entered"]

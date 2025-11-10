@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://c117b5mwim582" path="res://assets/Jugadores/Sprites_Caballero_Caminando.png" id="6_3btug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sphu8"]
-size = Vector2(20, 30)
+size = Vector2(20, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_60dk8"]
-size = Vector2(41, 32.5)
+size = Vector2(33, 32.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ltxxq"]
 atlas = ExtResource("3_avfyt")
@@ -171,11 +171,21 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Enemigo_Melee" type="CharacterBody2D" groups=["enemigos"]]
+[node name="Enemigo_Melee" type="CharacterBody2D" node_paths=PackedStringArray("colision_ataque", "sprite", "barra_vida", "timer_1", "timer_2", "ataque_timer", "raycast_derecha", "raycast_izquierda", "area") groups=["enemigos"]]
 collision_layer = 4
 script = ExtResource("1_60dk8")
+colision_ataque = NodePath("Area/CollisionShape2D")
+sprite = NodePath("Sprite")
+barra_vida = NodePath("BarraVida")
+timer_1 = NodePath("Timer")
+timer_2 = NodePath("Timer2")
+ataque_timer = NodePath("Ataque")
+raycast_derecha = NodePath("Derecha")
+raycast_izquierda = NodePath("Izquierda")
+area = NodePath("Area")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_sphu8")
 
 [node name="Timer" type="Timer" parent="."]
@@ -206,7 +216,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
-position = Vector2(21.5, -0.75)
+position = Vector2(17.5, -0.75)
 shape = SubResource("RectangleShape2D_60dk8")
 disabled = true
 

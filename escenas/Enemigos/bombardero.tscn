@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cthmj0w16sug1" path="res://assets/Enemigos/Enemigo_muerte.png" id="4_vmpw2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkw6w"]
-size = Vector2(20, 37)
+size = Vector2(20, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_huxo0"]
 atlas = ExtResource("2_rkw6w")
@@ -195,9 +195,16 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="Bombardero" type="CharacterBody2D" groups=["enemigos"]]
+[node name="Bombardero" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "barra_vida", "timer_1", "timer_2", "ataque_timer", "raycast_derecha", "raycast_izquierda") groups=["enemigos"]]
 collision_layer = 4
 script = ExtResource("1_8d1da")
+sprite = NodePath("Sprite")
+barra_vida = NodePath("BarraVida")
+timer_1 = NodePath("Timer")
+timer_2 = NodePath("Timer2")
+ataque_timer = NodePath("Ataque")
+raycast_derecha = NodePath("Derecha")
+raycast_izquierda = NodePath("Izquierda")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

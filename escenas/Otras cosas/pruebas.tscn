@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Enemigos/enemigo_arquero.tscn" id="2_gsmxe"]
 [ext_resource type="PackedScene" uid="uid://dt2k3ujn27ptr" path="res://escenas/Enemigos/enemigo_melee.tscn" id="4_kndug"]
-[ext_resource type="PackedScene" uid="uid://dod85j6oku7jb" path="res://escenas/Jugadores/Arquero.tscn" id="4_tabga"]
+[ext_resource type="PackedScene" uid="uid://bar8navc35jc6" path="res://escenas/Jugadores/Arquero_2.tscn" id="4_tabga"]
 [ext_resource type="PackedScene" uid="uid://7wj7fk01d4s3" path="res://escenas/Enemigos/bombardero.tscn" id="5_tabga"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hkg04"]
@@ -24,7 +24,7 @@ position = Vector2(-305, 9)
 position = Vector2(-568, 9)
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(301.68747, -11.624741)
+position = Vector2(414, -16)
 rotation = -1.57079
 scale = Vector2(578.75, 73.5)
 mesh = SubResource("QuadMesh_hkg04")
@@ -53,7 +53,7 @@ scale = Vector2(0.9999999, 1)
 shape = SubResource("RectangleShape2D_vb5qb")
 
 [node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
-position = Vector2(-647.99994, -5.999999)
+position = Vector2(-739, -9)
 rotation = -1.57079
 scale = Vector2(578.75, 73.5)
 mesh = SubResource("QuadMesh_hkg04")
@@ -64,4 +64,5 @@ mesh = SubResource("QuadMesh_hkg04")
 position = Vector2(5.96046e-08, 0.00680256)
 shape = SubResource("RectangleShape2D_vb5qb")
 
-[node name="Arquero" parent="." instance=ExtResource("4_tabga")]
+[node name="Arquero_2" parent="." instance=ExtResource("4_tabga")]
+position = Vector2(-6, 6)

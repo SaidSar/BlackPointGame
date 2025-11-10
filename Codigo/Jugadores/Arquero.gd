@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const SPEED = 120.0
+const SPEED = 110.0
 const JUMP_VELOCITY = -270.0
 var tipo_ataque: String 
 var ataque_actual: bool
@@ -67,7 +67,7 @@ func _physics_process(delta):
 	else: 
 		en_aire = false
 		doble_salto = true
-	if Input.is_action_just_pressed("Espacio"):
+	if Input.is_action_just_pressed("Espacio") || Input.is_action_just_pressed("control_salto"):
 		if en_aire:
 			if doble_salto:
 				velocity.y = JUMP_VELOCITY
@@ -75,26 +75,23 @@ func _physics_process(delta):
 		else:
 			velocity.y = JUMP_VELOCITY
 		
-	var direction = Input.get_axis("A", "D")
+	var direction = Input.get_axis("A", "D") + Input.get_axis("stick_izquierda", "stick_derecha")
 	if direction and !ataque_actual :
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if ataque_actual == false and !en_aire:
-		if Input.is_action_just_pressed("click_izquierdo") and tiempo_ataque_1.is_stopped():
+		if (Input.is_action_just_pressed("click_izquierdo") || Input.is_action_just_pressed("control_ataque_1")) and tiempo_ataque_1.is_stopped():
 			cargando_flecha = true
 			tiempo_carga = min(tiempo_carga + delta, CARGA_MAX)
 			tipo_ataque = "Ataque_1"
 			tiempo_ataque_1.start()
 			ataque_actual = true
-		elif Input.is_action_pressed("click_derecho") and tiempo_ataque_2.is_stopped():
+		elif (Input.is_action_pressed("click_derecho")|| Input.is_action_just_pressed("control_ataque_2")) and tiempo_ataque_2.is_stopped():
 			cargando_flecha = true
 			tiempo_carga = min(tiempo_carga + delta, CARGA_MAX)
 			tipo_ataque = "Ataque_2"
 			tiempo_ataque_2.start()
-			ataque_actual = true
-		elif Input.is_action_just_pressed("shift"):
-			tipo_ataque = "Ataque_3"
 			ataque_actual = true
 		else:
 			tipo_ataque = ""
@@ -110,7 +107,6 @@ func controlador_ataques():
 	else:
 		return
 	tipo_ataque = ""
-	pass
 
 func disparar_flecha():
 	if flecha_escena == null:

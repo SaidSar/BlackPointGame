@@ -5,13 +5,13 @@ var perseguido: bool
 var vida: int
 var daño = 2
 var atacando: bool
-@onready var sprite = $Sprite
-@onready var barra_vida = $BarraVida
-@onready var timer_1 = $Timer
-@onready var timer_2 = $Timer2
-@onready var ataque_timer = $Ataque
-@onready var raycast_derecha = $Derecha
-@onready var raycast_izquierda = $Izquierda
+
+@export var barra_vida : ProgressBar
+@export var timer_1 : Timer
+@export var timer_2 : Timer
+@export var ataque_timer : Timer
+@export var raycast_derecha : RayCast2D
+@export var raycast_izquierda : RayCast2D
 @onready var flecha_escena = preload("res://escenas//Enemigos//flecha_enemigo.tscn")
 
 var tiempo_carga: float = 0.4

@@ -8,9 +8,15 @@ size = Vector2(20, 33)
 
 [sub_resource type="QuadMesh" id="QuadMesh_iawsb"]
 
-[node name="enemigo_arquero" type="CharacterBody2D" groups=["enemigos"]]
+[node name="enemigo_arquero" type="CharacterBody2D" node_paths=PackedStringArray("barra_vida", "timer_1", "timer_2", "ataque_timer", "raycast_derecha", "raycast_izquierda") groups=["enemigos"]]
 collision_layer = 4
 script = ExtResource("1_jjf2n")
+barra_vida = NodePath("BarraVida")
+timer_1 = NodePath("Timer")
+timer_2 = NodePath("Timer2")
+ataque_timer = NodePath("Ataque")
+raycast_derecha = NodePath("Derecha")
+raycast_izquierda = NodePath("Izquierda")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

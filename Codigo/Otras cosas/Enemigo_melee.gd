@@ -3,27 +3,26 @@ var velocidad: int
 var dir: Vector2
 var perseguido: bool
 var vida: int
-var daño = 4
+var daño : int = 4
 var atacando: bool
 var tamaño_ray_activo : float
 var tamaño_ray_desactivado : float
 
 var animacion_atacando = false
-@onready var colision_ataque
-@onready var sprite = $Sprite
-@onready var barra_vida = $BarraVida
-@onready var timer_1 = $Timer
-@onready var timer_2 = $Timer2
-@onready var ataque_timer = $Ataque
-@onready var raycast_derecha = $Derecha
-@onready var raycast_izquierda = $Izquierda
-@onready var area = $"Area"
+@export var colision_ataque : CollisionShape2D
+@export var sprite : AnimatedSprite2D
+@export var barra_vida : ProgressBar
+@export var timer_1 : Timer
+@export var timer_2 : Timer
+@export var ataque_timer : Timer
+@export var raycast_derecha : RayCast2D
+@export var raycast_izquierda : RayCast2D
+@export var area : Area2D
 
 func _ready():
 	_iniciar_enemigo()
 	atacando = false
 	perseguido = false
-	colision_ataque = area.get_node("CollisionShape2D")
 
 func _iniciar_enemigo():
 	velocidad = 60
@@ -37,9 +36,6 @@ func _process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	velocity.x = dir.x * velocidad
-	voltear_sprite(dir)
-	
-	
 	var objetivo_derecha = raycast_derecha.get_collider()
 	var objetivo_izquierda = raycast_izquierda.get_collider()
 	if raycast_derecha.is_colliding()  and objetivo_derecha.is_in_group("Jugadores"):
@@ -48,7 +44,7 @@ func _process(delta):
 		var collision_point: Vector2 = raycast_derecha.get_collision_point()
 		var origin_point: Vector2 = global_position
 		var distancia: float = origin_point.distance_to(collision_point)
-		if distancia >= 45:
+		if distancia >= 30:
 			dir = Vector2.RIGHT
 			if !atacando:
 				velocidad = 60
@@ -62,7 +58,7 @@ func _process(delta):
 		var collision_point: Vector2 = raycast_izquierda.get_collision_point()
 		var origin_point: Vector2 = global_position
 		var distancia: float = origin_point.distance_to(collision_point)
-		if distancia >= 45:
+		if distancia >= 30:
 			dir = Vector2.LEFT
 			if !atacando:
 				velocidad = 60

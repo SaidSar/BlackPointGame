@@ -8,15 +8,14 @@ var atacando: bool
 var animacion_atacando: bool
 var vida_maxima : float
 #Tamaño de sprites --------altura 241-----------
-
 var animaciones
-@onready var sprite = $Sprite
-@onready var barra_vida = $BarraVida
-@onready var timer_1 = $Timer
-@onready var timer_2 = $Timer2
-@onready var ataque_timer = $Ataque
-@onready var raycast_derecha = $Derecha
-@onready var raycast_izquierda = $Izquierda
+@export var sprite : AnimatedSprite2D
+@export var barra_vida : ProgressBar
+@export var timer_1 : Timer
+@export var timer_2 : Timer
+@export var ataque_timer : Timer
+@export var raycast_derecha : RayCast2D
+@export var raycast_izquierda : RayCast2D
 @onready var bomba = preload("res://escenas/Enemigos/bomba_enemigo.tscn")
 
 var tiempo_carga: float = 0.3

@@ -1,30 +1,51 @@
 extends CharacterBody2D
 @onready var zona_daño = $"ZonaDaño"
-@export var tiempo_de_vida = 7.0 
-var GRAVEDAD = 50.0
-var tiempo_actual = 0.0
 var puede_atacar = true
-var daño = 2
+var daño : float = 1
+var direccion : Vector2 = Vector2.RIGHT
+var velocidad: float = 300
+var p0 : Vector2
+var p1 : Vector2
+var p2 : Vector2
+var t : float = 0.0
+var vector_apuntando : Vector2 = Vector2.RIGHT
 
 func _physics_process(delta):
 	if is_on_floor():
-		velocity = Vector2.ZERO
 		puede_atacar = false
+	if t < 4.0:
+		t += 1.75 * delta
+		if t > 4:
+			queue_free()
+	position = _quadratic_bezier()
+
+func set_direction(direccion_giro, frame, poder):
+	$Sprite2D.frame = frame
+	var angle
+	var length = max(poder * 300, 30)
+	if direccion_giro == false:
+		direccion = Vector2.RIGHT
+		angle = -10
 	else:
-		velocity.y += GRAVEDAD * delta  # caída
-		move_and_slide()
-		if velocity.length() > 0.1:
-			rotation = velocity.angle()
+		direccion = Vector2.LEFT
+		$Sprite2D.flip_h = true
+		angle = -170
+		length = -abs(length)
 	
-	tiempo_actual += delta
-	if tiempo_actual >= tiempo_de_vida:
-		queue_free()
+	p0 = position
+	p2 = position + Vector2(length,16)
+	var tilted_unit_vector = (p2-p0).normalized().rotated(deg_to_rad(angle))
+	p1 = p0 + length * tilted_unit_vector
 
-
+func _quadratic_bezier() -> Vector2:
+	var time = min(t,1)
+	var q0 : Vector2 = p0.lerp(p1,time)
+	var q1: Vector2 = p1.lerp(p2,time)
+	vector_apuntando = q1-q0
+	return p0.lerp(q1,time)
+	
 func _on_zona_daño_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemigos") and puede_atacar: 
-		velocity = Vector2.ZERO
-		GRAVEDAD = 0
 		if body.has_method("recibir_daño"):
 			body.recibir_daño(daño) 
 			queue_free()
