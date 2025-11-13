@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk47tkb4q8tjy"]
+[gd_scene load_steps=8 format=3 uid="uid://bk47tkb4q8tjy"]
 
 [ext_resource type="Texture2D" uid="uid://bjrcx3goxjp74" path="res://escenas/Sayola/Pantalla_de_Carga.png" id="1_3rt3w"]
 [ext_resource type="Script" uid="uid://c4pbyb46j87cm" path="res://Codigo/Otras cosas/pantalla_carga.gd" id="1_qxm0e"]
 [ext_resource type="FontFile" uid="uid://clyo38m000mie" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Black.ttf" id="2_eslm5"]
+[ext_resource type="AudioStream" uid="uid://2h1vbnvapgv7" path="res://assets/Musica/MusicaCarga.ogg" id="4_sd883"]
 
 [sub_resource type="Animation" id="Animation_qxm0e"]
 resource_name = "carga"
@@ -81,3 +82,8 @@ libraries = {
 [node name="Timer" type="Timer" parent="."]
 wait_time = 8.0
 one_shot = true
+
+[node name="MusicaCarga" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sd883")
+volume_db = 10.0
+autoplay = true
