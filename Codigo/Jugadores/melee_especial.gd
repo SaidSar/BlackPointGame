@@ -19,6 +19,6 @@ func _physics_process(delta):
 		queue_free()
 
 func _on_zona_daño_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemigos"): 
+	if body.is_in_group("enemigos") || body.is_in_group("Entorno"): 
 		if body.has_method("recibir_daño"):
 			body.recibir_daño(daño) 

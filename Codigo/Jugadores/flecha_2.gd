@@ -13,6 +13,7 @@ var vector_apuntando : Vector2 = Vector2.RIGHT
 func _physics_process(delta):
 	if is_on_floor():
 		puede_atacar = false
+		daño_area()
 	if t < 3.0:
 		t += 1.75 * delta
 		daño -= (delta + .01)
@@ -48,11 +49,13 @@ func _quadratic_bezier() -> Vector2:
 	return p0.lerp(q1,time)
 
 func _on_zona_daño_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemigos"): 
+	if body.is_in_group("enemigos") || body.is_in_group("Entorno"): 
 		if body.has_method("recibir_daño"):
 			body.recibir_daño(daño) 
 
 func daño_area():
+	$Sprite2D2.visible = false
+	$Sprite2D.visible = true
 	var area_daño = $"area_daño"
 	$Sprite2D.play("explosion")
 	var colision_zona = area_daño.get_node("CollisionShape2D")
@@ -64,7 +67,7 @@ func daño_area():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemigos"): 
+	if body.is_in_group("enemigos") || body.is_in_group("Entorno"): 
 		puede_atacar = false
 		velocity = Vector2.ZERO
 		daño_area()

@@ -1,60 +1,60 @@
-[gd_scene load_steps=19 format=3 uid="uid://bar8navc35jc6"]
+[gd_scene load_steps=17 format=3 uid="uid://dod85j6oku7jb"]
 
-[ext_resource type="PackedScene" uid="uid://dfn1t6mgef145" path="res://escenas/Otras cosas/ui_arquero.tscn" id="1_4x0yv"]
-[ext_resource type="Script" uid="uid://dng1a0ms4ahn6" path="res://Codigo/Jugadores/Arquero_2.gd" id="1_73okv"]
-[ext_resource type="Texture2D" uid="uid://bg7ei546lmy3w" path="res://assets/Jugadores/Sprites_Arquero.png" id="2_73okv"]
-[ext_resource type="PackedScene" uid="uid://c44u3pjqq4wjg" path="res://escenas/Jugadores/camara.tscn" id="3_cjvku"]
+[ext_resource type="Script" uid="uid://dx321iqd2clle" path="res://Codigo/Jugadores/Arquero.gd" id="1_gljk4"]
+[ext_resource type="Texture2D" uid="uid://bg7ei546lmy3w" path="res://assets/Jugadores/Sprites_Arquero.png" id="2_eq65h"]
+[ext_resource type="PackedScene" uid="uid://c44u3pjqq4wjg" path="res://escenas/Jugadores/camara.tscn" id="4_q7bcj"]
+[ext_resource type="PackedScene" uid="uid://dfn1t6mgef145" path="res://escenas/Ui/ui_arquero.tscn" id="4_tnjpn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdi7f"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnjpn"]
 size = Vector2(21, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tnjpn"]
-atlas = ExtResource("2_73okv")
+atlas = ExtResource("2_eq65h")
 region = Rect2(640, 375, 217, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7bcj"]
-atlas = ExtResource("2_73okv")
+atlas = ExtResource("2_eq65h")
 region = Rect2(336, 680, 234, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slc7s"]
-atlas = ExtResource("2_73okv")
+atlas = ExtResource("2_eq65h")
 region = Rect2(71, 687, 241, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4b2va"]
-atlas = ExtResource("2_73okv")
+atlas = ExtResource("2_eq65h")
 region = Rect2(392, 24, 193, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xrk8l"]
-atlas = ExtResource("2_73okv")
+atlas = ExtResource("2_eq65h")
 region = Rect2(31, 24, 177, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8aa4"]
-atlas = ExtResource("2_73okv")
+atlas = ExtResource("2_eq65h")
 region = Rect2(393, 24, 193, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1h6a"]
-atlas = ExtResource("2_73okv")
+atlas = ExtResource("2_eq65h")
 region = Rect2(586, 24, 193, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_no14o"]
-atlas = ExtResource("2_73okv")
+atlas = ExtResource("2_eq65h")
 region = Rect2(23, 351, 193, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p05ic"]
-atlas = ExtResource("2_73okv")
+atlas = ExtResource("2_eq65h")
 region = Rect2(216, 351, 193, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7786a"]
-atlas = ExtResource("2_73okv")
+atlas = ExtResource("2_eq65h")
 region = Rect2(23, 351, 193, 313)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_50ewc"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_wlp1l"]
 animations = [{
 "frames": [{
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tnjpn")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_q7bcj")
 }, {
 "duration": 1.0,
@@ -65,10 +65,10 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 0.3,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tnjpn")
 }, {
-"duration": 0.3,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_q7bcj")
 }, {
 "duration": 1.0,
@@ -132,41 +132,13 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73okv"]
-bg_color = Color(0, 0, 0, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjvku"]
-bg_color = Color(0.1254902, 0.3882353, 0.74509805, 0.98039216)
-anti_aliasing = false
-
-[node name="Arquero_2" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hud", "tiempo_ataque_1", "tiempo_ataque_2", "carga") groups=["Jugadores"]]
+[node name="Arquero" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "tiempo_ataque_1", "tiempo_ataque_2", "hud") groups=["Jugadores"]]
 collision_layer = 2
-script = ExtResource("1_73okv")
+script = ExtResource("1_gljk4")
 sprite = NodePath("Sprite")
-hud = NodePath("UiArquero")
 tiempo_ataque_1 = NodePath("Ataque_1")
 tiempo_ataque_2 = NodePath("Ataque_2")
-carga = NodePath("Carga")
-
-[node name="UiArquero" parent="." instance=ExtResource("1_4x0yv")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -1)
-shape = SubResource("RectangleShape2D_rdi7f")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.847458, -0.5000023)
-scale = Vector2(0.09075998, 0.09904153)
-sprite_frames = SubResource("SpriteFrames_50ewc")
-animation = &"Ataque_2"
-
-[node name="Camera2D" parent="." instance=ExtResource("3_cjvku")]
-enabled = true
+hud = NodePath("UiArquero")
 
 [node name="Ataque_1" type="Timer" parent="."]
 wait_time = 3.0
@@ -174,15 +146,20 @@ wait_time = 3.0
 [node name="Ataque_2" type="Timer" parent="."]
 wait_time = 10.0
 
-[node name="Carga" type="ProgressBar" parent="."]
-offset_left = -11.0
-offset_top = -21.0
-offset_right = 10.0
-offset_bottom = -19.0
-theme_override_styles/background = SubResource("StyleBoxFlat_73okv")
-theme_override_styles/fill = SubResource("StyleBoxFlat_cjvku")
-max_value = 1.25
-show_percentage = false
+[node name="UiArquero" parent="." instance=ExtResource("4_tnjpn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_tnjpn")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.847458, -0.5000023)
+scale = Vector2(0.09075998, 0.09904153)
+sprite_frames = SubResource("SpriteFrames_wlp1l")
+animation = &"Ataque_2"
+
+[node name="Camera2D" parent="." instance=ExtResource("4_q7bcj")]
 
 [connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
 [connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

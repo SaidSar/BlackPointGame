@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://vkeqyb4v625k"]
+[gd_scene load_steps=21 format=3 uid="uid://vkeqyb4v625k"]
 
 [ext_resource type="Script" uid="uid://ck6tkt4b78f4w" path="res://Codigo/Jugadores/Mago.gd" id="1_owev7"]
+[ext_resource type="Material" uid="uid://bw2fjyuinhj5f" path="res://assets/Jugadores/Shaders/Material_daño_shader.tres" id="2_2l1pc"]
 [ext_resource type="Texture2D" uid="uid://bmn1iahq624p7" path="res://assets/Jugadores/Sprites_Mago.png" id="2_n1usg"]
 [ext_resource type="Texture2D" uid="uid://6iuo6e7wq8o0" path="res://assets/Jugadores/Mago_Puño.png" id="3_ngllv"]
-[ext_resource type="PackedScene" uid="uid://bpej1iq7lrrw" path="res://escenas/Otras cosas/UiMago.tscn" id="4_ngllv"]
+[ext_resource type="PackedScene" uid="uid://bpej1iq7lrrw" path="res://escenas/Ui/UiMago.tscn" id="4_ngllv"]
 [ext_resource type="PackedScene" uid="uid://c44u3pjqq4wjg" path="res://escenas/Jugadores/camara.tscn" id="5_n1usg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ch47k"]
@@ -132,6 +133,7 @@ height = 56.0
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_owev7")
+"shader_daño" = ExtResource("2_2l1pc")
 "area_daño" = NodePath("Area_daño")
 area = NodePath("Area_escudo")
 sprite = NodePath("Sprite")

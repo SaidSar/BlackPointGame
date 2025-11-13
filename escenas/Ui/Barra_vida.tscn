@@ -1,43 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce5vs54o7ghih"]
+[gd_scene load_steps=6 format=3 uid="uid://iqb7u2n6l32s"]
 
-[ext_resource type="Script" uid="uid://cxllusatsor30" path="res://Codigo/Otras cosas/barra_vida_jugador.gd" id="1_kr3di"]
+[ext_resource type="Script" uid="uid://cj3511jglk0of" path="res://Codigo/Ui/barra_vida.gd" id="1_a22au"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v66p8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a22au"]
-content_margin_left = 1.0
-content_margin_right = 0.0
-bg_color = Color(0.03677751, 0.41623122, 0.17034626, 1)
-border_color = Color(0.03529412, 0.41568628, 0.16862746, 1)
-expand_margin_top = 1.0
-expand_margin_right = 2.0
-expand_margin_bottom = 1.0
-anti_aliasing = false
+bg_color = Color(0.07282261, 0.5684185, 0.14655757, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v66p8"]
-content_margin_left = 1.0
-content_margin_top = 1.0
-content_margin_right = 1.0
-content_margin_bottom = 1.0
 bg_color = Color(0, 0, 0, 1)
-expand_margin_left = 3.0
-expand_margin_top = 2.0
-expand_margin_right = 3.0
-expand_margin_bottom = 2.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
 shadow_offset = Vector2(0, 1)
-anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75cj7"]
-content_margin_left = 1.0
-content_margin_right = 0.0
-content_margin_bottom = 1.0
-bg_color = Color(0.7614347, 0.15922108, 0.30487922, 1)
-border_width_top = 1
-border_width_bottom = 1
-border_color = Color(0.106979735, 0.20981988, 0.08734869, 1)
-expand_margin_top = 1.0
-expand_margin_bottom = 1.0
-anti_aliasing = false
+bg_color = Color(0.88166445, 0.34971356, 0.40235117, 1)
 
 [node name="BarraVida" type="ProgressBar"]
 z_index = 1
@@ -48,9 +27,9 @@ offset_bottom = 0.87199926
 theme_override_styles/background = SubResource("StyleBoxEmpty_v66p8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_a22au")
 max_value = 60.0
-value = 30.0
+value = 60.0
 show_percentage = false
-script = ExtResource("1_kr3di")
+script = ExtResource("1_a22au")
 
 [node name="Barra_daño" type="ProgressBar" parent="."]
 z_index = -1
@@ -58,9 +37,6 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1.0
-offset_right = 2.0
-offset_bottom = 1.0
 theme_override_styles/background = SubResource("StyleBoxFlat_v66p8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_75cj7")
 value = 80.0

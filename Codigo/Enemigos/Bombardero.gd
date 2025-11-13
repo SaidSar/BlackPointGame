@@ -11,6 +11,7 @@ var vida_maxima : float
 var animaciones
 @export var sprite : AnimatedSprite2D
 @export var barra_vida : ProgressBar
+@export var shader_daño : ShaderMaterial
 @export var timer_1 : Timer
 @export var timer_2 : Timer
 @export var ataque_timer : Timer
@@ -102,6 +103,9 @@ func recibir_daño(daño):
 		queue_free()
 	if vida <= vida_maxima/2:
 		animaciones = ["Parado_herido","Corriendo_herido","Callendo_herido","Atacando_herido"]
+	sprite.material = shader_daño
+	await get_tree().create_timer(.2).timeout
+	sprite.material = null
 	barra_vida._set_vida(vida)
 
 func _on_timer_2_timeout() -> void:

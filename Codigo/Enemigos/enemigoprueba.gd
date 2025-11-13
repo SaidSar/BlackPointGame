@@ -6,12 +6,14 @@ var vida: int
 var daño = 2
 var atacando: bool
 
+@export var shader_daño : ShaderMaterial
 @export var barra_vida : ProgressBar
 @export var timer_1 : Timer
 @export var timer_2 : Timer
 @export var ataque_timer : Timer
 @export var raycast_derecha : RayCast2D
 @export var raycast_izquierda : RayCast2D
+@export var sprite : AnimatedSprite2D
 @onready var flecha_escena = preload("res://escenas//Enemigos//flecha_enemigo.tscn")
 
 var tiempo_carga: float = 0.4
@@ -76,8 +78,11 @@ func recibir_daño(daño):
 	vida -= daño
 	if vida <= 0:
 		queue_free()
+	sprite.material = shader_daño
+	await get_tree().create_timer(.2).timeout
+	sprite.material = null
 	barra_vida._set_vida(vida)
-	print("daño recibido: ", daño)
+	
 
 func _on_timer_2_timeout() -> void:
 	timer_2.stop()

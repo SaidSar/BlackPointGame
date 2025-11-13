@@ -17,6 +17,8 @@ config/icon="res://icon.svg"
 [global_group]
 
 Jugadores=""
+Entorno="Cosas que seran del entorno"
+enemigos=""
 
 [input]
 

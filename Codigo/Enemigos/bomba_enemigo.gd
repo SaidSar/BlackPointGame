@@ -18,9 +18,7 @@ func _physics_process(delta):
 		daño_area()
 
 func _on_zona_daño_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Jugadores"): 
-		body.recibir_daño(daño) 
-	if body.is_in_group("Enemigos"): 
+	if body.is_in_group("Jugadores") || body.is_in_group("Enemigos") || body.is_in_group("Entorno"): 
 		body.recibir_daño(daño) 
 
 func daño_area():
@@ -35,7 +33,7 @@ func daño_area():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Jugadores") || body.is_in_group("Enemigos") : 
+	if body.is_in_group("Jugadores") || body.is_in_group("Enemigos") || body.is_in_group("Entorno") : 
 		GRAVEDAD = 0.0
 		velocity = Vector2.ZERO
 		daño_area()

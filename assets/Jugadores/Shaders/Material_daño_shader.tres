@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bw2fjyuinhj5f"]
+
+[ext_resource type="Shader" uid="uid://cae17iwvdhg6n" path="res://assets/Jugadores/Shaders/daño_shader.tres" id="1_ifo4y"]
+
+[resource]
+shader = ExtResource("1_ifo4y")

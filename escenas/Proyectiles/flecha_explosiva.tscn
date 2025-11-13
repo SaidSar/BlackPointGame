@@ -8,14 +8,10 @@
 size = Vector2(19, 3)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2t8m"]
-radius = 48.002605
+radius = 42.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2t8m"]
 size = Vector2(19, 3)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ipd7n"]
-atlas = ExtResource("2_a45li")
-region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ify2r"]
 atlas = ExtResource("3_a45li")
@@ -45,7 +41,7 @@ region = Rect2(240, 3, 40, 41)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ipd7n")
+"texture": null
 }],
 "loop": true,
 "name": &"default",
@@ -75,6 +71,10 @@ animations = [{
 "speed": 11.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipd7n"]
+atlas = ExtResource("2_a45li")
+region = Rect2(0, 0, 32, 32)
+
 [node name="Flecha_2" type="CharacterBody2D"]
 collision_layer = 8
 script = ExtResource("1_ipd7n")
@@ -103,8 +103,16 @@ position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_e2t8m")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, 2)
+visible = false
+position = Vector2(1.0000004, -0.99999803)
+scale = Vector2(1.55, 1.4634145)
 sprite_frames = SubResource("SpriteFrames_a45li")
+animation = &"explosion"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-2.5000014, 0.9999993)
+scale = Vector2(0.96875, 0.875)
+texture = SubResource("AtlasTexture_ipd7n")
 
 [connection signal="body_entered" from="area_daño" to="." method="_on_zona_daño_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

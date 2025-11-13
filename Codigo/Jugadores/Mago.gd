@@ -10,6 +10,7 @@ var vida_maxima:float
 var reseteo_escudo : float
 var escudo_tiempo: float
 
+@export var shader_daño : ShaderMaterial
 @export var area_daño: Area2D
 @export var area: Area2D
 @export var sprite :AnimatedSprite2D
@@ -170,7 +171,7 @@ func ataque_especial():
 
 
 func _on_area_daño_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemigos"): 
+	if body.is_in_group("enemigos") || body.is_in_group("Entorno"): 
 		if body.has_method("recibir_daño"):
 			body.recibir_daño(daño) 
 
@@ -195,7 +196,9 @@ func recibir_daño(daño_recibido):
 		if vida <= 0:
 			queue_free()
 		barra_vida._set_vida(vida)
-		print("daño recibido jugador: ", daño_recibido)
+		sprite.material = shader_daño
+		await get_tree().create_timer(.2).timeout
+		sprite.material = null
 
 func _on_ataque_1_timeout():
 	tiempo_ataque_1.stop()

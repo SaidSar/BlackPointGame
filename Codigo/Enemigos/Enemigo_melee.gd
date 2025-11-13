@@ -9,6 +9,7 @@ var tamaño_ray_activo : float
 var tamaño_ray_desactivado : float
 
 var animacion_atacando = false
+@export var shader_daño : ShaderMaterial
 @export var colision_ataque : CollisionShape2D
 @export var sprite : AnimatedSprite2D
 @export var barra_vida : ProgressBar
@@ -120,6 +121,9 @@ func recibir_daño(daño):
 	vida -= daño
 	if vida <= 0:
 		queue_free()
+	sprite.material = shader_daño
+	await get_tree().create_timer(.2).timeout
+	sprite.material = null
 	barra_vida._set_vida(vida)
 
 func _on_timer_2_timeout() -> void:
@@ -144,5 +148,5 @@ func _on_ataque_timeout() -> void:
 
 
 func _on_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Jugadores"): 
+	if body.is_in_group("Jugadores") || body.is_in_group("Entorno"): 
 		body.recibir_daño(daño) 

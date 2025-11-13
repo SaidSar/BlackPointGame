@@ -1,11 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://bd4th2rdgbtv5"]
+[gd_scene load_steps=27 format=3 uid="uid://bd4th2rdgbtv5"]
 
 [ext_resource type="Script" uid="uid://bpm4qqovts70n" path="res://Codigo/Jugadores/Melee.gd" id="1_nqg7t"]
 [ext_resource type="Texture2D" uid="uid://b2b7mdgn7vre7" path="res://assets/Jugadores/Sprite_Caballero_Atacando_Final.png" id="2_ebxey"]
+[ext_resource type="Material" uid="uid://bw2fjyuinhj5f" path="res://assets/Jugadores/Shaders/Material_daño_shader.tres" id="2_ltxxq"]
 [ext_resource type="Texture2D" uid="uid://c4lk5ld4aws1m" path="res://assets/Jugadores/a2.png" id="3_ebxey"]
 [ext_resource type="Texture2D" uid="uid://c43s8ok3siun3" path="res://assets/Jugadores/a3.png" id="4_138wo"]
 [ext_resource type="Texture2D" uid="uid://c117b5mwim582" path="res://assets/Jugadores/Sprites_Caballero_Caminando.png" id="5_ebxey"]
-[ext_resource type="PackedScene" uid="uid://cvw3v4bqgfldx" path="res://escenas/Otras cosas/ui_melee.tscn" id="7_ebxey"]
+[ext_resource type="PackedScene" uid="uid://cvw3v4bqgfldx" path="res://escenas/Ui/ui_melee.tscn" id="7_ebxey"]
 [ext_resource type="PackedScene" uid="uid://c44u3pjqq4wjg" path="res://escenas/Jugadores/camara.tscn" id="7_ltxxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebxey"]
@@ -181,6 +182,7 @@ texture_filter = 1
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_nqg7t")
+"shader_daño" = ExtResource("2_ltxxq")
 "area_daño" = NodePath("Area_daño")
 sprite = NodePath("Sprite")
 tiempo_ataque_1 = NodePath("Ataque_1")

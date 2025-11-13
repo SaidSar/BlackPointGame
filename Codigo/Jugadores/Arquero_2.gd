@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @export var sprite :AnimatedSprite2D
 @export var hud : CanvasLayer
+@export var shader_daño : ShaderMaterial
 @onready var flecha_escena = preload("res://escenas//Proyectiles//flecha.tscn")
 @onready var flecha_escena_2 = preload("res://escenas//Proyectiles//flecha_explosiva.tscn")
 @export var tiempo_ataque_1 : Timer
@@ -12,9 +13,7 @@ extends CharacterBody2D
 
 var daño: float = 5
 var tiempo_carga: float = 0
-const carga_max = 1.25 
-const fuerza_max = 120.0  
-const fuerza_min = 400.0   
+const carga_max = 1.1 
 
 var tipo_ataque: String 
 var ataque_actual: bool
@@ -87,7 +86,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, velocidad)
 	move_and_slide()
-
 	Controlador_animaciones(direction)
 
 func _input(event: InputEvent):
@@ -95,7 +93,6 @@ func _input(event: InputEvent):
 		ataque_actual = true
 		carga.value = 0
 		carga.visible = true
-		tiempo_carga += 0.1
 		sprite.play("Ataque_1")
 	if event.is_action_released("click_izquierdo")  and ataque_actual:
 		ataque_actual = false
@@ -109,7 +106,6 @@ func _input(event: InputEvent):
 		ataque_actual = true
 		carga.value = 0
 		carga.visible = true
-		tiempo_carga += 0.1
 		sprite.play("Ataque_2")
 	if event.is_action_released("click_derecho")  and ataque_actual:
 		ataque_actual = false
@@ -160,4 +156,7 @@ func recibir_daño(daño_recibido):
 	vida -= daño_recibido
 	if vida <= 0:
 		queue_free()
+	sprite.material = shader_daño
+	await get_tree().create_timer(.2).timeout
+	sprite.material = null
 	barra_vida._set_vida(vida)

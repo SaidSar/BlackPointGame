@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctndgf2c3v0vc"]
+[gd_scene load_steps=9 format=3 uid="uid://ctndgf2c3v0vc"]
 
 [ext_resource type="PackedScene" uid="uid://lqjnpg6swxj1" path="res://escenas/Enemigos/enemigo_arquero.tscn" id="2_gsmxe"]
 [ext_resource type="PackedScene" uid="uid://dt2k3ujn27ptr" path="res://escenas/Enemigos/enemigo_melee.tscn" id="4_kndug"]
-[ext_resource type="PackedScene" uid="uid://bar8navc35jc6" path="res://escenas/Jugadores/Arquero_2.tscn" id="4_tabga"]
+[ext_resource type="PackedScene" uid="uid://bar8navc35jc6" path="res://escenas/Jugadores/Arquero.tscn" id="4_tabga"]
+[ext_resource type="PackedScene" uid="uid://bjbjspgtqlwbm" path="res://escenas/Entorno/barril_explosivo.tscn" id="5_m0c8v"]
 [ext_resource type="PackedScene" uid="uid://7wj7fk01d4s3" path="res://escenas/Enemigos/bombardero.tscn" id="5_tabga"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hkg04"]
@@ -65,4 +66,7 @@ position = Vector2(5.96046e-08, 0.00680256)
 shape = SubResource("RectangleShape2D_vb5qb")
 
 [node name="Arquero_2" parent="." instance=ExtResource("4_tabga")]
-position = Vector2(-6, 6)
+position = Vector2(-7, 13)
+
+[node name="Barril_explosivo" parent="." instance=ExtResource("5_m0c8v")]
+position = Vector2(-134, 13)

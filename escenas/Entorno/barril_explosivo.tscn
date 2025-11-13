@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://bjbjspgtqlwbm"]
+
+[ext_resource type="Script" uid="uid://df5xl1gi402ju" path="res://Codigo/Otras cosas/barril_explosivo.gd" id="1_wgqav"]
+[ext_resource type="Texture2D" uid="uid://bvpfqr5me56ms" path="res://assets/otros/Explosion_3/explosion-f1.png" id="2_62mdu"]
+[ext_resource type="Texture2D" uid="uid://cw5aoyasqaxbq" path="res://assets/otros/Explosion_3/explosion-f2.png" id="3_7fdne"]
+[ext_resource type="Texture2D" uid="uid://bw7jg2u25u5kg" path="res://assets/otros/Explosion_3/explosion-f4.png" id="4_03fb2"]
+[ext_resource type="Texture2D" uid="uid://b1yrdf1ysc13n" path="res://assets/otros/Explosion_3/explosion-f5.png" id="5_brmxw"]
+[ext_resource type="Texture2D" uid="uid://c3qqepf8820qo" path="res://assets/otros/Explosion_3/explosion-f7.png" id="6_37hpw"]
+[ext_resource type="Texture2D" uid="uid://jgg7tgappfu7" path="res://assets/otros/Explosion_3/explosion-f8.png" id="7_lsnbw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jfpoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_62mdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7fdne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_03fb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_brmxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_37hpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lsnbw")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfpoq"]
+size = Vector2(22, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jfpoq"]
+radius = 54.0
+
+[node name="Barril_explosivo" type="StaticBody2D" groups=["Entorno"]]
+collision_layer = 7
+collision_mask = 0
+script = ExtResource("1_wgqav")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.013279e-06, -0.49999976)
+scale = Vector2(1.8749999, 1.7291669)
+sprite_frames = SubResource("SpriteFrames_jfpoq")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jfpoq")
+
+[node name="area_daño" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_daño"]
+shape = SubResource("CircleShape2D_jfpoq")

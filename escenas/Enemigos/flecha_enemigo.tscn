@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhic0koixyobq"]
 
 [ext_resource type="Texture2D" uid="uid://eeq1twdho8t0" path="res://assets/Jugadores/Flecha.png" id="1_6pqut"]
-[ext_resource type="Script" uid="uid://h10kjqxj51f8" path="res://Codigo/Otras cosas/flecha_enemigo.gd" id="1_ujrsn"]
+[ext_resource type="Script" uid="uid://h10kjqxj51f8" path="res://Codigo/Enemigos/flecha_enemigo.gd" id="1_ujrsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujrsn"]
 size = Vector2(19, 3.5)

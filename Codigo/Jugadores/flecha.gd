@@ -46,7 +46,7 @@ func _quadratic_bezier() -> Vector2:
 	return p0.lerp(q1,time)
 	
 func _on_zona_daño_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemigos") and puede_atacar: 
+	if (body.is_in_group("enemigos") || body.is_in_group("Entorno")) and puede_atacar: 
 		if body.has_method("recibir_daño"):
 			body.recibir_daño(daño) 
 			queue_free()

@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://lqjnpg6swxj1"]
+[gd_scene load_steps=7 format=3 uid="uid://lqjnpg6swxj1"]
 
-[ext_resource type="Script" uid="uid://dppbeyuap8sph" path="res://Codigo/Otras cosas/enemigoprueba.gd" id="1_jjf2n"]
-[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Otras cosas/Barra_vida.tscn" id="2_dqh4y"]
+[ext_resource type="Script" uid="uid://dppbeyuap8sph" path="res://Codigo/Enemigos/enemigoprueba.gd" id="1_jjf2n"]
+[ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Ui/Barra_vida.tscn" id="2_dqh4y"]
+[ext_resource type="Material" uid="uid://bw2fjyuinhj5f" path="res://assets/Jugadores/Shaders/Material_daño_shader.tres" id="2_vjrfj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eobj8"]
 size = Vector2(20, 33)
 
 [sub_resource type="QuadMesh" id="QuadMesh_iawsb"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjrfj"]
+
 [node name="enemigo_arquero" type="CharacterBody2D" node_paths=PackedStringArray("barra_vida", "timer_1", "timer_2", "ataque_timer", "raycast_derecha", "raycast_izquierda") groups=["enemigos"]]
 collision_layer = 4
 script = ExtResource("1_jjf2n")
+"shader_daño" = ExtResource("2_vjrfj")
 barra_vida = NodePath("BarraVida")
 timer_1 = NodePath("Timer")
 timer_2 = NodePath("Timer2")
@@ -50,6 +54,9 @@ target_position = Vector2(156, 0)
 collision_mask = 2
 
 [node name="Ataque" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vjrfj")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
