@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://ck8r3pivnwx8j" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Bold.ttf" id="2_vhgtv"]
 [ext_resource type="FontFile" uid="uid://06n02bnjutwl" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Medium.ttf" id="3_8cfpu"]
 [ext_resource type="Script" uid="uid://cfy8bmrr4p5cg" path="res://assets/sprites/BotonesMenu.gd" id="3_w6fns"]
-[ext_resource type="AudioStream" uid="uid://b1i8jh5cgn7su" path="res://assets/Musica/MusicaMenu-TheFatRat.ogg" id="5_w6fns"]
+[ext_resource type="AudioStream" uid="uid://b3m25c455vnkk" path="res://assets/Musica/MusicaMenu-TheFatRat.ogg" id="5_w6fns"]
 
 [sub_resource type="Theme" id="Theme_w6fns"]
 default_font = ExtResource("2_vhgtv")

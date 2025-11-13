@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk47tkb4q8tjy"]
+
+[ext_resource type="Texture2D" uid="uid://bjrcx3goxjp74" path="res://escenas/Sayola/Pantalla_de_Carga.png" id="1_3rt3w"]
+[ext_resource type="Script" uid="uid://c4pbyb46j87cm" path="res://Codigo/Otras cosas/pantalla_carga.gd" id="1_qxm0e"]
+[ext_resource type="FontFile" uid="uid://clyo38m000mie" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Black.ttf" id="2_eslm5"]
+
+[sub_resource type="Animation" id="Animation_qxm0e"]
+resource_name = "carga"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.36666667, 0.5933333, 1.4133333, 2.1933331),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["Cargando", "Cargando.", "Cargando..", "Cargando..."]
+}
+
+[sub_resource type="Animation" id="Animation_sd883"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Cargando"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_el0dn"]
+_data = {
+&"RESET": SubResource("Animation_sd883"),
+&"carga": SubResource("Animation_qxm0e")
+}
+
+[node name="PantallaCarga" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qxm0e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 1024.0
+offset_bottom = 1028.0
+scale = Vector2(1.1231568, 0.68419373)
+texture = ExtResource("1_3rt3w")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 325)
+scale = Vector2(1.1038431, 0.9575644)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 161.0
+offset_right = 674.0
+offset_bottom = 221.0
+theme_override_fonts/font = ExtResource("2_eslm5")
+theme_override_font_sizes/font_size = 44
+text = "Cargando"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_el0dn")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
