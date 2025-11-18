@@ -16,7 +16,7 @@ func _physics_process(delta):
 	if t < 3.0:
 		t += 1.75 * delta
 		daño -= (delta + .01) 
-		if t > 4:
+		if t >= 3:
 			queue_free()
 	position = _quadratic_bezier()
 

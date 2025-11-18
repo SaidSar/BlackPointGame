@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=4 uid="uid://dw0hnil7hkvqs"]
+[gd_scene load_steps=19 format=4 uid="uid://dw0hnil7hkvqs"]
 
 [ext_resource type="Texture2D" uid="uid://cviiysmkl7prd" path="res://escenas/Sayola/mainlevbuild.png" id="1_7v0hk"]
 [ext_resource type="Texture2D" uid="uid://snjbbnoat0v0" path="res://escenas/Sayola/main_lev_build.png" id="2_k73sy"]
 [ext_resource type="Texture2D" uid="uid://cc8xmiahq0phn" path="res://escenas/Sayola/decorative.png" id="3_fbyfd"]
 [ext_resource type="Texture2D" uid="uid://dt8thsp2htmcw" path="res://escenas/Sayola/other_and_decorative.png" id="3_pgvvw"]
+[ext_resource type="PackedScene" uid="uid://bar8navc35jc6" path="res://escenas/Jugadores/Arquero.tscn" id="5_fbyfd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gk3ot"]
 texture = ExtResource("1_7v0hk")
@@ -6926,3 +6927,6 @@ shape = SubResource("RectangleShape2D_a6hmq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/AreaWin"]
 position = Vector2(3424, 768)
 shape = SubResource("RectangleShape2D_ox37k")
+
+[node name="Arquero_2" parent="." instance=ExtResource("5_fbyfd")]
+position = Vector2(1599, 360)

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c44u3pjqq4wjg" path="res://escenas/Jugadores/camara.tscn" id="7_ltxxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebxey"]
-size = Vector2(18, 31)
+size = Vector2(18, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvo3b"]
 size = Vector2(31, 25)
@@ -192,7 +192,7 @@ hud = NodePath("UiMelee")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 7
 visibility_layer = 7
-position = Vector2(1, -2.5)
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_ebxey")
 
 [node name="Ataque_1" type="Timer" parent="."]

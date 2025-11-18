@@ -13,7 +13,7 @@ extends CharacterBody2D
 
 var daño: float = 5
 var tiempo_carga: float = 0
-const carga_max = 1.1 
+const carga_max = 1.1
 
 var tipo_ataque: String 
 var ataque_actual: bool
@@ -23,6 +23,7 @@ var vida_maxima : float
 var vida : float
 const salto = -270.0
 var velocidad : float = 100
+
 var puede_moverse : bool = true:
 	set(value):
 		puede_moverse = value
@@ -76,8 +77,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Espacio") || Input.is_action_just_pressed("control_salto"):
 		if en_aire:
 			if doble_salto:
-				velocity.y = salto
 				doble_salto = false
+				velocity.y = salto
 		else:
 			velocity.y = salto
 	var direction = Input.get_axis("A", "D") + Input.get_axis("stick_izquierda", "stick_derecha")

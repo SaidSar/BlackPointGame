@@ -2,6 +2,6 @@
 
 [node name="Camera2D" type="Camera2D"]
 enabled = false
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0

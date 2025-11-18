@@ -120,7 +120,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jeuf"]
-size = Vector2(20, 46)
+size = Vector2(20, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hltf"]
 size = Vector2(72, 49)
@@ -152,6 +152,7 @@ sprite_frames = SubResource("SpriteFrames_c4fbr")
 animation = &"Parado"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_5jeuf")
 
 [node name="Ataque_1" type="Timer" parent="."]

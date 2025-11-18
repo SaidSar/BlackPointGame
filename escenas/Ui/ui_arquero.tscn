@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dfn1t6mgef145"]
 
-[ext_resource type="Texture2D" uid="uid://cu3pgqdltau1d" path="res://assets/Jugadores/icono1.png" id="2_xf68l"]
+[ext_resource type="Texture2D" uid="uid://ct3s4uwquu6f" path="res://assets/Ui/Icono_arquero_2.png" id="1_5h7va"]
+[ext_resource type="Texture2D" uid="uid://dxt4unei00kqc" path="res://assets/Ui/Icono_arquero_1.png" id="3_oi5f1"]
 [ext_resource type="Texture2D" uid="uid://be0gm55t63rln" path="res://assets/Ui/icono1  progreso.png" id="3_vpu0y"]
-[ext_resource type="Texture2D" uid="uid://t6tdwlcyaq1i" path="res://assets/Jugadores/Icono2.png" id="4_eivtw"]
 [ext_resource type="PackedScene" uid="uid://ce5vs54o7ghih" path="res://escenas/Ui/barra_vida_jugador.tscn" id="4_wmty0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1x1rh"]
@@ -34,7 +34,7 @@ grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_1x1rh")
 action_mode = 0
 button_mask = 0
-icon = ExtResource("2_xf68l")
+icon = ExtResource("1_5h7va")
 expand_icon = true
 
 [node name="Barra" type="TextureProgressBar" parent="Ataque_1_Icono"]
@@ -64,7 +64,7 @@ scale = Vector2(1.089, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_1x1rh")
 action_mode = 0
 button_mask = 0
-icon = ExtResource("4_eivtw")
+icon = ExtResource("3_oi5f1")
 expand_icon = true
 
 [node name="Barra" type="TextureProgressBar" parent="Ataque_2_Icono"]

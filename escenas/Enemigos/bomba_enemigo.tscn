@@ -83,16 +83,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_yxrce")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.2737368e-13, -18.499998)
 scale = Vector2(0.67187506, 0.5625)
 sprite_frames = SubResource("SpriteFrames_btuxp")
 animation = &"Explosion"
 autoplay = "default"
-frame = 7
-frame_progress = 1.0
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="bomba" type="Sprite2D" parent="."]
 position = Vector2(-0.24999991, -0.2499997)
 scale = Vector2(0.12499999, 0.12096775)
 texture = ExtResource("12_nboni")

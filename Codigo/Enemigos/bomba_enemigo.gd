@@ -1,9 +1,10 @@
 extends CharacterBody2D
 @onready var area_daño = $"area_daño"
-@export var tiempo_de_vida = 3.0
+var tiempo_de_vida: float = 3.0
 var GRAVEDAD = 450.0
-var tiempo_actual = 0.0
+var tiempo_actual: float = 0.0
 var daño = 5
+
 func _physics_process(delta):
 	if is_on_floor():
 		velocity = Vector2.ZERO
@@ -12,7 +13,6 @@ func _physics_process(delta):
 		move_and_slide()
 		if velocity.length() > 0.1:
 			rotation = velocity.angle()
-	
 	tiempo_actual += delta
 	if tiempo_actual >= tiempo_de_vida:
 		daño_area()
@@ -22,8 +22,8 @@ func _on_zona_daño_body_entered(body: Node2D) -> void:
 		body.recibir_daño(daño) 
 
 func daño_area():
-	$Sprite2D2.visible = false
-	$Sprite2D.play("Explosion")
+	$bomba.visible = false
+	$sprite.play("Explosion")
 	var colision_zona = area_daño.get_node("CollisionShape2D")
 	await get_tree().create_timer(0.1).timeout
 	colision_zona.disabled = false
