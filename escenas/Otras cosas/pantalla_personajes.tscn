@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://csnrc0vtxr5f1"]
+
+[ext_resource type="Texture2D" uid="uid://b0kp3r1siokuc" path="res://escenas/Otras cosas/PantallaSeleccionPersonajes.png" id="1_dfvtj"]
+[ext_resource type="Texture2D" uid="uid://rae4gala4ab8" path="res://escenas/Otras cosas/HoverMago.png" id="2_acfg5"]
+[ext_resource type="Texture2D" uid="uid://d1s8axfdtpmbh" path="res://escenas/Otras cosas/HoverArquero.png" id="3_gg0oo"]
+[ext_resource type="Texture2D" uid="uid://da4j2oo55kdje" path="res://escenas/Otras cosas/HoverGuerrero.png" id="4_ocdhi"]
+
+[node name="PantallaPersonajes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fondo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dfvtj")
+
+[node name="BotonMago" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_hover = ExtResource("2_acfg5")
+
+[node name="BotonArquero" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_hover = ExtResource("3_gg0oo")
+
+[node name="BotonGuerrero" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_hover = ExtResource("4_ocdhi")
