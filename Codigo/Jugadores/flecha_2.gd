@@ -19,7 +19,7 @@ func _physics_process(delta):
 		daño -= (delta + .01)
 		
 		if t > 3:
-			queue_free()
+			daño_area()
 	if puede_atacar:
 		position = _quadratic_bezier()
 
@@ -32,9 +32,9 @@ func set_direction(direccion_giro, frame, poder):
 		angle = -5
 	else:
 		direccion = Vector2.LEFT
-		$Sprite2D.flip_h = true
 		angle = -175
 		length = -abs(length)
+		$Sprite2D2.flip_h = true
 	
 	p0 = position
 	p2 = position + Vector2(length,16)

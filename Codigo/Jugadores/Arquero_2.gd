@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var tiempo_ataque_1 : Timer
 @export var tiempo_ataque_2 : Timer
 @export var carga : ProgressBar
+@export var Daño_recibido_cooldown:Timer
 @onready var barra_vida
 @onready var icono_1
 @onready var icono_2
@@ -21,9 +22,9 @@ var en_aire: bool
 var doble_salto: bool
 var vida_maxima : float
 var vida : float
-const salto = -270.0
+const salto = -285.0
 var velocidad : float = 100
-
+var daño_incremento : float
 var puede_moverse : bool = true:
 	set(value):
 		puede_moverse = value
@@ -34,6 +35,7 @@ var puede_moverse : bool = true:
 
 func _ready():
 	vida_maxima = 35
+	daño_incremento = 1.0
 	vida = vida_maxima
 	tiempo_ataque_1.stop()
 	tiempo_ataque_2.stop()
@@ -154,10 +156,20 @@ func _on_ataque_2_timeout():
 	tiempo_ataque_2.stop()
 
 func recibir_daño(daño_recibido):
-	vida -= daño_recibido
-	if vida <= 0:
-		queue_free()
-	sprite.material = shader_daño
-	await get_tree().create_timer(.2).timeout
-	sprite.material = null
-	barra_vida._set_vida(vida)
+	if Daño_recibido_cooldown.is_stopped():
+		vida -= daño_recibido * daño_incremento
+		if vida <= 0:
+			queue_free()
+		sprite.material = shader_daño
+		barra_vida._set_vida(vida)
+		await get_tree().create_timer(.2).timeout
+		sprite.material = null
+		Daño_recibido_cooldown.start(.5)
+
+
+func _on_daño_recibido_cooldown_timeout() -> void:
+	Daño_recibido_cooldown.stop()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	recibir_daño(3)

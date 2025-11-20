@@ -1,19 +1,20 @@
 extends CharacterBody2D
 const SPEED = 85.0
-const JUMP_VELOCITY = -250.0
+const JUMP_VELOCITY = -275.0
 var tipo_ataque: String 
 var ataque_actual: bool
 var en_aire: bool
 var daño: int
 var vida: float
 var vida_maxima : float
+var daño_incremento : float
 @export var shader_daño : ShaderMaterial
 @export var area_daño: Area2D
 @export var sprite :AnimatedSprite2D
 @export var tiempo_ataque_1 : Timer
 @export var tiempo_ataque_2 : Timer
 @export var hud : CanvasLayer
-
+@export var Daño_recibido_cooldown:Timer
 
 @onready var especial_escena = preload("res://escenas//Proyectiles//melee_especial.tscn")
 
@@ -23,6 +24,7 @@ var vida_maxima : float
 
 func _ready():
 	vida_maxima = 100
+	daño_incremento = 1.0
 	vida = vida_maxima
 	ataque_actual = false
 	set_hud()
@@ -159,10 +161,21 @@ func _on_area_daño_body_entered(body: Node2D) -> void:
 			body.recibir_daño(daño) 
 
 func recibir_daño(daño_recibido):
-	vida -= daño_recibido
-	if vida <= 0:
-		queue_free()
-	sprite.material = shader_daño
-	await get_tree().create_timer(.2).timeout
-	sprite.material = null
-	barra_vida._set_vida(vida)
+	if Daño_recibido_cooldown.is_stopped():
+		vida -= daño_recibido * daño_incremento
+		if vida <= 0:
+			queue_free()
+		sprite.material = shader_daño
+		await get_tree().create_timer(.2).timeout
+		sprite.material = null
+		barra_vida._set_vida(vida)
+		Daño_recibido_cooldown.start(.5)
+
+
+func _on_daño_recibido_cooldown_timeout() -> void:
+	Daño_recibido_cooldown.stop()
+
+
+
+func _on_area_detectar_body_entered(body: Node2D) -> void:
+	recibir_daño(3)

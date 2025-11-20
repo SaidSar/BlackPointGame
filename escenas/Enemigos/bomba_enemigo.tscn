@@ -96,4 +96,3 @@ scale = Vector2(0.12499999, 0.12096775)
 texture = ExtResource("12_nboni")
 
 [connection signal="body_entered" from="area_daño" to="." method="_on_zona_daño_body_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

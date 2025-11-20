@@ -1,6 +1,6 @@
 extends CharacterBody2D
 const SPEED = 100.0
-const JUMP_VELOCITY = -275.0
+const JUMP_VELOCITY = -285.0
 var tipo_ataque: String 
 var ataque_actual: bool
 var en_aire: bool
@@ -9,7 +9,7 @@ var vida:float
 var vida_maxima:float
 var reseteo_escudo : float
 var escudo_tiempo: float
-
+var daño_incremento: float
 @export var shader_daño : ShaderMaterial
 @export var area_daño: Area2D
 @export var area: Area2D
@@ -22,7 +22,7 @@ var escudo_tiempo: float
 @export var colision_ataque_3 : CollisionShape2D
 @export var hud : CanvasLayer
 @export var sprite_ataque_1 : Sprite2D
-
+@export var Daño_recibido_cooldown:Timer
 
 @onready var barra_vida 
 @onready var icono_1 
@@ -32,6 +32,7 @@ var escudo_tiempo: float
 
 func _ready():
 	vida_maxima = 50
+	daño_incremento = 1.0
 	vida = vida_maxima
 	ataque_actual = false
 	reseteo_escudo = 15.0
@@ -186,19 +187,22 @@ func _on_sprite_animation_finished() -> void:
 
 func recibir_daño(daño_recibido):
 	if colision_ataque_3.disabled == false:
+		await get_tree().create_timer(.2).timeout
 		colision_ataque_3.disabled = true
 		sprite.play("Parado")
 		tipo_ataque = ""
 		tiempo_ataque_3.wait_time = reseteo_escudo
 		
 	else:
-		vida -= daño_recibido
-		if vida <= 0:
-			queue_free()
-		barra_vida._set_vida(vida)
-		sprite.material = shader_daño
-		await get_tree().create_timer(.2).timeout
-		sprite.material = null
+		if Daño_recibido_cooldown.is_stopped():
+			vida -= daño_recibido * daño_incremento
+			if vida <= 0:
+				queue_free()
+			barra_vida._set_vida(vida)
+			sprite.material = shader_daño
+			await get_tree().create_timer(.2).timeout
+			sprite.material = null
+			Daño_recibido_cooldown.start(.5)
 
 func _on_ataque_1_timeout():
 	tiempo_ataque_1.stop()
@@ -208,3 +212,13 @@ func _on_ataque_2_timeout():
 
 func _on_ataque_3_timeout() -> void:
 	tiempo_ataque_3.stop()
+
+
+
+
+func _on_daño_recibido_cooldown_timeout() -> void:
+	Daño_recibido_cooldown.stop()
+
+
+func _on_area_detectar_body_entered(body: Node2D) -> void:
+	recibir_daño(3)

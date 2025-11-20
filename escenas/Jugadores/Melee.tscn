@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bd4th2rdgbtv5"]
+[gd_scene load_steps=28 format=3 uid="uid://bd4th2rdgbtv5"]
 
 [ext_resource type="Script" uid="uid://bpm4qqovts70n" path="res://Codigo/Jugadores/Melee.gd" id="1_nqg7t"]
 [ext_resource type="Texture2D" uid="uid://b2b7mdgn7vre7" path="res://assets/Jugadores/Sprite_Caballero_Atacando_Final.png" id="2_ebxey"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c44u3pjqq4wjg" path="res://escenas/Jugadores/camara.tscn" id="7_ltxxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebxey"]
-size = Vector2(18, 28)
+size = Vector2(17, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvo3b"]
 size = Vector2(31, 25)
@@ -177,7 +177,10 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Melee" type="CharacterBody2D" node_paths=PackedStringArray("area_daño", "sprite", "tiempo_ataque_1", "tiempo_ataque_2", "hud") groups=["Jugadores"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltxxq"]
+size = Vector2(13, 26)
+
+[node name="Melee" type="CharacterBody2D" node_paths=PackedStringArray("area_daño", "sprite", "tiempo_ataque_1", "tiempo_ataque_2", "hud", "Daño_recibido_cooldown") groups=["Jugadores"]]
 texture_filter = 1
 collision_layer = 2
 collision_mask = 3
@@ -188,11 +191,12 @@ sprite = NodePath("Sprite")
 tiempo_ataque_1 = NodePath("Ataque_1")
 tiempo_ataque_2 = NodePath("Ataque_2")
 hud = NodePath("UiMelee")
+"Daño_recibido_cooldown" = NodePath("Daño_recibido_cooldown")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 7
 visibility_layer = 7
-position = Vector2(1, -1)
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_ebxey")
 
 [node name="Ataque_1" type="Timer" parent="."]
@@ -224,7 +228,20 @@ offset = Vector2(0, -148)
 
 [node name="Camera2D" parent="." instance=ExtResource("7_ltxxq")]
 
+[node name="Area_detectar" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_detectar"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_ltxxq")
+
+[node name="Daño_recibido_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
 [connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]
 [connection signal="body_entered" from="Area_daño" to="." method="_on_area_daño_body_entered"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="body_entered" from="Area_detectar" to="." method="_on_area_detectar_body_entered"]
+[connection signal="timeout" from="Daño_recibido_cooldown" to="." method="_on_daño_recibido_cooldown_timeout"]

@@ -21,6 +21,9 @@ func _on_zona_daño_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Jugadores") || body.is_in_group("Enemigos") || body.is_in_group("Entorno"): 
 		body.recibir_daño(daño) 
 
+func voltear_sprite():
+	$bomba.flip_v = true
+	
 func daño_area():
 	$bomba.visible = false
 	$sprite.play("Explosion")
@@ -30,10 +33,3 @@ func daño_area():
 	await get_tree().create_timer(0.4).timeout
 	colision_zona.disabled = true
 	queue_free()
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Jugadores") || body.is_in_group("Enemigos") || body.is_in_group("Entorno") : 
-		GRAVEDAD = 0.0
-		velocity = Vector2.ZERO
-		daño_area()

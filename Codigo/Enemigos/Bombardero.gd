@@ -128,7 +128,7 @@ func atacar(direccion: Vector2):
 	var direccion_bom = Vector2(cos(angulo), -sin(angulo))
 	if sprite.flip_h:
 		direccion_bom.x = -1
-		
+		bom.voltear_sprite()
 	bom.velocity =  direccion_bom.normalized()  * fuerza
 	await get_tree().create_timer(.4).timeout
 	animacion_atacando = false

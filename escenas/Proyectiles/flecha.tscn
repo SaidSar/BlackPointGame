@@ -15,10 +15,11 @@ script = ExtResource("1_0ndbe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-2, 1)
 texture = ExtResource("1_2ckxj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, -1.5)
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_0ndbe")
 
 [node name="ZonaDaño" type="Area2D" parent="."]
@@ -26,7 +27,7 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDaño"]
-position = Vector2(2, -1.5)
+position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_v6s8p")
 
 [connection signal="body_entered" from="ZonaDaño" to="." method="_on_zona_daño_body_entered"]

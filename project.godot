@@ -89,7 +89,10 @@ control_ataque_3={
 2d_physics/layer_3="Enemigos"
 2d_physics/layer_4="Projectiles y Zonas de daño"
 2d_physics/layer_5="Objetos"
+2d_physics/layer_6="Puertas Y Activables"
+2d_physics/layer_7="Trampas_entorno"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.08801236, 0.123209484, 0.12042088, 1)

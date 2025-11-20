@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bar8navc35jc6"]
+[gd_scene load_steps=21 format=3 uid="uid://bar8navc35jc6"]
 
 [ext_resource type="PackedScene" uid="uid://dfn1t6mgef145" path="res://escenas/Ui/ui_arquero.tscn" id="1_4x0yv"]
 [ext_resource type="Script" uid="uid://dng1a0ms4ahn6" path="res://Codigo/Jugadores/Arquero_2.gd" id="1_73okv"]
@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://bw2fjyuinhj5f" path="res://assets/Jugadores/Shaders/Material_daño_shader.tres" id="3_rdi7f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdi7f"]
-size = Vector2(18, 30)
+size = Vector2(14, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tnjpn"]
 atlas = ExtResource("2_73okv")
@@ -131,7 +131,10 @@ anti_aliasing = false
 bg_color = Color(0.1254902, 0.3882353, 0.74509805, 0.98039216)
 anti_aliasing = false
 
-[node name="Arquero_2" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hud", "tiempo_ataque_1", "tiempo_ataque_2", "carga") groups=["Jugadores"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7bcj"]
+size = Vector2(11, 26)
+
+[node name="Arquero_2" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hud", "tiempo_ataque_1", "tiempo_ataque_2", "carga", "Daño_recibido_cooldown") groups=["Jugadores"]]
 collision_layer = 2
 script = ExtResource("1_73okv")
 sprite = NodePath("Sprite")
@@ -140,10 +143,12 @@ hud = NodePath("UiArquero")
 tiempo_ataque_1 = NodePath("Ataque_1")
 tiempo_ataque_2 = NodePath("Ataque_2")
 carga = NodePath("Carga")
+"Daño_recibido_cooldown" = NodePath("Daño_recibido_cooldown")
 
 [node name="UiArquero" parent="." instance=ExtResource("1_4x0yv")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_rdi7f")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -171,5 +176,18 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_cjvku")
 max_value = 1.25
 show_percentage = false
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_q7bcj")
+
+[node name="Daño_recibido_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
 [connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Daño_recibido_cooldown" to="." method="_on_daño_recibido_cooldown_timeout"]

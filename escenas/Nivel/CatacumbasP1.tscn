@@ -2994,6 +2994,7 @@ texture = ExtResource("3_pgvvw")
 4:10/0 = 0
 5:10/0 = 0
 13:10/0 = 0
+13:10/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -1.2590103, -8, -1.0791512)
 19:10/0 = 0
 20:10/0 = 0
 21:10/0 = 0
@@ -3010,7 +3011,9 @@ texture = ExtResource("3_pgvvw")
 4:11/0 = 0
 5:11/0 = 0
 12:11/0 = 0
+12:11/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -0.5395756, -8, -0.71943474, 8, -8, 8)
 14:11/0 = 0
+14:11/0/physics_layer_1/polygon_0/points = PackedVector2Array(-0.17985916, -8, 8, -8, 8, 8, -0.35971832, 8)
 20:11/0 = 0
 21:11/0 = 0
 22:11/0 = 0
@@ -3024,7 +3027,7 @@ texture = ExtResource("3_pgvvw")
 4:12/0 = 0
 5:12/0 = 0
 13:12/0 = 0
-13:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.6978817, 8, 2.5180225, 8, 8, -8, 8)
+13:12/0/physics_layer_1/polygon_0/points = PackedVector2Array(-4.4964685, -0.17985725, 4.136751, 0, 8, 8, -8, 8)
 20:12/0 = 0
 19:13/0 = 0
 21:13/0 = 0
@@ -6866,6 +6869,8 @@ texture = ExtResource("3_fbyfd")
 
 [sub_resource type="TileSet" id="TileSet_t0c5y"]
 physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 64
+physics_layer_1/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_gxlwi")
 sources/2 = SubResource("TileSetAtlasSource_pp45n")
 sources/3 = SubResource("TileSetAtlasSource_o32xs")
@@ -6899,34 +6904,44 @@ tile_map_data = PackedByteArray("AAAAAPv/AgBSACUAAAAAAPz/AgBSACYAAAAAAP3/AgBSACc
 tile_set = SubResource("TileSet_t0c5y")
 
 [node name="Area1" type="Area2D" parent="foreground"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/Area1"]
 position = Vector2(567.375, -16)
 shape = SubResource("RectangleShape2D_k7anc")
 
 [node name="Area2" type="Area2D" parent="foreground"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/Area2"]
 position = Vector2(47.5, 551)
 shape = SubResource("RectangleShape2D_fbyfd")
 
 [node name="Area3" type="Area2D" parent="foreground"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/Area3"]
 position = Vector2(1176, 576.5)
 shape = SubResource("RectangleShape2D_pgvvw")
 
 [node name="Area4" type="Area2D" parent="foreground"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/Area4"]
 position = Vector2(1480.25, 70)
 shape = SubResource("RectangleShape2D_a6hmq")
 
 [node name="AreaWin" type="Area2D" parent="foreground"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="foreground/AreaWin"]
 position = Vector2(3424, 768)
 shape = SubResource("RectangleShape2D_ox37k")
 
 [node name="Arquero_2" parent="." instance=ExtResource("5_fbyfd")]
-position = Vector2(1599, 360)
+position = Vector2(1573, 408)

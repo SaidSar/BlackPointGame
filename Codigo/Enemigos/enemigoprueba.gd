@@ -78,7 +78,7 @@ func recibir_daño(daño):
 	vida -= daño
 	if vida <= 0:
 		queue_free()
-	sprite.material = shader_daño
+	#sprite.material = shader_daño
 	await get_tree().create_timer(.2).timeout
 	sprite.material = null
 	barra_vida._set_vida(vida)
