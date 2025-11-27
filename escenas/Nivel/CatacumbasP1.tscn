@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dw0hnil7hkvqs"]
+[gd_scene load_steps=22 format=4 uid="uid://dw0hnil7hkvqs"]
 
 [ext_resource type="Texture2D" uid="uid://cviiysmkl7prd" path="res://assets/Mapa/mainlevbuild.png" id="1_7v0hk"]
 [ext_resource type="Texture2D" uid="uid://snjbbnoat0v0" path="res://assets/Mapa/main_lev_build.png" id="2_k73sy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bar8navc35jc6" path="res://escenas/Jugadores/Arquero.tscn" id="5_fbyfd"]
 [ext_resource type="PackedScene" uid="uid://7wj7fk01d4s3" path="res://escenas/Enemigos/bombardero.tscn" id="6_a6hmq"]
 [ext_resource type="PackedScene" uid="uid://dt2k3ujn27ptr" path="res://escenas/Enemigos/enemigo_melee.tscn" id="7_ox37k"]
+[ext_resource type="PackedScene" uid="uid://onx8w0ajq7k6" path="res://escenas/Entorno/puerta.tscn" id="8_ox37k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gk3ot"]
 texture = ExtResource("1_7v0hk")
@@ -6972,3 +6973,7 @@ position = Vector2(2510, 667)
 
 [node name="Enemigo_Melee3" parent="." instance=ExtResource("7_ox37k")]
 position = Vector2(3259, 1154)
+
+[node name="Puerta" parent="." instance=ExtResource("8_ox37k")]
+position = Vector2(540, 366)
+scale = Vector2(2.6188636, 3.0791256)

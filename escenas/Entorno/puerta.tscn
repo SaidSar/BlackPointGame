@@ -1,5 +1,34 @@
-[gd_scene format=3 uid="uid://onx8w0ajq7k6"]
+[gd_scene load_steps=5 format=3 uid="uid://onx8w0ajq7k6"]
 
-[node name="Puerta" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://iutar73gxsf0" path="res://assets/Mapa/puerta_suelo_1.png" id="1_lbi83"]
+[ext_resource type="Script" uid="uid://dqaon53fntnqx" path="res://Codigo/Otras cosas/puerta.gd" id="1_tuqek"]
+[ext_resource type="PackedScene" uid="uid://cf4lvdpih4gf" path="res://escenas/Entorno/Pop_up_de_boton.tscn" id="3_xafp0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuqek"]
+size = Vector2(14, 10)
+
+[node name="Puerta" type="Node2D" node_paths=PackedStringArray("mensaje")]
+script = ExtResource("1_tuqek")
+mensaje = NodePath("Control")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.7683716e-07, 2.3841858e-07)
+scale = Vector2(0.38953492, 0.2548077)
+texture = ExtResource("1_lbi83")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_tuqek")
+
+[node name="Control" parent="." instance=ExtResource("3_xafp0")]
+offset_left = -8.0
+offset_top = -18.000002
+offset_right = -8.0
+offset_bottom = -18.000002
+scale = Vector2(0.15931292, 0.24834535)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
