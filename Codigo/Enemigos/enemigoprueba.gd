@@ -5,14 +5,14 @@ var perseguido: bool
 var vida: int
 var daño = 2
 var atacando: bool
+var jugador_en_derecha := false
+var jugador_en_izquierda := false
 
 @export var shader_daño : ShaderMaterial
 @export var barra_vida : ProgressBar
 @export var timer_1 : Timer
 @export var timer_2 : Timer
 @export var ataque_timer : Timer
-@export var raycast_derecha : RayCast2D
-@export var raycast_izquierda : RayCast2D
 @export var sprite : AnimatedSprite2D
 @onready var flecha_escena = preload("res://escenas//Enemigos//flecha_enemigo.tscn")
 
@@ -34,14 +34,10 @@ func _process(delta):
 		velocity += get_gravity() * delta
 	velocity.x = dir.x * velocidad
 	if !perseguido:
-		if raycast_derecha.is_colliding() and !atacando:
-			var objetivo = raycast_derecha.get_collider()
-			if objetivo and objetivo.is_in_group("Jugadores"):
-				atacar(Vector2.RIGHT)
-		if raycast_izquierda.is_colliding() and !atacando:
-			var objetivo = raycast_izquierda.get_collider()
-			if objetivo and objetivo.is_in_group("Jugadores"):
-				atacar(Vector2.LEFT)
+		if jugador_en_derecha and !atacando:
+			atacar(Vector2.RIGHT)
+		if jugador_en_izquierda and !atacando:
+			atacar(Vector2.LEFT)
 	move_and_slide()
 
 #func Controlador_animaciones(dir):
@@ -78,7 +74,7 @@ func recibir_daño(daño):
 	vida -= daño
 	if vida <= 0:
 		queue_free()
-	#sprite.material = shader_daño
+	sprite.material = shader_daño
 	await get_tree().create_timer(.2).timeout
 	sprite.material = null
 	barra_vida._set_vida(vida)
@@ -106,3 +102,17 @@ func _on_ataque_timeout() -> void:
 	atacando = false
 	ataque_timer.stop()
 	ataque_timer.wait_time = choose([ 5.0, 4.8, 4.4, 3.8, 4.0, 5.2, 4.2])
+
+
+func _on_area_izquieda_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Jugadores"):
+		jugador_en_izquierda = true
+func _on_area_izquieda_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Jugadores"):
+		jugador_en_izquierda = false
+func _on_area_derecha_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Jugadores"):
+		jugador_en_derecha = true
+func _on_area_derecha_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Jugadores"):
+		jugador_en_derecha = false

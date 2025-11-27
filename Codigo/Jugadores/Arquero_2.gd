@@ -39,6 +39,7 @@ func _ready():
 	vida = vida_maxima
 	tiempo_ataque_1.stop()
 	tiempo_ataque_2.stop()
+	carga.max_value = carga_max
 	set_hud()
 
 func set_hud():
@@ -92,12 +93,12 @@ func _physics_process(delta: float) -> void:
 	Controlador_animaciones(direction)
 
 func _input(event: InputEvent):
-	if event.is_action_pressed("click_izquierdo") and tiempo_ataque_1.is_stopped() and !ataque_actual:
+	if (event.is_action_pressed("click_izquierdo") || event.is_action_pressed("control_ataque_1")) and tiempo_ataque_1.is_stopped() and !ataque_actual:
 		ataque_actual = true
 		carga.value = 0
 		carga.visible = true
 		sprite.play("Ataque_1")
-	if event.is_action_released("click_izquierdo")  and ataque_actual:
+	if (event.is_action_released("click_izquierdo") || event.is_action_released("control_ataque_1"))  and ataque_actual:
 		ataque_actual = false
 		carga.visible = false
 		if tiempo_carga >= .35:
@@ -105,12 +106,12 @@ func _input(event: InputEvent):
 			disparar_flecha(tiempo_carga)
 		tiempo_carga = 0
 		
-	if event.is_action_pressed("click_derecho") and tiempo_ataque_2.is_stopped() and !ataque_actual:
+	if (event.is_action_pressed("click_derecho")|| event.is_action_pressed("control_ataque_2")) and tiempo_ataque_2.is_stopped() and !ataque_actual:
 		ataque_actual = true
 		carga.value = 0
 		carga.visible = true
 		sprite.play("Ataque_2")
-	if event.is_action_released("click_derecho")  and ataque_actual:
+	if (event.is_action_released("click_derecho") || event.is_action_released("control_ataque_2"))  and ataque_actual:
 		ataque_actual = false
 		carga.visible = false
 		if tiempo_carga >= .35:

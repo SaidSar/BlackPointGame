@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwlkbhdoa50ei"]
+[gd_scene load_steps=14 format=3 uid="uid://dwlkbhdoa50ei"]
 
 [ext_resource type="Script" uid="uid://q3a0se2mdor5" path="res://Codigo/Enemigos/bomba_enemigo.gd" id="1_sfb7v"]
 [ext_resource type="Texture2D" uid="uid://dftx4hu7kpidt" path="res://assets/otros/explosion_2/explosion-c1.png" id="2_fr3j6"]
@@ -16,9 +16,6 @@ size = Vector2(6, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sfb7v"]
 radius = 46.010868
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxrce"]
-size = Vector2(5, 6)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_btuxp"]
 animations = [{
@@ -75,13 +72,6 @@ collision_mask = 2
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_sfb7v")
 disabled = true
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_yxrce")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.2737368e-13, -18.499998)

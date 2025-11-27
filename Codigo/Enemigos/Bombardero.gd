@@ -7,6 +7,8 @@ var daño = 2
 var atacando: bool
 var animacion_atacando: bool
 var vida_maxima : float
+var jugador_en_derecha := false
+var jugador_en_izquierda := false
 #Tamaño de sprites --------altura 241-----------
 var animaciones
 @export var sprite : AnimatedSprite2D
@@ -15,8 +17,9 @@ var animaciones
 @export var timer_1 : Timer
 @export var timer_2 : Timer
 @export var ataque_timer : Timer
-@export var raycast_derecha : RayCast2D
-@export var raycast_izquierda : RayCast2D
+@export var area_derecha : Area2D
+@export var area_izquierda : Area2D
+
 @onready var bomba = preload("res://escenas/Enemigos/bomba_enemigo.tscn")
 
 var tiempo_carga: float = 0.3
@@ -29,7 +32,7 @@ func _ready():
 	atacando = false
 	perseguido = false
 	velocidad = 50
-	vida_maxima = 15
+	vida_maxima = 18
 	vida = vida_maxima
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
@@ -40,16 +43,14 @@ func _process(delta):
 		velocity += get_gravity() * delta
 	velocity.x = dir.x * velocidad
 	if !perseguido:
-		if raycast_derecha.is_colliding() and !atacando:
-			var objetivo = raycast_derecha.get_collider()
-			if objetivo and objetivo.is_in_group("Jugadores"):
-				sprite.flip_h = false
-				atacar(Vector2.RIGHT)
-		if raycast_izquierda.is_colliding() and !atacando:
-			var objetivo = raycast_izquierda.get_collider()
-			if objetivo and objetivo.is_in_group("Jugadores"):
-				sprite.flip_h = true
-				atacar(Vector2.LEFT)
+		if jugador_en_derecha and !atacando:
+			print("entro")
+			sprite.flip_h = false
+			atacar(Vector2.RIGHT)
+		if jugador_en_izquierda and !atacando:
+			print("entro")
+			sprite.flip_h = true
+			atacar(Vector2.LEFT)
 	move_and_slide()
 	Controlador_animaciones(dir)
 
@@ -127,9 +128,8 @@ func atacar(direccion: Vector2):
 	var angulo = deg_to_rad(30)
 	var direccion_bom = Vector2(cos(angulo), -sin(angulo))
 	if sprite.flip_h:
-		direccion_bom.x = -1
-		bom.voltear_sprite()
-	bom.velocity =  direccion_bom.normalized()  * fuerza
+		direccion_bom.x *= -1
+	bom.velocity = direccion_bom.normalized() * fuerza
 	await get_tree().create_timer(.4).timeout
 	animacion_atacando = false
 
@@ -137,3 +137,23 @@ func _on_ataque_timeout() -> void:
 	atacando = false
 	ataque_timer.stop()
 	ataque_timer.wait_time = choose([ 5.0, 4.8, 4.4, 5.8, 5.4, 5.2, 4.6])
+
+
+func _on_area_izquieda_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Jugadores"):
+		jugador_en_izquierda = true
+
+
+func _on_area_izquieda_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Jugadores"):
+		jugador_en_izquierda = false
+
+
+func _on_area_derecha_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Jugadores"):
+		jugador_en_derecha = true
+
+
+func _on_area_derecha_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Jugadores"):
+		jugador_en_derecha = false

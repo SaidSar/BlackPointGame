@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc8xmiahq0phn"
-path="res://.godot/imported/decorative.png-064bd65a07852655f88b089d6ef16d54.ctex"
+uid="uid://dreac6co530bw"
+path="res://.godot/imported/Tilesets_Catacumbas.png-f3ef51a993000f3bfa10b4c94c932731.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://escenas/Sayola/decorative.png"
-dest_files=["res://.godot/imported/decorative.png-064bd65a07852655f88b089d6ef16d54.ctex"]
+source_file="res://assets/Mapa/Tilesets_Catacumbas.png"
+dest_files=["res://.godot/imported/Tilesets_Catacumbas.png-f3ef51a993000f3bfa10b4c94c932731.ctex"]
 
 [params]
 

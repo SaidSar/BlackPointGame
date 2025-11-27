@@ -1,14 +1,14 @@
 extends CharacterBody2D
-var velocidad: int
-var dir: Vector2
-var perseguido: bool
-var vida: int
-var daño : int = 4
-var atacando: bool
-var tamaño_ray_activo : float
-var tamaño_ray_desactivado : float
+var velocidad : float = 60
+var dir := Vector2.ZERO
+var guardia :bool = false
+var vida :int = 22
+var daño := 4
+var atacando :bool = false
+var animacion_atacando :bool = false
+var tamaño_ray_activo : float = 200
+var tamaño_ray_desactivado : float = 40
 
-var animacion_atacando = false
 @export var shader_daño : ShaderMaterial
 @export var colision_ataque : CollisionShape2D
 @export var sprite : AnimatedSprite2D
@@ -18,57 +18,28 @@ var animacion_atacando = false
 @export var ataque_timer : Timer
 @export var raycast_derecha : RayCast2D
 @export var raycast_izquierda : RayCast2D
+@export var raycast_suelo_der : RayCast2D
+@export var raycast_suelo_izq : RayCast2D
 @export var area : Area2D
 
 func _ready():
-	_iniciar_enemigo()
 	atacando = false
-	perseguido = false
-
-func _iniciar_enemigo():
-	velocidad = 60
-	vida = 15
+	guardia = false
 	barra_vida.iniciar_vida(vida)
 	barra_vida._set_vida(vida)
-	tamaño_ray_activo = 200
-	tamaño_ray_desactivado = 40
-	
+
 func _process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	velocity.x = dir.x * velocidad
-	var objetivo_derecha = raycast_derecha.get_collider()
-	var objetivo_izquierda = raycast_izquierda.get_collider()
-	if raycast_derecha.is_colliding()  and objetivo_derecha.is_in_group("Jugadores"):
-		perseguido = false
-		voltear_sprite( Vector2.RIGHT)
-		var collision_point: Vector2 = raycast_derecha.get_collision_point()
-		var origin_point: Vector2 = global_position
-		var distancia: float = origin_point.distance_to(collision_point)
-		if distancia >= 30:
-			dir = Vector2.RIGHT
-			if !atacando:
-				velocidad = 60
-			else:
-				velocidad = 40
-		elif !atacando:
-				atacar(Vector2.RIGHT)
-	elif raycast_izquierda.is_colliding()  and objetivo_izquierda.is_in_group("Jugadores"):
-		voltear_sprite( Vector2.LEFT)
-		perseguido = false
-		var collision_point: Vector2 = raycast_izquierda.get_collision_point()
-		var origin_point: Vector2 = global_position
-		var distancia: float = origin_point.distance_to(collision_point)
-		if distancia >= 30:
-			dir = Vector2.LEFT
-			if !atacando:
-				velocidad = 60
-			else:
-				velocidad = 40
-		elif !atacando:
-				atacar(Vector2.LEFT)
-	else:
+		
+	if _va_a_caer():
+		dir = Vector2.ZERO
+		velocidad = 0
 		Vigilar()
+		move_and_slide()
+		return
+	velocity.x = dir.x * velocidad
+	_detectar_jugador()
 	move_and_slide()
 	Controlador_animaciones(dir)
 
@@ -83,7 +54,43 @@ func Controlador_animaciones(dir):
 				voltear_sprite(dir)
 		else: 
 			sprite.play("Callendo")
+			
+func _va_a_caer() -> bool:
+	if dir.x > 0: 
+		return not raycast_suelo_der.is_colliding()
+	elif dir.x < 0: 
+		return not raycast_suelo_izq.is_colliding()
+	return false
 
+func _detectar_jugador():
+	var objetivo_derecha = raycast_derecha.get_collider()
+	var objetivo_izquierda = raycast_izquierda.get_collider()
+
+	# MIRANDO DERECHA
+	if raycast_derecha.is_colliding() and objetivo_derecha.is_in_group("Jugadores"):
+		_guardar_logica_det( Vector2.RIGHT, raycast_derecha )
+
+	# MIRANDO IZQUIERDA
+	elif raycast_izquierda.is_colliding() and objetivo_izquierda.is_in_group("Jugadores"):
+		_guardar_logica_det( Vector2.LEFT, raycast_izquierda )
+
+	else:
+		Vigilar()
+
+
+func _guardar_logica_det(direccion: Vector2, raycast: RayCast2D):
+	guardia = false
+	voltear_sprite(direccion)
+	var distancia := global_position.distance_to(raycast.get_collision_point())
+	if distancia >= 30:
+		dir = direccion
+		if atacando:
+			velocidad =  40
+		else: 
+			velocidad =  60
+	elif not atacando:
+		atacar(direccion)
+	
 func voltear_sprite(dir):
 	if dir.x == 1:
 		sprite.flip_h = false
@@ -99,14 +106,14 @@ func voltear_sprite(dir):
 
 func Vigilar():
 	velocidad = 25
-	perseguido = true
+	guardia = true
 	timer_2.wait_time =  choose([ 8.6, 8.5, 8.3, 8.4, 8.7])
 	timer_2.start()
 	timer_1.wait_time = 0.1
 	timer_1.start()
 
 func _on_timer_timeout():
-	if perseguido:
+	if guardia:
 		timer_1.wait_time = choose([ 8.6, 8.5, 8.3, 8.4, 8.7])
 		dir = choose([Vector2.RIGHT, Vector2.LEFT, Vector2.RIGHT, Vector2.LEFT])
 	else:

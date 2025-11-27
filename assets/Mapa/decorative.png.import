@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt8thsp2htmcw"
-path="res://.godot/imported/other_and_decorative.png-96b9a55ad54efb94f9b8ff632f02a470.ctex"
+uid="uid://cc8xmiahq0phn"
+path="res://.godot/imported/decorative.png-8ed07c7021898b499060a92ffc226bcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://escenas/Sayola/other_and_decorative.png"
-dest_files=["res://.godot/imported/other_and_decorative.png-96b9a55ad54efb94f9b8ff632f02a470.ctex"]
+source_file="res://assets/Mapa/decorative.png"
+dest_files=["res://.godot/imported/decorative.png-8ed07c7021898b499060a92ffc226bcc.ctex"]
 
 [params]
 

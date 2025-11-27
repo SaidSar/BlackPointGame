@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c117b5mwim582" path="res://assets/Jugadores/Sprites_Caballero_Caminando.png" id="6_3btug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sphu8"]
-size = Vector2(20, 32)
+size = Vector2(18, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_60dk8"]
 size = Vector2(33, 32.5)
@@ -172,7 +172,7 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Enemigo_Melee" type="CharacterBody2D" node_paths=PackedStringArray("colision_ataque", "sprite", "barra_vida", "timer_1", "timer_2", "ataque_timer", "raycast_derecha", "raycast_izquierda", "area") groups=["enemigos"]]
+[node name="Enemigo_Melee" type="CharacterBody2D" node_paths=PackedStringArray("colision_ataque", "sprite", "barra_vida", "timer_1", "timer_2", "ataque_timer", "raycast_derecha", "raycast_izquierda", "raycast_suelo_der", "raycast_suelo_izq", "area") groups=["enemigos"]]
 collision_layer = 4
 script = ExtResource("1_60dk8")
 "shader_daño" = ExtResource("2_ngb4v")
@@ -184,10 +184,12 @@ timer_2 = NodePath("Timer2")
 ataque_timer = NodePath("Ataque")
 raycast_derecha = NodePath("Derecha")
 raycast_izquierda = NodePath("Izquierda")
+raycast_suelo_der = NodePath("raycast_suelo_derecha")
+raycast_suelo_izq = NodePath("raycast_suelo_izquierda")
 area = NodePath("Area")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_sphu8")
 
 [node name="Timer" type="Timer" parent="."]
@@ -230,6 +232,12 @@ sprite_frames = SubResource("SpriteFrames_8835h")
 animation = &"Parado"
 centered = false
 offset = Vector2(0, -148)
+
+[node name="raycast_suelo_derecha" type="RayCast2D" parent="."]
+target_position = Vector2(9, 17)
+
+[node name="raycast_suelo_izquierda" type="RayCast2D" parent="."]
+target_position = Vector2(-9, 16)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

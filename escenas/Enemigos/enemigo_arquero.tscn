@@ -1,17 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://lqjnpg6swxj1"]
+[gd_scene load_steps=8 format=3 uid="uid://lqjnpg6swxj1"]
 
 [ext_resource type="Script" uid="uid://dppbeyuap8sph" path="res://Codigo/Enemigos/enemigoprueba.gd" id="1_jjf2n"]
 [ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Ui/Barra_vida.tscn" id="2_dqh4y"]
 [ext_resource type="Material" uid="uid://bw2fjyuinhj5f" path="res://assets/Jugadores/Shaders/Material_daño_shader.tres" id="2_vjrfj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eobj8"]
-size = Vector2(20, 33)
+size = Vector2(20, 32)
 
 [sub_resource type="QuadMesh" id="QuadMesh_iawsb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vjrfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="enemigo_arquero" type="CharacterBody2D" node_paths=PackedStringArray("barra_vida", "timer_1", "timer_2", "ataque_timer", "raycast_derecha", "raycast_izquierda") groups=["enemigos"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjrfj"]
+size = Vector2(178.125, 111)
+
+[node name="enemigo_arquero" type="CharacterBody2D" node_paths=PackedStringArray("barra_vida", "timer_1", "timer_2", "ataque_timer", "sprite") groups=["enemigos"]]
 collision_layer = 4
 script = ExtResource("1_jjf2n")
 "shader_daño" = ExtResource("2_vjrfj")
@@ -19,11 +31,9 @@ barra_vida = NodePath("BarraVida")
 timer_1 = NodePath("Timer")
 timer_2 = NodePath("Timer2")
 ataque_timer = NodePath("Ataque")
-raycast_derecha = NodePath("Derecha")
-raycast_izquierda = NodePath("Izquierda")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_eobj8")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
@@ -43,21 +53,31 @@ offset_bottom = -20.0
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 2.5
 
-[node name="Izquierda" type="RayCast2D" parent="."]
-position = Vector2(0, 1)
-target_position = Vector2(-157, 0)
-collision_mask = 2
-
-[node name="Derecha" type="RayCast2D" parent="."]
-position = Vector2(0, 1)
-target_position = Vector2(156, 0)
-collision_mask = 2
-
 [node name="Ataque" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vjrfj")
 
+[node name="Area_izquieda" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_izquieda"]
+position = Vector2(-98.125, 17)
+shape = SubResource("RectangleShape2D_vjrfj")
+
+[node name="Area_derecha" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_derecha"]
+position = Vector2(97.0625, 17)
+shape = SubResource("RectangleShape2D_vjrfj")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Ataque" to="." method="_on_ataque_timeout"]
+[connection signal="body_entered" from="Area_izquieda" to="." method="_on_area_izquieda_body_entered"]
+[connection signal="body_exited" from="Area_izquieda" to="." method="_on_area_izquieda_body_exited"]
+[connection signal="body_entered" from="Area_derecha" to="." method="_on_area_derecha_body_entered"]
+[connection signal="body_exited" from="Area_derecha" to="." method="_on_area_derecha_body_exited"]

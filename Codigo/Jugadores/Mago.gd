@@ -91,15 +91,15 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if ataque_actual == false and !en_aire:
-		if Input.is_action_just_pressed("click_izquierdo") and tiempo_ataque_1.is_stopped():
+		if (Input.is_action_just_pressed("click_izquierdo") || Input.is_action_just_pressed("control_ataque_1")) and tiempo_ataque_1.is_stopped():
 			tipo_ataque = "Ataque_1"
 			tiempo_ataque_1.start()
 			ataque_actual = true
-		elif Input.is_action_pressed("click_derecho") and tiempo_ataque_2.is_stopped():
+		elif (Input.is_action_pressed("click_derecho")  || Input.is_action_just_pressed("control_ataque_2")) and tiempo_ataque_2.is_stopped():
 			tipo_ataque = "Ataque_2"
 			tiempo_ataque_2.start()
 			ataque_actual = true
-		elif Input.is_action_just_pressed("shift") and tiempo_ataque_3.is_stopped():
+		elif (Input.is_action_just_pressed("shift") || Input.is_action_just_pressed("control_ataque_3")) and tiempo_ataque_3.is_stopped():
 			tipo_ataque = "Ataque_3"
 			tiempo_ataque_3.wait_time = escudo_tiempo
 			ataque_actual = true

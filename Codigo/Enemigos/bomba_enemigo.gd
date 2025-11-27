@@ -11,8 +11,6 @@ func _physics_process(delta):
 	else:
 		velocity.y += GRAVEDAD * delta
 		move_and_slide()
-		if velocity.length() > 0.1:
-			rotation = velocity.angle()
 	tiempo_actual += delta
 	if tiempo_actual >= tiempo_de_vida:
 		daño_area()
@@ -21,8 +19,6 @@ func _on_zona_daño_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Jugadores") || body.is_in_group("Enemigos") || body.is_in_group("Entorno"): 
 		body.recibir_daño(daño) 
 
-func voltear_sprite():
-	$bomba.flip_v = true
 	
 func daño_area():
 	$bomba.visible = false

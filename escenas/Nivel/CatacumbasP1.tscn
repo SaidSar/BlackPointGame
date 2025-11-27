@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=4 uid="uid://dw0hnil7hkvqs"]
+[gd_scene load_steps=21 format=4 uid="uid://dw0hnil7hkvqs"]
 
-[ext_resource type="Texture2D" uid="uid://cviiysmkl7prd" path="res://escenas/Sayola/mainlevbuild.png" id="1_7v0hk"]
-[ext_resource type="Texture2D" uid="uid://snjbbnoat0v0" path="res://escenas/Sayola/main_lev_build.png" id="2_k73sy"]
-[ext_resource type="Texture2D" uid="uid://cc8xmiahq0phn" path="res://escenas/Sayola/decorative.png" id="3_fbyfd"]
-[ext_resource type="Texture2D" uid="uid://dt8thsp2htmcw" path="res://escenas/Sayola/other_and_decorative.png" id="3_pgvvw"]
+[ext_resource type="Texture2D" uid="uid://cviiysmkl7prd" path="res://assets/Mapa/mainlevbuild.png" id="1_7v0hk"]
+[ext_resource type="Texture2D" uid="uid://snjbbnoat0v0" path="res://assets/Mapa/main_lev_build.png" id="2_k73sy"]
+[ext_resource type="Texture2D" uid="uid://cc8xmiahq0phn" path="res://assets/Mapa/decorative.png" id="3_fbyfd"]
+[ext_resource type="Texture2D" uid="uid://dt8thsp2htmcw" path="res://assets/Mapa/other_and_decorative.png" id="3_pgvvw"]
 [ext_resource type="PackedScene" uid="uid://bar8navc35jc6" path="res://escenas/Jugadores/Arquero.tscn" id="5_fbyfd"]
+[ext_resource type="PackedScene" uid="uid://7wj7fk01d4s3" path="res://escenas/Enemigos/bombardero.tscn" id="6_a6hmq"]
+[ext_resource type="PackedScene" uid="uid://dt2k3ujn27ptr" path="res://escenas/Enemigos/enemigo_melee.tscn" id="7_ox37k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gk3ot"]
 texture = ExtResource("1_7v0hk")
@@ -3346,7 +3348,7 @@ texture = ExtResource("3_pgvvw")
 34:37/0 = 0
 35:37/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxlwi"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox37k"]
 texture = ExtResource("1_7v0hk")
 40:0/0 = 0
 41:0/0 = 0
@@ -4849,7 +4851,7 @@ texture = ExtResource("1_7v0hk")
 14:33/0 = 0
 14:33/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pp45n"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1fhy"]
 texture = ExtResource("2_k73sy")
 91:2/0 = 0
 2:3/0 = 0
@@ -6741,7 +6743,7 @@ texture = ExtResource("2_k73sy")
 73:71/0 = 0
 97:46/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o32xs"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lk5vy"]
 texture = ExtResource("3_fbyfd")
 0:1/0 = 0
 1:1/0 = 0
@@ -6871,9 +6873,9 @@ texture = ExtResource("3_fbyfd")
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 64
 physics_layer_1/collision_mask = 0
-sources/1 = SubResource("TileSetAtlasSource_gxlwi")
-sources/2 = SubResource("TileSetAtlasSource_pp45n")
-sources/3 = SubResource("TileSetAtlasSource_o32xs")
+sources/1 = SubResource("TileSetAtlasSource_ox37k")
+sources/2 = SubResource("TileSetAtlasSource_n1fhy")
+sources/3 = SubResource("TileSetAtlasSource_lk5vy")
 sources/0 = SubResource("TileSetAtlasSource_a6hmq")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7anc"]
@@ -6892,6 +6894,7 @@ size = Vector2(51.5, 18)
 size = Vector2(29, 27)
 
 [node name="CatacumbasP1" type="Node2D"]
+metadata/_edit_vertical_guides_ = [616.0]
 
 [node name="background" type="TileMapLayer" parent="."]
 position = Vector2(5, 385)
@@ -6945,3 +6948,27 @@ shape = SubResource("RectangleShape2D_ox37k")
 
 [node name="Arquero_2" parent="." instance=ExtResource("5_fbyfd")]
 position = Vector2(1573, 408)
+
+[node name="Bombardero" parent="." instance=ExtResource("6_a6hmq")]
+position = Vector2(1888, 381)
+
+[node name="Bombardero2" parent="." instance=ExtResource("6_a6hmq")]
+position = Vector2(2373, 443)
+
+[node name="Bombardero4" parent="." instance=ExtResource("6_a6hmq")]
+position = Vector2(2361, 632)
+
+[node name="Bombardero5" parent="." instance=ExtResource("6_a6hmq")]
+position = Vector2(2658, 893)
+
+[node name="Bombardero3" parent="." instance=ExtResource("6_a6hmq")]
+position = Vector2(1618, 687)
+
+[node name="Enemigo_Melee" parent="." instance=ExtResource("7_ox37k")]
+position = Vector2(1817, 451)
+
+[node name="Enemigo_Melee2" parent="." instance=ExtResource("7_ox37k")]
+position = Vector2(2510, 667)
+
+[node name="Enemigo_Melee3" parent="." instance=ExtResource("7_ox37k")]
+position = Vector2(3259, 1154)

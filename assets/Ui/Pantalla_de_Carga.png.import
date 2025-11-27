@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://snjbbnoat0v0"
-path="res://.godot/imported/main_lev_build.png-9799e0281246649c0d9c011392343ca1.ctex"
+uid="uid://bjrcx3goxjp74"
+path="res://.godot/imported/Pantalla_de_Carga.png-91d14850102a9700feb7c58f9e9a41ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://escenas/Sayola/main_lev_build.png"
-dest_files=["res://.godot/imported/main_lev_build.png-9799e0281246649c0d9c011392343ca1.ctex"]
+source_file="res://assets/Ui/Pantalla_de_Carga.png"
+dest_files=["res://.godot/imported/Pantalla_de_Carga.png-91d14850102a9700feb7c58f9e9a41ba.ctex"]
 
 [params]
 

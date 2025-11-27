@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://7wj7fk01d4s3"]
+[gd_scene load_steps=28 format=3 uid="uid://7wj7fk01d4s3"]
 
 [ext_resource type="Script" uid="uid://c7dph2rgpfeii" path="res://Codigo/Enemigos/Bombardero.gd" id="1_8d1da"]
 [ext_resource type="PackedScene" uid="uid://iqb7u2n6l32s" path="res://escenas/Ui/Barra_vida.tscn" id="1_jwk4o"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cthmj0w16sug1" path="res://assets/Enemigos/Enemigo_muerte.png" id="4_vmpw2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkw6w"]
-size = Vector2(20, 36)
+size = Vector2(18, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_huxo0"]
 atlas = ExtResource("2_rkw6w")
@@ -196,7 +196,10 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="Bombardero" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "barra_vida", "timer_1", "timer_2", "ataque_timer", "raycast_derecha", "raycast_izquierda") groups=["enemigos"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilvcr"]
+size = Vector2(184.5, 111)
+
+[node name="Bombardero" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "barra_vida", "timer_1", "timer_2", "ataque_timer", "area_derecha", "area_izquierda") groups=["enemigos"]]
 collision_layer = 4
 script = ExtResource("1_8d1da")
 sprite = NodePath("Sprite")
@@ -205,22 +208,14 @@ barra_vida = NodePath("BarraVida")
 timer_1 = NodePath("Timer")
 timer_2 = NodePath("Timer2")
 ataque_timer = NodePath("Ataque")
-raycast_derecha = NodePath("Derecha")
-raycast_izquierda = NodePath("Izquierda")
+area_derecha = NodePath("Area_derecha")
+area_izquierda = NodePath("Area_izquieda")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 2.5
-
-[node name="Izquierda" type="RayCast2D" parent="."]
-target_position = Vector2(-214, 0)
-collision_mask = 2
-
-[node name="Derecha" type="RayCast2D" parent="."]
-target_position = Vector2(214, 0)
-collision_mask = 2
 
 [node name="Ataque" type="Timer" parent="."]
 wait_time = 2.0
@@ -238,6 +233,7 @@ grow_horizontal = 2
 size_flags_vertical = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_rkw6w")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -245,6 +241,26 @@ scale = Vector2(0.13125, 0.14919354)
 sprite_frames = SubResource("SpriteFrames_p3vup")
 animation = &"Parado_herido"
 
+[node name="Area_izquieda" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_izquieda"]
+position = Vector2(-100, 17)
+shape = SubResource("RectangleShape2D_ilvcr")
+
+[node name="Area_derecha" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_derecha"]
+position = Vector2(100.75, 17)
+shape = SubResource("RectangleShape2D_ilvcr")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Ataque" to="." method="_on_ataque_timeout"]
+[connection signal="body_entered" from="Area_izquieda" to="." method="_on_area_izquieda_body_entered"]
+[connection signal="body_exited" from="Area_izquieda" to="." method="_on_area_izquieda_body_exited"]
+[connection signal="body_entered" from="Area_derecha" to="." method="_on_area_derecha_body_entered"]
+[connection signal="body_exited" from="Area_derecha" to="." method="_on_area_derecha_body_exited"]
