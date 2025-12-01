@@ -1,5 +1,14 @@
 extends Node2D
+@export var sprite_flip : bool :
+	set(value):
+		sprite_flip = value
+		if value:
+			Sprite.flip_h = true
+		else:
+			Sprite.flip_h = false
+
 @export var mensaje : Control
+@export var Sprite: Sprite2D
 @onready var mostrar_mensaje : bool = false:
 	set(value):
 		mostrar_mensaje = value

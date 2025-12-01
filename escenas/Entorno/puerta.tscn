@@ -7,9 +7,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuqek"]
 size = Vector2(14, 10)
 
-[node name="Puerta" type="Node2D" node_paths=PackedStringArray("mensaje")]
+[node name="Puerta" type="Node2D" node_paths=PackedStringArray("mensaje", "Sprite")]
 script = ExtResource("1_tuqek")
 mensaje = NodePath("Mensaje")
+Sprite = NodePath("Sprite2D")
+metadata/Sprite_flip = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.7683716e-07, 2.3841858e-07)
@@ -24,11 +26,12 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_tuqek")
 
 [node name="Mensaje" parent="." instance=ExtResource("3_xafp0")]
-offset_left = -8.0
-offset_top = -18.000002
-offset_right = -8.0
-offset_bottom = -18.000002
-scale = Vector2(0.15931292, 0.24834535)
+texture_filter = 3
+offset_left = -7.0
+offset_top = -17.0
+offset_right = -7.0
+offset_bottom = -17.0
+scale = Vector2(0.1266588, 0.10071687)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
