@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://onx8w0ajq7k6"]
+[gd_scene load_steps=6 format=3 uid="uid://onx8w0ajq7k6"]
 
 [ext_resource type="Texture2D" uid="uid://iutar73gxsf0" path="res://assets/Mapa/puerta_suelo_1.png" id="1_lbi83"]
 [ext_resource type="Script" uid="uid://dqaon53fntnqx" path="res://Codigo/Otras cosas/puerta.gd" id="1_tuqek"]
@@ -7,7 +7,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuqek"]
 size = Vector2(14, 10)
 
-[node name="Puerta" type="Node2D" node_paths=PackedStringArray("mensaje", "Sprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xafp0"]
+size = Vector2(14, 10)
+
+[node name="Puerta" type="StaticBody2D" node_paths=PackedStringArray("mensaje", "Sprite") groups=["Puerta"]]
+collision_layer = 32
+collision_mask = 0
 script = ExtResource("1_tuqek")
 mensaje = NodePath("Mensaje")
 Sprite = NodePath("Sprite2D")
@@ -19,7 +24,7 @@ scale = Vector2(0.38953492, 0.2548077)
 texture = ExtResource("1_lbi83")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 32
+collision_layer = 96
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -32,6 +37,9 @@ offset_top = -17.0
 offset_right = -7.0
 offset_bottom = -17.0
 scale = Vector2(0.1266588, 0.10071687)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xafp0")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

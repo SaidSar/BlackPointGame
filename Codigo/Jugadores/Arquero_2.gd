@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var barra_vida
 @onready var icono_1
 @onready var icono_2
+@onready var puerta
 
 var daño: float = 5
 var tiempo_carga: float = 0
@@ -118,6 +119,10 @@ func _input(event: InputEvent):
 			tiempo_ataque_2.start()
 			disparar_flecha_2(tiempo_carga)
 		tiempo_carga = 0
+	if event.is_action_pressed("W"):
+		if puerta != null:
+			var pos = puerta.tp()
+			position = pos
 
 func disparar_flecha(tiempo_carga):
 	var flecha = flecha_escena.instantiate()
@@ -173,4 +178,13 @@ func _on_daño_recibido_cooldown_timeout() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	recibir_daño(3)
+	if body.is_in_group("Puerta"):
+		puerta = body
+	else: 
+		recibir_daño(3)
+
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Puerta"):
+		puerta = null
