@@ -6948,7 +6948,7 @@ position = Vector2(3424, 768)
 shape = SubResource("RectangleShape2D_ox37k")
 
 [node name="Arquero_2" parent="." instance=ExtResource("5_fbyfd")]
-position = Vector2(1573, 408)
+position = Vector2(430, 364)
 
 [node name="Bombardero" parent="." instance=ExtResource("6_a6hmq")]
 position = Vector2(1888, 381)
@@ -6975,5 +6975,5 @@ position = Vector2(2510, 667)
 position = Vector2(3259, 1154)
 
 [node name="Puerta" parent="." instance=ExtResource("8_ox37k")]
-position = Vector2(540, 366)
+position = Vector2(510.00006, 366)
 scale = Vector2(2.6188636, 3.0791256)

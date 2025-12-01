@@ -9,7 +9,7 @@ size = Vector2(14, 10)
 
 [node name="Puerta" type="Node2D" node_paths=PackedStringArray("mensaje")]
 script = ExtResource("1_tuqek")
-mensaje = NodePath("Control")
+mensaje = NodePath("Mensaje")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.7683716e-07, 2.3841858e-07)
@@ -18,12 +18,12 @@ texture = ExtResource("1_lbi83")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_tuqek")
 
-[node name="Control" parent="." instance=ExtResource("3_xafp0")]
+[node name="Mensaje" parent="." instance=ExtResource("3_xafp0")]
 offset_left = -8.0
 offset_top = -18.000002
 offset_right = -8.0

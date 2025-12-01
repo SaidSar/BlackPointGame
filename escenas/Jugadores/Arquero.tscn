@@ -135,6 +135,7 @@ anti_aliasing = false
 size = Vector2(11, 26)
 
 [node name="Arquero_2" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hud", "tiempo_ataque_1", "tiempo_ataque_2", "carga", "Daño_recibido_cooldown") groups=["Jugadores"]]
+z_index = 2
 collision_layer = 2
 script = ExtResource("1_73okv")
 sprite = NodePath("Sprite")
