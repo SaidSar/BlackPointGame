@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da4j2oo55kdje"
-path="res://.godot/imported/HoverGuerrero.png-04b6e2e5c366cc75537863ec96b90989.ctex"
+uid="uid://rae4gala4ab8"
+path="res://.godot/imported/HoverMago.png-54347be6808ffe4c3a8ea7b332edacd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://escenas/Otras cosas/HoverGuerrero.png"
-dest_files=["res://.godot/imported/HoverGuerrero.png-04b6e2e5c366cc75537863ec96b90989.ctex"]
+source_file="res://assets/Ui/HoverMago.png"
+dest_files=["res://.godot/imported/HoverMago.png-54347be6808ffe4c3a8ea7b332edacd9.ctex"]
 
 [params]
 

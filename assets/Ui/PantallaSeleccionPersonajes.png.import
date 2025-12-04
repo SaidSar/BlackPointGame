@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rae4gala4ab8"
-path="res://.godot/imported/HoverMago.png-e0b0047fd8cf9b4dc2e99bf7ab1428cf.ctex"
+uid="uid://b0kp3r1siokuc"
+path="res://.godot/imported/PantallaSeleccionPersonajes.png-f85919938fbc9a0cec25b9131bdac6d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://escenas/Otras cosas/HoverMago.png"
-dest_files=["res://.godot/imported/HoverMago.png-e0b0047fd8cf9b4dc2e99bf7ab1428cf.ctex"]
+source_file="res://assets/Ui/PantallaSeleccionPersonajes.png"
+dest_files=["res://.godot/imported/PantallaSeleccionPersonajes.png-f85919938fbc9a0cec25b9131bdac6d3.ctex"]
 
 [params]
 

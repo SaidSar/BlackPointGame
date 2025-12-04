@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0kp3r1siokuc"
-path="res://.godot/imported/PantallaSeleccionPersonajes.png-d636cb3dd669afb4ce938c82690327b9.ctex"
+uid="uid://d1s8axfdtpmbh"
+path="res://.godot/imported/HoverArquero.png-8c26c861a066d433875febbb0ef043ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://escenas/Otras cosas/PantallaSeleccionPersonajes.png"
-dest_files=["res://.godot/imported/PantallaSeleccionPersonajes.png-d636cb3dd669afb4ce938c82690327b9.ctex"]
+source_file="res://assets/Ui/HoverArquero.png"
+dest_files=["res://.godot/imported/HoverArquero.png-8c26c861a066d433875febbb0ef043ce.ctex"]
 
 [params]
 

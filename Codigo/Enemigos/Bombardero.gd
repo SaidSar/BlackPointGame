@@ -44,11 +44,9 @@ func _process(delta):
 	velocity.x = dir.x * velocidad
 	if !perseguido:
 		if jugador_en_derecha and !atacando:
-			print("entro")
 			sprite.flip_h = false
 			atacar(Vector2.RIGHT)
 		if jugador_en_izquierda and !atacando:
-			print("entro")
 			sprite.flip_h = true
 			atacar(Vector2.LEFT)
 	move_and_slide()
@@ -125,13 +123,14 @@ func atacar(direccion: Vector2):
 	bom.global_position = global_position
 	var factor_carga = tiempo_carga / (CARGA_MAX + 50 )
 	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
-	var angulo = deg_to_rad(30)
+	var angulo = deg_to_rad(choose([ 30, 20, 10, 15, 25, 5, 8]))
 	var direccion_bom = Vector2(cos(angulo), -sin(angulo))
 	if sprite.flip_h:
 		direccion_bom.x *= -1
 	bom.velocity = direccion_bom.normalized() * fuerza
 	await get_tree().create_timer(.4).timeout
 	animacion_atacando = false
+
 
 func _on_ataque_timeout() -> void:
 	atacando = false

@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://bw2fjyuinhj5f" path="res://assets/Jugadores/Shaders/Material_daño_shader.tres" id="3_rdi7f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdi7f"]
-size = Vector2(14, 29)
+size = Vector2(14, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tnjpn"]
 atlas = ExtResource("2_73okv")
@@ -147,14 +147,15 @@ carga = NodePath("Carga")
 "Daño_recibido_cooldown" = NodePath("Daño_recibido_cooldown")
 
 [node name="UiArquero" parent="." instance=ExtResource("1_4x0yv")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_rdi7f")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.847458, -0.5000023)
-scale = Vector2(0.09075998, 0.09904153)
+position = Vector2(-0.847458, -1.0000021)
+scale = Vector2(0.09075998, 0.102236405)
 sprite_frames = SubResource("SpriteFrames_50ewc")
 animation = &"Parado"
 

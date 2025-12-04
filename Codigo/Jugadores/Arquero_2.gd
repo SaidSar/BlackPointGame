@@ -23,7 +23,7 @@ var en_aire: bool
 var doble_salto: bool
 var vida_maxima : float
 var vida : float
-const salto = -285.0
+const salto = -275.0
 var velocidad : float = 100
 var daño_incremento : float
 var puede_moverse : bool = true:

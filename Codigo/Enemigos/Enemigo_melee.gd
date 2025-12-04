@@ -66,11 +66,9 @@ func _detectar_jugador():
 	var objetivo_derecha = raycast_derecha.get_collider()
 	var objetivo_izquierda = raycast_izquierda.get_collider()
 
-	# MIRANDO DERECHA
 	if raycast_derecha.is_colliding() and objetivo_derecha.is_in_group("Jugadores"):
 		_guardar_logica_det( Vector2.RIGHT, raycast_derecha )
 
-	# MIRANDO IZQUIERDA
 	elif raycast_izquierda.is_colliding() and objetivo_izquierda.is_in_group("Jugadores"):
 		_guardar_logica_det( Vector2.LEFT, raycast_izquierda )
 

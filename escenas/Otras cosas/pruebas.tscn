@@ -66,7 +66,7 @@ position = Vector2(5.96046e-08, 0.00680256)
 shape = SubResource("RectangleShape2D_vb5qb")
 
 [node name="Arquero_2" parent="." instance=ExtResource("4_tabga")]
-position = Vector2(-7, 14)
+position = Vector2(-44, 13)
 
 [node name="Barril_explosivo" parent="." instance=ExtResource("5_m0c8v")]
 position = Vector2(-630, 10)

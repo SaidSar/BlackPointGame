@@ -216,21 +216,23 @@ shape = SubResource("RectangleShape2D_yvo3b")
 disabled = true
 
 [node name="UiMelee" parent="." instance=ExtResource("7_ebxey")]
+visible = false
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-10, -2.4999998)
-scale = Vector2(0.09722222, 0.10472972)
+position = Vector2(-10, -3.000002)
+scale = Vector2(0.09722222, 0.1081081)
 sprite_frames = SubResource("SpriteFrames_crk7r")
 animation = &"Parado"
 centered = false
 offset = Vector2(0, -148)
 
 [node name="Camera2D" parent="." instance=ExtResource("7_ltxxq")]
+enabled = true
 
 [node name="Area_detectar" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 64
+collision_mask = 96
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_detectar"]
 position = Vector2(0.5, -1)
@@ -244,4 +246,5 @@ wait_time = 0.5
 [connection signal="body_entered" from="Area_daño" to="." method="_on_area_daño_body_entered"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="body_entered" from="Area_detectar" to="." method="_on_area_detectar_body_entered"]
+[connection signal="body_exited" from="Area_detectar" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Daño_recibido_cooldown" to="." method="_on_daño_recibido_cooldown_timeout"]
