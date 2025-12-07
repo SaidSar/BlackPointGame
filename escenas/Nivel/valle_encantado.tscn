@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://ba8ssswq7arq6"]
 
 [node name="ValleEncantado" type="Node2D"]
+
+[node name="Background" type="TileMapLayer" parent="."]
+
+[node name="Foreground" type="TileMapLayer" parent="."]
