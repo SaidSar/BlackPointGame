@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmk1vavtjigq1"]
+
+[ext_resource type="Texture2D" uid="uid://bneq1b6etvpym" path="res://escenas/Otras cosas/Pantalla_Personajes.png" id="1_r8phm"]
+[ext_resource type="Script" uid="uid://bf7mebnr06lr2" path="res://Codigo/Ui/seleccion_personaje.gd" id="1_vv78k"]
+[ext_resource type="FontFile" uid="uid://vm0qvrh2qtlx" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-ExtraBold.ttf" id="2_pmkn6"]
+[ext_resource type="FontFile" uid="uid://clyo38m000mie" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Black.ttf" id="3_2al5y"]
+[ext_resource type="FontFile" uid="uid://cnmx2ouu6kdx7" path="res://assets/otros/Fuentes y mas/Cinzel/Cinzel-VariableFont_wght.ttf" id="4_55447"]
+
+[node name="SeleccionPersonaje" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vv78k")
+
+[node name="Fondo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r8phm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -213.0
+offset_right = 203.0
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pmkn6")
+theme_override_font_sizes/font_size = 28
+text = "Selecciona a tu Personaje"
+
+[node name="BotonArquero" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.20659722
+anchor_top = 0.45987654
+anchor_right = 0.28993055
+anchor_bottom = 0.51080245
+theme_override_fonts/font = ExtResource("3_2al5y")
+theme_override_font_sizes/font_size = 18
+text = "Arquero"
+metadata/_edit_use_anchors_ = true
+
+[node name="BotonMago" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.4782986
+anchor_top = 0.52006173
+anchor_right = 0.5338542
+anchor_bottom = 0.57098764
+offset_right = -13.0
+offset_bottom = -2.0
+theme_override_fonts/font = ExtResource("3_2al5y")
+theme_override_font_sizes/font_size = 18
+text = "Mago"
+metadata/_edit_use_anchors_ = true
+
+[node name="BotonGuerrero" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.6866319
+anchor_top = 0.46296296
+anchor_right = 0.7803819
+anchor_bottom = 0.5138889
+offset_right = -29.0
+offset_bottom = -2.0
+theme_override_fonts/font = ExtResource("3_2al5y")
+theme_override_font_sizes/font_size = 18
+text = "Guerrero"
+metadata/_edit_use_anchors_ = true
+
+[node name="BotonIniciarJuego" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.4097222
+anchor_top = 0.91049385
+anchor_right = 0.5876736
+anchor_bottom = 0.970679
+theme_override_fonts/font = ExtResource("4_55447")
+theme_override_font_sizes/font_size = 22
+text = "Comenzar Juego"
+metadata/_edit_use_anchors_ = true
+
+[node name="MusicaSeleccionPersonajes" type="AudioStreamPlayer" parent="."]
