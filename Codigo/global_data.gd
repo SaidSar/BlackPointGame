@@ -2,7 +2,11 @@
 extends Node
 
 # Personaje seleccionado
-var personaje_seleccionado: String = "arquero"
+var personaje_seleccionado: String = "Arquero"
+# Los personajes     Arquero     Mago      Melee
+# Ojo con la mayuscula
+
+
 var is_loading = false
 # Control de niveles
 var nivel_actual: int = 0
@@ -10,7 +14,7 @@ var nivel_siguiente: int = 1
 
 # Ruta del archivo de guardado
 const SAVE_PATH = "user://savegame.save"
-@onready var LoadingScreen = "res://escenas/Otras cosas/pantalla_carga.tscn"
+@onready var LoadingScreen = preload("res://escenas/Otras cosas/pantalla_carga.tscn")
 # Reiniciar progreso (cuando empieza nueva partida)
 func reiniciar_progreso():
 	nivel_actual = 0
@@ -45,7 +49,7 @@ func Cambiar_nivel(path: String):
 	is_loading = true
 	LoadingScreen.show_screen()
 	
-	await get_tree().create_timer(0.2).timeout   # pequeña espera para mostrar el loading
+	await get_tree().create_timer(0.4).timeout   # pequeña espera para mostrar el loading
 	var new_scene = load(path).instantiate()
 	get_tree().current_scene.free()
 	get_tree().root.add_child(new_scene)

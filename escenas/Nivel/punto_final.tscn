@@ -10,7 +10,9 @@ size = Vector2(12, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5il0r"]
 size = Vector2(13, 14)
 
-[node name="Punto_final" type="StaticBody2D" node_paths=PackedStringArray("mensaje", "Sprite")]
+[node name="Punto_final" type="StaticBody2D" node_paths=PackedStringArray("mensaje", "Sprite") groups=["punto_final"]]
+collision_layer = 32
+collision_mask = 2
 script = ExtResource("1_5il0r")
 mensaje = NodePath("Mensaje")
 Sprite = NodePath("Sprite2D")

@@ -25,6 +25,7 @@ Entorno="Cosas que seran del entorno"
 enemigos=""
 Puerta=""
 Picos=""
+punto_final=""
 
 [input]
 
