@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dw0hnil7hkvqs"]
+[gd_scene load_steps=20 format=4 uid="uid://dw0hnil7hkvqs"]
 
 [ext_resource type="Texture2D" uid="uid://cviiysmkl7prd" path="res://assets/Mapa/mainlevbuild.png" id="1_7v0hk"]
 [ext_resource type="Texture2D" uid="uid://snjbbnoat0v0" path="res://assets/Mapa/main_lev_build.png" id="2_k73sy"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dhmb6xnkpfnx5" path="res://escenas/Entorno/puerta_2.tscn" id="9_n1fhy"]
 [ext_resource type="PackedScene" uid="uid://vkeqyb4v625k" path="res://escenas/Jugadores/Mago.tscn" id="10_aegvb"]
 [ext_resource type="PackedScene" uid="uid://dpw04wag1moso" path="res://escenas/Entorno/puerta_3.tscn" id="10_lk5vy"]
+[ext_resource type="PackedScene" uid="uid://cebv32bi62tum" path="res://escenas/Nivel/punto_final.tscn" id="11_aegvb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gk3ot"]
 texture = ExtResource("1_7v0hk")
@@ -6953,3 +6954,7 @@ puerta_tp = 3
 
 [node name="Mago" parent="." instance=ExtResource("10_aegvb")]
 position = Vector2(0, 11)
+
+[node name="Punto_final" parent="." instance=ExtResource("11_aegvb")]
+position = Vector2(3347, 773.00006)
+scale = Vector2(4.5799255, 5.022093)

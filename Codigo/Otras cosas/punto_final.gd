@@ -16,18 +16,21 @@ extends Node2D
 			mensaje.visible = true
 		else:
 			mensaje.visible = false
+@onready var jugador 
 func _ready() -> void:
 	mostrar_mensaje = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Jugadores"):
 		mostrar_mensaje = true
-	
+		jugador = body
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Jugadores"):
 		mostrar_mensaje = false
+		jugador = null
 
 func tp():
-	
+	if jugador != null:
+		pass
 	return 0
