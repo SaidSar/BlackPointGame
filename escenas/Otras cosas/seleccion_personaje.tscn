@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmk1vavtjigq1"]
+[gd_scene load_steps=7 format=3 uid="uid://dmk1vavtjigq1"]
 
 [ext_resource type="Texture2D" uid="uid://bneq1b6etvpym" path="res://escenas/Otras cosas/Pantalla_Personajes.png" id="1_r8phm"]
 [ext_resource type="Script" uid="uid://bf7mebnr06lr2" path="res://Codigo/Ui/seleccion_personaje.gd" id="1_vv78k"]
 [ext_resource type="FontFile" uid="uid://vm0qvrh2qtlx" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-ExtraBold.ttf" id="2_pmkn6"]
 [ext_resource type="FontFile" uid="uid://clyo38m000mie" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Black.ttf" id="3_2al5y"]
 [ext_resource type="FontFile" uid="uid://cnmx2ouu6kdx7" path="res://assets/otros/Fuentes y mas/Cinzel/Cinzel-VariableFont_wght.ttf" id="4_55447"]
+[ext_resource type="AudioStream" uid="uid://cndlns2fqbgcm" path="res://assets/Musica/MusicaPersonajes.ogg" id="6_y0rux"]
 
 [node name="SeleccionPersonaje" type="Control"]
 layout_mode = 3
@@ -93,3 +94,7 @@ text = "Comenzar Juego"
 metadata/_edit_use_anchors_ = true
 
 [node name="MusicaSeleccionPersonajes" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_y0rux")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
