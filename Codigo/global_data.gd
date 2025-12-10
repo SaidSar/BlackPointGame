@@ -14,7 +14,13 @@ var nivel_siguiente: int = 1
 
 # Ruta del archivo de guardado
 const SAVE_PATH = "user://savegame.save"
-@onready var LoadingScreen = preload("res://escenas/Otras cosas/pantalla_carga.tscn")
+@onready var LoadingScreenScene = preload("res://escenas/Otras cosas/pantalla_carga.tscn")
+var loading_instance: CanvasLayer
+
+func _ready():
+	loading_instance = LoadingScreenScene.instantiate()
+	get_tree().root.add_child(loading_instance)
+
 # Reiniciar progreso (cuando empieza nueva partida)
 func reiniciar_progreso():
 	nivel_actual = 0
@@ -47,14 +53,14 @@ func Cambiar_nivel(path: String):
 	if is_loading:
 		return
 	is_loading = true
-	LoadingScreen.show_screen()
+	loading_instance.show_screen()
 	
 	await get_tree().create_timer(0.4).timeout   # pequeña espera para mostrar el loading
 	var new_scene = load(path).instantiate()
 	get_tree().current_scene.free()
 	get_tree().root.add_child(new_scene)
 	get_tree().current_scene = new_scene
-	LoadingScreen.hide_screen()
+	loading_instance.hide_screen()
 	is_loading = false
 
 # ===== FUNCIONES DE GUARDADO =====

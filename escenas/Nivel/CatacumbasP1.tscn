@@ -1,6 +1,7 @@
 [gd_scene load_steps=20 format=4 uid="uid://dw0hnil7hkvqs"]
 
 [ext_resource type="Texture2D" uid="uid://cviiysmkl7prd" path="res://assets/Mapa/mainlevbuild.png" id="1_7v0hk"]
+[ext_resource type="Script" uid="uid://bu1ug8gnhbobk" path="res://Codigo/Niveles/catacumbas_p_1.gd" id="1_aegvb"]
 [ext_resource type="Texture2D" uid="uid://snjbbnoat0v0" path="res://assets/Mapa/main_lev_build.png" id="2_k73sy"]
 [ext_resource type="Texture2D" uid="uid://cc8xmiahq0phn" path="res://assets/Mapa/decorative.png" id="3_fbyfd"]
 [ext_resource type="Texture2D" uid="uid://dt8thsp2htmcw" path="res://assets/Mapa/other_and_decorative.png" id="3_pgvvw"]
@@ -8,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dt2k3ujn27ptr" path="res://escenas/Enemigos/enemigo_melee.tscn" id="7_ox37k"]
 [ext_resource type="PackedScene" uid="uid://onx8w0ajq7k6" path="res://escenas/Entorno/puerta.tscn" id="8_ox37k"]
 [ext_resource type="PackedScene" uid="uid://dhmb6xnkpfnx5" path="res://escenas/Entorno/puerta_2.tscn" id="9_n1fhy"]
-[ext_resource type="PackedScene" uid="uid://vkeqyb4v625k" path="res://escenas/Jugadores/Mago.tscn" id="10_aegvb"]
 [ext_resource type="PackedScene" uid="uid://dpw04wag1moso" path="res://escenas/Entorno/puerta_3.tscn" id="10_lk5vy"]
 [ext_resource type="PackedScene" uid="uid://cebv32bi62tum" path="res://escenas/Nivel/punto_final.tscn" id="11_aegvb"]
 
@@ -6884,6 +6884,7 @@ sources/0 = SubResource("TileSetAtlasSource_a6hmq")
 
 [node name="CatacumbasP1" type="Node2D"]
 z_index = -1
+script = ExtResource("1_aegvb")
 metadata/_edit_vertical_guides_ = [616.0]
 
 [node name="background" type="TileMapLayer" parent="."]
@@ -6956,6 +6957,3 @@ puerta_tp = 3
 [node name="Punto_final" parent="." instance=ExtResource("11_aegvb")]
 position = Vector2(3347, 773.00006)
 scale = Vector2(4.5799255, 5.022093)
-
-[node name="Mago" parent="." instance=ExtResource("10_aegvb")]
-position = Vector2(3272, 772)

@@ -12,9 +12,9 @@ var personaje_seleccionado: String = ""
 
 func _ready():
 	# Conectar las señales de los botones de personajes
-	boton_arquero.pressed.connect(func(): seleccionar_personaje("arquero", boton_arquero))
-	boton_mago.pressed.connect(func(): seleccionar_personaje("mago", boton_mago))
-	boton_guerrero.pressed.connect(func(): seleccionar_personaje("guerrero", boton_guerrero))
+	boton_arquero.pressed.connect(func(): seleccionar_personaje("Arquero", boton_arquero))
+	boton_mago.pressed.connect(func(): seleccionar_personaje("Mago", boton_mago))
+	boton_guerrero.pressed.connect(func(): seleccionar_personaje("Melee", boton_guerrero))
 	
 	# Conectar el botón de iniciar juego
 	boton_iniciar_juego.pressed.connect(_on_iniciar_juego_pressed)
@@ -45,8 +45,6 @@ func seleccionar_personaje(nombre_personaje: String, boton_presionado: Button):
 func _on_iniciar_juego_pressed():
 	# Reiniciar progreso del juego (empieza desde nivel 1)
 	GlobalData.reiniciar_progreso()
-	
 	print("Iniciando juego con: ", GlobalData.personaje_seleccionado)
-	
-	# Ir a la pantalla de carga
-	get_tree().change_scene_to_file("res://escenas/Otras cosas/pantalla_carga.tscn")
+	var n = GlobalData.get_ruta_nivel_siguiente()
+	GlobalData.Cambiar_nivel(n)
