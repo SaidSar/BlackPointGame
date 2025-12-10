@@ -3,14 +3,14 @@ extends Node
 
 # Personaje seleccionado
 var personaje_seleccionado: String = "arquero"
-
+var is_loading = false
 # Control de niveles
 var nivel_actual: int = 0
 var nivel_siguiente: int = 1
 
 # Ruta del archivo de guardado
 const SAVE_PATH = "user://savegame.save"
-
+@onready var LoadingScreen = "res://escenas/Otras cosas/pantalla_carga.tscn"
 # Reiniciar progreso (cuando empieza nueva partida)
 func reiniciar_progreso():
 	nivel_actual = 0
@@ -32,11 +32,26 @@ func get_ruta_nivel_siguiente() -> String:
 		1:
 			return "res://escenas/Nivel/CatacumbasP1.tscn"  # Tu nivel 1
 		2:
-			return "res://scenes/nivel_2.tscn"  # Tu nivel 2
+			return "res://escenas/Nivel/valle_encantado.tscn" # Tu nivel 2
 		3:
-			return "res://scenes/nivel_3.tscn"  # Tu nivel 3
+			return "res://escenas/Nivel/valle_encantado.tscn" # Tu nivel 3
 		_:
 			return "res://scenes/main_menu.tscn"  # Si terminó todos
+
+#cambiar Nivel
+func Cambiar_nivel(path: String):
+	if is_loading:
+		return
+	is_loading = true
+	LoadingScreen.show_screen()
+	
+	await get_tree().create_timer(0.2).timeout   # pequeña espera para mostrar el loading
+	var new_scene = load(path).instantiate()
+	get_tree().current_scene.free()
+	get_tree().root.add_child(new_scene)
+	get_tree().current_scene = new_scene
+	LoadingScreen.hide_screen()
+	is_loading = false
 
 # ===== FUNCIONES DE GUARDADO =====
 

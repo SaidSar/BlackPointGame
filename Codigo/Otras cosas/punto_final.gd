@@ -32,5 +32,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func tp():
 	if jugador != null:
+		GlobalData.completar_nivel()
+		var n = GlobalData.get_ruta_nivel_siguiente()
+		GlobalData.Cambiar_nivel(n)
 		pass
 	return 0
