@@ -92,7 +92,8 @@ func atacar(direccion: Vector2):
 	flecha.global_position = global_position
 	var factor_carga = tiempo_carga / CARGA_MAX
 	var fuerza = lerp(FUERZA_MIN, FUERZA_MAX, factor_carga)
-	var direccion_flecha = Vector2(1.5, 0)
+	var angulo = choose([ 1, .8, 1.2, 1.4, 1.5, .7])
+	var direccion_flecha = Vector2(angulo, 0)
 	if direccion == Vector2.LEFT:
 		direccion_flecha.x = -1
 	flecha.velocity = direccion_flecha * fuerza

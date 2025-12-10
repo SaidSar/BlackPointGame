@@ -16,7 +16,7 @@ size = Vector2(0.9993522, 1.0292413)
 [node name="Nivel" type="Node2D"]
 
 [node name="Enemigoprueba" parent="." instance=ExtResource("2_gsmxe")]
-position = Vector2(192.68747, 16)
+position = Vector2(184, 10)
 
 [node name="Bombardero" parent="." instance=ExtResource("5_tabga")]
 position = Vector2(-371, 14)
@@ -69,4 +69,4 @@ shape = SubResource("RectangleShape2D_vb5qb")
 position = Vector2(-44, 13)
 
 [node name="Barril_explosivo" parent="." instance=ExtResource("5_m0c8v")]
-position = Vector2(-630, 10)
+position = Vector2(-651, 11)

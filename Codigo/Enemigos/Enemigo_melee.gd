@@ -153,5 +153,5 @@ func _on_ataque_timeout() -> void:
 
 
 func _on_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Jugadores") || body.is_in_group("Entorno"): 
+	if body.is_in_group("Jugadores"): 
 		body.recibir_daño(daño) 

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cebv32bi62tum"]
+
+[ext_resource type="Script" uid="uid://f0a04m2wnubf" path="res://Codigo/Otras cosas/punto_final.gd" id="1_5il0r"]
+[ext_resource type="Texture2D" uid="uid://d4edyv8c46t24" path="res://assets/Mapa/Tilesets_Catacumbas_puerta.png" id="2_5il0r"]
+[ext_resource type="PackedScene" uid="uid://cf4lvdpih4gf" path="res://escenas/Entorno/Pop_up_de_boton.tscn" id="3_bxsl1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pm2a"]
+size = Vector2(12, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5il0r"]
+size = Vector2(13, 14)
+
+[node name="Punto_final" type="StaticBody2D" node_paths=PackedStringArray("mensaje", "Sprite")]
+script = ExtResource("1_5il0r")
+mensaje = NodePath("Mensaje")
+Sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.9802322e-08, -2.0000017)
+scale = Vector2(0.032786883, 0.037578285)
+texture = ExtResource("2_5il0r")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 96
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8pm2a")
+
+[node name="Mensaje" parent="." instance=ExtResource("3_bxsl1")]
+texture_filter = 3
+offset_left = -7.0000005
+offset_top = -16.0
+offset_right = -7.0000005
+offset_bottom = -16.0
+scale = Vector2(0.1266588, 0.10071687)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_5il0r")

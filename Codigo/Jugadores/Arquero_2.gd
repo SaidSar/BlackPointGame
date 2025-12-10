@@ -122,7 +122,10 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("W"):
 		if puerta != null:
 			var pos = puerta.tp()
-			position = pos
+			if typeof(pos) == TYPE_STRING:
+				get_tree().change_scene_to_file(pos)
+			else:
+				position = pos
 
 func disparar_flecha(tiempo_carga):
 	var flecha = flecha_escena.instantiate()
