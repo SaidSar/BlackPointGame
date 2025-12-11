@@ -35,6 +35,7 @@ var puede_moverse : bool = true:
 			velocidad = 100
 
 func _ready():
+	$Camera2D.make_current()
 	vida_maxima = 35
 	daño_incremento = 1.0
 	vida = vida_maxima

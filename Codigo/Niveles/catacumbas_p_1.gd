@@ -6,3 +6,4 @@ func _ready() -> void:
 	var player = character_scene.instantiate()
 	add_child(player)
 	player.position = Vector2(0,0)
+	

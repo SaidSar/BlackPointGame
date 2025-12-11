@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalData="*res://Codigo/global_data.gd"
+PantallaCarga="*res://escenas/Otras cosas/pantalla_carga.tscn"
 
 [global_group]
 
