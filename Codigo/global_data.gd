@@ -13,7 +13,8 @@ var nivel_actual: int = 0
 var nivel_siguiente: int = 1
 
 # Ruta del archivo de guardado
-const SAVE_PATH = "user://savegame.save"
+const SAVE_PATH = "./savegame.save"
+
 @onready var LoadingScreenScene = preload("res://escenas/Otras cosas/pantalla_carga.tscn")
 var pantalla_carga: CanvasLayer
 
@@ -50,16 +51,14 @@ func get_ruta_nivel_siguiente() -> String:
 
 #cambiar Nivel
 func Cambiar_nivel(path: String):
-	if is_loading:
+	if is_loading: 
 		return
 	is_loading = true
 	pantalla_carga.show_screen()
-	
-	await get_tree().create_timer(0.6).timeout   # pequeña espera para mostrar el loading
-	var new_scene = load(path).instantiate()
-	get_tree().current_scene.free()
-	get_tree().root.add_child(new_scene)
-	get_tree().current_scene = new_scene
+	await get_tree().create_timer(0.5).timeout
+	var new_scene = load(path)
+	get_tree().change_scene_to_packed(new_scene)
+
 	pantalla_carga.hide_screen()
 	is_loading = false
 
@@ -85,6 +84,7 @@ func guardar_partida():
 	else:
 		print("Error al guardar partida")
 		return false
+	
 
 # Cargar partida
 func cargar_partida():
@@ -116,6 +116,8 @@ func cargar_partida():
 	else:
 		print("Error al abrir archivo de guardado")
 		return false
+	
+	
 
 # Verificar si existe partida guardada
 func tiene_partida_guardada() -> bool:

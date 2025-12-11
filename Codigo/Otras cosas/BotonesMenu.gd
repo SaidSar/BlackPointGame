@@ -47,7 +47,8 @@ func _on_continuar_pressed():
 	
 	if GlobalData.tiene_partida_guardada():
 		GlobalData.cargar_partida()
-		get_tree().change_scene_to_file("res://escenas/Otras cosas/pantalla_carga.tscn")
+		var n = GlobalData.get_ruta_nivel_siguiente()
+		GlobalData.Cambiar_nivel(n)
 	else:
 		mostrar_mensaje("No hay partida guardada")
 

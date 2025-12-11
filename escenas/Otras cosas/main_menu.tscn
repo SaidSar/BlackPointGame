@@ -110,7 +110,7 @@ text = "Salir"
 
 [node name="MusicaMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_w6fns")
-volume_db = 10.0
+volume_db = 5.0
 autoplay = true
 parameters/looping = true
 

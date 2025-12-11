@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dw0hnil7hkvqs"]
+[gd_scene load_steps=20 format=4 uid="uid://dw0hnil7hkvqs"]
 
 [ext_resource type="Texture2D" uid="uid://cviiysmkl7prd" path="res://assets/Mapa/mainlevbuild.png" id="1_7v0hk"]
 [ext_resource type="Script" uid="uid://bu1ug8gnhbobk" path="res://Codigo/Niveles/catacumbas_p_1.gd" id="1_aegvb"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dhmb6xnkpfnx5" path="res://escenas/Entorno/puerta_2.tscn" id="9_n1fhy"]
 [ext_resource type="PackedScene" uid="uid://dpw04wag1moso" path="res://escenas/Entorno/puerta_3.tscn" id="10_lk5vy"]
 [ext_resource type="PackedScene" uid="uid://cebv32bi62tum" path="res://escenas/Nivel/punto_final.tscn" id="11_aegvb"]
-[ext_resource type="PackedScene" uid="uid://bar8navc35jc6" path="res://escenas/Jugadores/Arquero.tscn" id="12_bbcf8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gk3ot"]
 texture = ExtResource("1_7v0hk")
@@ -6958,6 +6957,3 @@ puerta_tp = 3
 [node name="Punto_final" parent="." instance=ExtResource("11_aegvb")]
 position = Vector2(3344, 776)
 scale = Vector2(4.9377103, 4.7760844)
-
-[node name="Arquero_2" parent="." instance=ExtResource("12_bbcf8")]
-position = Vector2(3341, 790)
