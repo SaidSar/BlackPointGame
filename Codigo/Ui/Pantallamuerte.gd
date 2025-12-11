@@ -1,7 +1,7 @@
 extends Control
 
 func salir():
-	GlobalData.Cambiar_nivel("res://scenes/main_menu.tscn")
+	GlobalData.Cambiar_nivel("res://escenas/Otras cosas/main_menu.tscn")
 
 func Reintentar():
 	var n = GlobalData.get_ruta_nivel_actual()

@@ -9,7 +9,7 @@ var personaje_seleccionado: String = "Arquero"
 
 var is_loading = false
 # Control de niveles
-var nivel_actual: int = 0
+var nivel_actual: int = 1
 var nivel_siguiente: int = 1
 
 # Ruta del archivo de guardado
@@ -20,15 +20,15 @@ const SAVE_PATH = "./savegame.save"
 
 # Reiniciar progreso (cuando empieza nueva partida)
 func reiniciar_progreso():
-	nivel_actual = 0
+	nivel_actual = 1
 	nivel_siguiente = 1
-	print("Progreso reiniciado")
+
 
 # Completar nivel (cuando termina un nivel)
 func completar_nivel():
 	nivel_actual += 1
 	nivel_siguiente = nivel_actual + 1
-	print("Nivel completado: ", nivel_actual)
+
 	
 	# Guardar automáticamente al completar nivel
 	guardar_partida()

@@ -38,7 +38,7 @@ var puede_moverse : bool = true:
 func _ready():
 	pantalla_muerte.visible = false
 	$Camera2D.make_current()
-	vida_maxima = 35
+	vida_maxima = 40
 	daño_incremento = 1.0
 	vida = vida_maxima
 	tiempo_ataque_1.stop()

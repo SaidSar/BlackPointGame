@@ -25,7 +25,7 @@ var daño_incremento : float
 func _ready():
 	pantalla_muerte.visible = false
 	$Camera2D.make_current()
-	vida_maxima = 100
+	vida_maxima = 60
 	daño_incremento = 1.0
 	vida = vida_maxima
 	ataque_actual = false
