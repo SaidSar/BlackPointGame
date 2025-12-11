@@ -17,12 +17,13 @@ var daño_incremento : float
 @export var Daño_recibido_cooldown:Timer
 @onready var puerta
 @onready var especial_escena = preload("res://escenas//Proyectiles//melee_especial.tscn")
-
+@export var pantalla_muerte: CanvasLayer
 @onready var barra_vida
 @onready var icono_1
 @onready var icono_2
 
 func _ready():
+	pantalla_muerte.visible = false
 	$Camera2D.make_current()
 	vida_maxima = 100
 	daño_incremento = 1.0
@@ -174,12 +175,15 @@ func recibir_daño(daño_recibido):
 	if Daño_recibido_cooldown.is_stopped():
 		vida -= daño_recibido * daño_incremento
 		if vida <= 0:
-			queue_free()
-		sprite.material = shader_daño
-		await get_tree().create_timer(.2).timeout
-		sprite.material = null
-		barra_vida._set_vida(vida)
-		Daño_recibido_cooldown.start(.5)
+			sprite.visible = false
+			hud.visible = false
+			pantalla_muerte.visible = true
+		else:
+			sprite.material = shader_daño
+			await get_tree().create_timer(.2).timeout
+			sprite.material = null
+			barra_vida._set_vida(vida)
+			Daño_recibido_cooldown.start(.5)
 
 
 func _on_daño_recibido_cooldown_timeout() -> void:

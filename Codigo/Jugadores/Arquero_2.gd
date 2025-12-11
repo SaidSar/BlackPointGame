@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var tiempo_ataque_1 : Timer
 @export var tiempo_ataque_2 : Timer
 @export var carga : ProgressBar
+@export var pantalla_muerte: CanvasLayer
 @export var Daño_recibido_cooldown:Timer
 @onready var barra_vida
 @onready var icono_1
@@ -35,6 +36,7 @@ var puede_moverse : bool = true:
 			velocidad = 100
 
 func _ready():
+	pantalla_muerte.visible = false
 	$Camera2D.make_current()
 	vida_maxima = 35
 	daño_incremento = 1.0
@@ -169,12 +171,16 @@ func recibir_daño(daño_recibido):
 	if Daño_recibido_cooldown.is_stopped():
 		vida -= daño_recibido * daño_incremento
 		if vida <= 0:
-			queue_free()
-		sprite.material = shader_daño
-		barra_vida._set_vida(vida)
-		await get_tree().create_timer(.2).timeout
-		sprite.material = null
-		Daño_recibido_cooldown.start(.5)
+			puede_moverse = false
+			sprite.visible = false
+			hud.visible = false
+			pantalla_muerte.visible = true
+		else:
+			sprite.material = shader_daño
+			barra_vida._set_vida(vida)
+			await get_tree().create_timer(.2).timeout
+			sprite.material = null
+			Daño_recibido_cooldown.start(.5)
 
 
 func _on_daño_recibido_cooldown_timeout() -> void:

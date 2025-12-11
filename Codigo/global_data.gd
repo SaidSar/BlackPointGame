@@ -32,7 +32,17 @@ func completar_nivel():
 	
 	# Guardar automáticamente al completar nivel
 	guardar_partida()
-
+func get_ruta_nivel_actual() -> String:
+	match nivel_actual:
+		1:
+			return "res://escenas/Nivel/CatacumbasP1.tscn"  # Tu nivel 1
+		2:
+			return "res://escenas/Nivel/valle_encantado.tscn" # Tu nivel 2
+		3:
+			return "res://escenas/Nivel/valle_encantado.tscn" # Tu nivel 3
+		_:
+			return "res://scenes/main_menu.tscn" 
+			
 # Obtener ruta del siguiente nivel
 func get_ruta_nivel_siguiente() -> String:
 	match nivel_siguiente:
@@ -43,9 +53,9 @@ func get_ruta_nivel_siguiente() -> String:
 		3:
 			return "res://escenas/Nivel/valle_encantado.tscn" # Tu nivel 3
 		_:
-			return "res://scenes/main_menu.tscn"  # Si terminó todos
+			return "res://scenes/main_menu.tscn" 
 
-#cambiar Nivel
+
 func Cambiar_nivel(path: String):
 	if is_loading: 
 		return

@@ -21,6 +21,7 @@ var daño_incremento: float
 @export var colision_ataque_1 : CollisionShape2D
 @export var colision_ataque_3 : CollisionShape2D
 @export var hud : CanvasLayer
+@export var pantalla_muerte: CanvasLayer
 @export var sprite_ataque_1 : Sprite2D
 @export var Daño_recibido_cooldown:Timer
 @onready var puerta
@@ -31,6 +32,7 @@ var daño_incremento: float
 
 
 func _ready():
+	pantalla_muerte.visible = false
 	$Camera2D.make_current()
 	vida_maxima = 50
 	daño_incremento = 1.0
@@ -78,7 +80,7 @@ func _physics_process(delta):
 		icono_2.value = tiempo_ataque_2.time_left
 	if tiempo_ataque_3.time_left > 0:
 		icono_3.value = tiempo_ataque_3.time_left
-
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		en_aire = true
@@ -208,12 +210,16 @@ func recibir_daño(daño_recibido):
 		if Daño_recibido_cooldown.is_stopped():
 			vida -= daño_recibido * daño_incremento
 			if vida <= 0:
-				queue_free()
-			barra_vida._set_vida(vida)
-			sprite.material = shader_daño
-			await get_tree().create_timer(.2).timeout
-			sprite.material = null
-			Daño_recibido_cooldown.start(.5)
+				ataque_actual = true
+				sprite.visible = false
+				hud.visible = false
+				pantalla_muerte.visible = true
+			else:
+				barra_vida._set_vida(vida)
+				sprite.material = shader_daño
+				await get_tree().create_timer(.2).timeout
+				sprite.material = null
+				Daño_recibido_cooldown.start(.5)
 
 func _on_ataque_1_timeout():
 	tiempo_ataque_1.stop()

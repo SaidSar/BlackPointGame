@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bd4th2rdgbtv5"]
+[gd_scene load_steps=29 format=3 uid="uid://bd4th2rdgbtv5"]
 
 [ext_resource type="Script" uid="uid://bpm4qqovts70n" path="res://Codigo/Jugadores/Melee.gd" id="1_nqg7t"]
 [ext_resource type="Texture2D" uid="uid://b2b7mdgn7vre7" path="res://assets/Jugadores/Sprite_Caballero_Atacando_Final.png" id="2_ebxey"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c117b5mwim582" path="res://assets/Jugadores/Sprites_Caballero_Caminando.png" id="5_ebxey"]
 [ext_resource type="PackedScene" uid="uid://cvw3v4bqgfldx" path="res://escenas/Ui/ui_melee.tscn" id="7_ebxey"]
 [ext_resource type="PackedScene" uid="uid://c44u3pjqq4wjg" path="res://escenas/Jugadores/camara.tscn" id="7_ltxxq"]
+[ext_resource type="PackedScene" uid="uid://cmnqctc4dp6xe" path="res://escenas/Ui/PantallaMuerte.tscn" id="9_g653p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebxey"]
 size = Vector2(17, 27)
@@ -180,7 +181,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltxxq"]
 size = Vector2(13, 26)
 
-[node name="Melee" type="CharacterBody2D" node_paths=PackedStringArray("area_daño", "sprite", "tiempo_ataque_1", "tiempo_ataque_2", "hud", "Daño_recibido_cooldown") groups=["Jugadores"]]
+[node name="Melee" type="CharacterBody2D" node_paths=PackedStringArray("area_daño", "sprite", "tiempo_ataque_1", "tiempo_ataque_2", "hud", "Daño_recibido_cooldown", "pantalla_muerte") groups=["Jugadores"]]
 texture_filter = 1
 collision_layer = 2
 collision_mask = 3
@@ -192,6 +193,7 @@ tiempo_ataque_1 = NodePath("Ataque_1")
 tiempo_ataque_2 = NodePath("Ataque_2")
 hud = NodePath("UiMelee")
 "Daño_recibido_cooldown" = NodePath("Daño_recibido_cooldown")
+pantalla_muerte = NodePath("Pantallamuerte")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 7
@@ -240,6 +242,8 @@ shape = SubResource("RectangleShape2D_ltxxq")
 
 [node name="Daño_recibido_cooldown" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Pantallamuerte" parent="." instance=ExtResource("9_g653p")]
 
 [connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
 [connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmnqctc4dp6xe"]
+
+[ext_resource type="Script" uid="uid://bhpyrc4fiijrk" path="res://Codigo/Ui/Pantallamuerte.gd" id="1_omi82"]
+[ext_resource type="FontFile" uid="uid://clyo38m000mie" path="res://assets/otros/Fuentes y mas/Cinzel/static/Cinzel-Black.ttf" id="2_yq4k4"]
+
+[node name="Pantallamuerte" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_omi82")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 161.0
+offset_right = 674.0
+offset_bottom = 221.0
+theme_override_fonts/font = ExtResource("2_yq4k4")
+theme_override_font_sizes/font_size = 44
+text = "Moriste"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reintentar" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.35
+anchor_top = 7.125
+anchor_right = 14.75
+anchor_bottom = 7.95
+theme_override_fonts/font = ExtResource("2_yq4k4")
+theme_override_font_sizes/font_size = 18
+text = "Reintentar"
+metadata/_edit_use_anchors_ = true
+
+[node name="Salir" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.425
+anchor_top = 8.425
+anchor_right = 15.5
+anchor_bottom = 9.25
+theme_override_fonts/font = ExtResource("2_yq4k4")
+theme_override_font_sizes/font_size = 18
+text = "Menu
+"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Control/Reintentar" to="Control" method="_on_reintentar_pressed"]
+[connection signal="pressed" from="Control/Salir" to="Control" method="_on_salir_pressed"]

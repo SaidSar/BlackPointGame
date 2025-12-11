@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bar8navc35jc6"]
+[gd_scene load_steps=22 format=3 uid="uid://bar8navc35jc6"]
 
 [ext_resource type="PackedScene" uid="uid://dfn1t6mgef145" path="res://escenas/Ui/ui_arquero.tscn" id="1_4x0yv"]
 [ext_resource type="Script" uid="uid://dng1a0ms4ahn6" path="res://Codigo/Jugadores/Arquero_2.gd" id="1_73okv"]
 [ext_resource type="Texture2D" uid="uid://bg7ei546lmy3w" path="res://assets/Jugadores/Sprites_Arquero.png" id="2_73okv"]
 [ext_resource type="PackedScene" uid="uid://c44u3pjqq4wjg" path="res://escenas/Jugadores/camara.tscn" id="3_cjvku"]
 [ext_resource type="Material" uid="uid://bw2fjyuinhj5f" path="res://assets/Jugadores/Shaders/Material_daño_shader.tres" id="3_rdi7f"]
+[ext_resource type="PackedScene" uid="uid://cmnqctc4dp6xe" path="res://escenas/Ui/PantallaMuerte.tscn" id="6_slc7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdi7f"]
 size = Vector2(14, 28)
@@ -134,7 +135,7 @@ anti_aliasing = false
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7bcj"]
 size = Vector2(11, 26)
 
-[node name="Arquero_2" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hud", "tiempo_ataque_1", "tiempo_ataque_2", "carga", "Daño_recibido_cooldown") groups=["Jugadores"]]
+[node name="Arquero_2" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hud", "tiempo_ataque_1", "tiempo_ataque_2", "carga", "pantalla_muerte", "Daño_recibido_cooldown") groups=["Jugadores"]]
 z_index = 2
 collision_layer = 2
 script = ExtResource("1_73okv")
@@ -144,6 +145,7 @@ hud = NodePath("UiArquero")
 tiempo_ataque_1 = NodePath("Ataque_1")
 tiempo_ataque_2 = NodePath("Ataque_2")
 carga = NodePath("Carga")
+pantalla_muerte = NodePath("Pantallamuerte")
 "Daño_recibido_cooldown" = NodePath("Daño_recibido_cooldown")
 
 [node name="UiArquero" parent="." instance=ExtResource("1_4x0yv")]
@@ -188,6 +190,8 @@ shape = SubResource("RectangleShape2D_q7bcj")
 
 [node name="Daño_recibido_cooldown" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Pantallamuerte" parent="." instance=ExtResource("6_slc7s")]
 
 [connection signal="timeout" from="Ataque_1" to="." method="_on_ataque_1_timeout"]
 [connection signal="timeout" from="Ataque_2" to="." method="_on_ataque_2_timeout"]
